@@ -1,75 +1,226 @@
-# React + TypeScript + Vite
+# Gym Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A scalable, mobile-first Gym Management System built with React and TypeScript.
 
-Currently, two official plugins are available:
+> ⚠️ This project is currently under active development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# 📖 Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Gym Management System is a Progressive Web Application (PWA) designed for managing gyms, coaches, and members.
 
-## Expanding the ESLint configuration
+The application supports multiple gyms (Multi-Tenant Architecture), allowing each gym to have its own:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Members
+- Coaches
+- Products
+- Workout Plans
+- Diet Plans
+- Payments
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 🎯 Goals
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- High Performance
+- Scalable Architecture
+- Mobile First
+- PWA Ready
+- Clean Code
+- Easy Maintenance
+- Enterprise-Level Folder Structure
+
+---
+
+# 👥 Roles
+
+## Admin (Gym Manager)
+
+- Manage gym information
+- Manage coaches
+- Manage members
+- Manage products
+- Manage payments
+- Manage subscriptions (Future)
+
+---
+
+## Coach
+
+- Manage own members
+- Create workout plans
+- Create diet plans
+- View payment status
+- Upload PDF files
+
+---
+
+## Member
+
+- View workout plans
+- View diet plans
+- Upload progress photos
+- View products
+- Pay membership
+- Compare progress photos
+
+---
+
+# 🏗 Architecture
+
+This project combines multiple software architecture patterns.
+
+## 1. Feature-Based Architecture
+
+The application is organized around business features instead of technical folders.
+
+Example:
 
 ```
+Workout
+Diet
+Payment
+Authentication
+Products
+```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Each feature owns its own business logic.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 2. Clean Architecture
+
+Business logic is separated from UI and API layers.
+
+Example:
 
 ```
+Feature
+
+├── api
+├── ui
+├── model (when needed)
+├── lib (when needed)
+└── types
+```
+
+Not every feature requires all layers.
+Folders are created only when they become necessary.
+
+---
+
+## 3. Atomic Design
+
+Reusable UI components live inside the shared layer.
+
+```
+shared/ui
+
+├── atoms
+├── molecules
+└── organisms
+```
+
+Only generic UI components belong here.
+
+Examples:
+
+- Button
+- Input
+- Modal
+- Avatar
+- Table
+
+Business-specific components remain inside their corresponding feature.
+
+---
+
+## 4. Feature-Sliced Design (FSD)
+
+FSD is used only as the project organization strategy.
+
+```
+src
+
+app
+pages
+widgets
+features
+entities
+shared
+assets
+```
+
+---
+
+# 📂 Current Folder Structure
+
+```
+src
+│
+├── app
+├── assets
+├── entities
+├── features
+├── pages
+├── shared
+└── widgets
+```
+
+This structure will evolve as the project grows.
+
+---
+
+# 🧩 Design Principles
+
+- Single Responsibility Principle
+- Separation of Concerns
+- Reusable Components
+- Feature Isolation
+- Domain Driven Thinking
+- Mobile First
+- Performance First
+- Simplicity over Over Engineering
+
+---
+
+# 🛠 Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Query (TanStack Query)
+- React Router
+- Axios
+
+---
+
+# 🚀 Future Features
+
+- Subscription Plans
+- Push Notifications
+- Offline Mode
+- Dark Mode
+- Progress Analytics
+- Multi-language Support
+- Image Comparison
+- Payment Gateway Integration
+
+---
+
+# 📌 Development Rules
+
+- No business logic inside UI components.
+- Shared components must be business-agnostic.
+- Features should remain isolated.
+- Create folders only when needed.
+- Prefer composition over duplication.
+- Keep components small and focused.
+
+---
+
+# 📄 License
+
+This project is currently private.
