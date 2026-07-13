@@ -19,15 +19,20 @@
 }
 
 html, body, #root {
-    margin: 0;
+    margin: 0.063rem;
     min-height: 100%;
 }
 
 body {
     font-family: var(--font-primary);
-    background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.5;
+
+    /* 🌌 Gradient background جایگزین bg-color */
+    background: linear-gradient(135deg,
+            #0a0a0a 0%,
+            #120018 50%,
+            #2a0a3d 100%);
 }
 
 h1, h2, h3, h4, p {

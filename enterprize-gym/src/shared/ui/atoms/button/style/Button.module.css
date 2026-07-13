@@ -1,0 +1,94 @@
+/* Base */
+
+.button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+/* ========================= */
+/* Mode */
+/* ========================= */
+
+.primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.secondary {
+    background-color: #6b7280;
+    color: #ffffff;
+}
+
+.success {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+
+.error {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+.warn{
+    background-color: #ffe100;
+        color: #ffffff;
+}
+
+/* ========================= */
+/* Variant */
+/* ========================= */
+
+/* .solid {
+    border: none;
+}
+
+.outline {
+    background: transparent;
+    border: 2px solid currentColor;
+}
+ */
+
+/* ========================= */
+/* Size */
+/* ========================= */
+
+.small {
+    width: 100px;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+.medium {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.large {
+    padding: 14px 28px;
+    font-size: 18px;
+}
+
+/* ========================= */
+/* States */
+/* ========================= */
+
+.button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

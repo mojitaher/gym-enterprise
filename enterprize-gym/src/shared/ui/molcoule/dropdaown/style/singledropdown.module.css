@@ -1,0 +1,44 @@
+.item {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 0.5rem 0.75rem;
+
+    border-radius: 0.375rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.item span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.5rem;
+
+    width: 100%;
+
+    font-size: 0.875rem;
+
+    line-height: 1.5;
+
+    color: var(--text-color, #374151);
+}
+
+
+.item:hover {
+    background-color: var(--dropdown-hover-background, #f3f4f6);
+}
+
+
+.item:active {
+    transform: scale(0.98);
+}
