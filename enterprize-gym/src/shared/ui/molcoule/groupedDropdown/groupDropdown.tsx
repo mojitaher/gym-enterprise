@@ -12,7 +12,7 @@ export default function GroupDropdown({
     disabled,
     onChange
 }: GROUPDROPDOWN_SELECT_INTERFACE) {
-    
+    console.log('grouped')
     return (
         <Select
             groupedItems={groupedItems}
@@ -24,11 +24,11 @@ export default function GroupDropdown({
             multiple={ multiple }
             onChange={onChange}
 
-            customRenderer={(item)=>(
-                <GroupDropdownItem
-                    item={item}
-                />
-            )}
+            // customRenderer={(item)=>(
+            //     <GroupDropdownItem
+            //         item={item}
+            //     />
+            // )}
         />
     );
 }

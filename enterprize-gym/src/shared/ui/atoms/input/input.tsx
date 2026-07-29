@@ -7,20 +7,29 @@ import type INPUT_PROPS_INTERFACE from "./interfaces/inputInterface";
  *
  * A reusable atomic input component used to collect user input.
  *
+ * Uncontrolled — the DOM owns the value. Pass `defaultValue` for the initial
+ * value and read the current value through `ref` (ref.current.value) when you
+ * need it, instead of tracking every keystroke in state.
+ *
  * Supports:
  * - mode (success, warn, error)
  * - size (small, medium, large)
  * - disabled state
  * - placeholder
- * - controlled value
- * - change handler
+ * - defaultValue (uncontrolled initial value)
+ * - ref to the underlying <input>
  *
  * Example:
  *
+ * const inputRef = useRef<HTMLInputElement>(null);
+ *
  * <Input
+ *   ref={inputRef}
+ *   type="text"
  *   mode="success"
  *   size="medium"
  *   placeholder="Username"
+ *   defaultValue=""
  * />
  */
 
@@ -28,23 +37,23 @@ export const Input = ({
   type,
   mode,
   size,
-  value,
   placeholder,
   disabled,
-  onChange,
+  defaultValue,
+  ref,
 }: INPUT_PROPS_INTERFACE) => {
   return (
     <input
+      ref={ref}
       className={clsx(
         Classes.input,
         Classes[mode],
         Classes[size]
       )}
       type={type}
-      value={value}
       placeholder={placeholder}
       disabled={disabled}
-      onChange={onChange}
+      defaultValue={defaultValue}
     />
   );
 };

@@ -1,11 +1,9 @@
-import type {
-  ChangeEvent,
-} from "react";
+import type { Ref } from "react";
 import type { INPUT_TYPE_SIZE } from "../types/inputSizeType";
 import type { INPUT_TYPE_MODE } from "../types/inputModeType";
 
 export default interface INPUT_PROPS_INTERFACE {
-  type:string
+  type: string;
 
   mode: INPUT_TYPE_MODE;
 
@@ -15,8 +13,9 @@ export default interface INPUT_PROPS_INTERFACE {
 
   disabled?: boolean;
 
-  value?: string;
+  /** Uncontrolled initial value. The DOM owns the value after mount. */
+  defaultValue?: string;
 
-
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  /** Ref to the underlying input; read `.value` from it to get the input. */
+  ref?: Ref<HTMLInputElement>;
 }

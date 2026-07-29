@@ -30,6 +30,7 @@ export const Badge = ({
   className,
   children,
 }: BADGE_PROPS_INTERFACE) => {
+  console.log('badge')
   return (
     <span
       className={clsx(

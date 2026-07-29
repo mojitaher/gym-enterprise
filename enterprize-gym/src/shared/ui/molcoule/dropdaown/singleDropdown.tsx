@@ -1,7 +1,7 @@
 import { Select } from '@smilodon/react';
 import type { SINGLEDROPDOWN_SELECT_INTERFACE } from "./interfaces/singledropdownPropsInterface";
-import DropdownItem from './components/singledropdownItemComponent';
-import SingleDropdownItem from './components/singledropdownItemComponent';
+// import DropdownItem from './components/singledropdownItemComponent';
+// import SingleDropdownItem from './components/singledropdownItemComponent';
 
 export default function SingleDropdown({
     items,
@@ -16,6 +16,9 @@ export default function SingleDropdown({
     
     return (
         <Select
+        multiSelectDisplay={
+            {mode:"horizontal"}
+        }
             items={items}
             value={value}
             placeholder={placeholder}
@@ -26,11 +29,11 @@ export default function SingleDropdown({
             onChange={onChange}
 
 
-            customRenderer={(item)=>(
-                <SingleDropdownItem
-                    item={item}
-                />
-            )}
+            // customRenderer={(item)=>(
+            //     <SingleDropdownItem
+            //         item={item}
+            //     />
+            // )}
         />
     );
 }

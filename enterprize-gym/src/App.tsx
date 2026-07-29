@@ -1,19 +1,47 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Search } from "./shared/ui/molcoule/search/search"
+import { Textarea } from "./shared/ui/atoms/textarea/textarea"
 import { Avatar } from "./shared/ui/atoms/avatar/avatar"
 import { Button } from "./shared/ui/atoms/button/button"
 import { Badge } from "./shared/ui/atoms/badge/badge"
 import { Text } from "./shared/ui/atoms/text/text"
 import { Spinner } from "./shared/ui/atoms/spiner/spinner"
 import { InputPassword } from "./shared/ui/molcoule/passwordInput/inputPasssword"
-import { INPUT_PASSWORD_VISIBILITY_ENUM } from "./shared/ui/molcoule/passwordInput/enums/inputPasswordVisable"
+// import { INPUT_PASSWORD_VISIBILITY_ENUM } from "./shared/ui/molcoule/passwordInput/enums/inputPasswordVisable"
 import SingleDropdown from "./shared/ui/molcoule/dropdaown/singleDropdown";
 import GroupDropdown from "./shared/ui/molcoule/groupedDropdown/groupDropdown";
+import usePortal from "./shared/ui/organisms/portalManager/hooks/usePortal"
+import { PORTAL_TYPE_ENUM } from "./shared/ui/organisms/portalManager/enums/portalManagerEnum";
+import { TOAST_MODE_ENUM } from "./shared/ui/atoms/toast/enums/toastModeEnum";
+import { Checkbox } from "./shared/ui/atoms/checkbox/checkbox";
+import { Stepper } from "./shared/ui/molcoule/stepper/stepper";
 
 function App() {
-  const [password, setPassword] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(
-    INPUT_PASSWORD_VISIBILITY_ENUM.hidden
-  );
+  const searchRef = useRef<HTMLInputElement>(null);
+  const noteRef = useRef<HTMLTextAreaElement>(null);
+   const [currentStep, setCurrentStep] = useState(0);
+    const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
+
+
+  const steps = [
+    {
+      key: "gym-information",
+      label: "Gym Information",
+    },
+    {
+      key: "subscription-plan",
+      label: "Subscription Plan",
+    },
+    {
+      key: "payment",
+      label: "Payment",
+    },
+    {
+      key: "success",
+      label: "Success",
+    },
+  ];
+
 
   const dropdownItems = [
     { value: "apple", label: "Apple" },
@@ -41,6 +69,22 @@ function App() {
         ]
     }
 ];
+const { addPortalComponent } = usePortal();
+const handleSearch=() => console.log("search:" , searchRef.current?.value ?? "")
+const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+// Moves to a step and remembers the furthest step ever reached, so passed
+// steps stay complete. Used by the Stepper clicks and the Next/Previous buttons.
+ const goToStep = (step: number) => setCurrentStep(step);
+
+
+const STEP_CONTENT = [
+  <div>Step 1 — Gym Information form goes here.</div>,
+  <div>Step 2 — Subscription Plan selection goes here.</div>,
+  <div>Step 3 — Payment details go here.</div>,
+  <div>🎉 Success! Your gym has been set up.</div>,
+];
+
 
   return (
     <div>
@@ -109,18 +153,28 @@ function App() {
 </Badge>
 
 <InputPassword
-  value={password}
-  visible={passwordVisible}
   mode="success"
   size="large"
   placeholder="Password"
-  onChange={(event) => setPassword(event.target.value)}
-  onVisibilityChange={setPasswordVisible}
 />
 
 <Spinner size="small"/><Spinner size="medium"/>
 <Spinner size="large"/>
 <div>
+    <Search
+      ref={searchRef}
+      mode="warn"
+      size="large"
+      placeholder="Search members..."
+      onSearch={handleSearch}
+    />
+    <Textarea
+      ref={noteRef}
+      mode="success"
+      size="large"
+      rows={10}
+      placeholder="Write a note..."
+    />
     <p>dropdowns</p>
     <SingleDropdown
       items={dropdownItems}
@@ -134,14 +188,130 @@ function App() {
       clearable
       searchable
       multiple
+      onChange={(value)=>{
+        console.log(value)
+      }}
     />
     <GroupDropdown
     groupedItems={groupedItems}
     placeholder="Grouped dropdown (grouped items)"
     multiple
     />
-    
-    
+    <Button
+    mode="success"
+    variant="primery"
+    size="medium"
+    onClick={() => {
+        addPortalComponent({
+            type: PORTAL_TYPE_ENUM.TOAST,
+            props: {
+                title: "Success",
+                message: "Portal works 🎉",
+                mode: TOAST_MODE_ENUM.success,
+            },
+        });
+    }}
+>
+    Test Portal
+</Button>
+<Button
+    mode="warn"
+    variant="secondary"
+    size="medium"
+    onClick={() => {
+        addPortalComponent({
+            type: PORTAL_TYPE_ENUM.TOAST,
+            props: {
+                title: "warning",
+                message: "Portal works 🎉",
+                mode: TOAST_MODE_ENUM.warning,
+            },
+        });
+    }}
+>
+    Test Portal
+</Button>
+<Button
+    mode="error"
+    variant="secondary"
+    size="medium"
+    onClick={() => {
+        addPortalComponent({
+            type: PORTAL_TYPE_ENUM.TOAST,
+            props: {
+                title: "error",
+                message: "Portal works 🎉",
+                mode: TOAST_MODE_ENUM.error,
+            },
+        });
+    }}
+>
+    Test Portal
+</Button>
+<div>Checkbox</div>
+<Checkbox shape="square" checked={acceptedTerms} onChange={setAcceptedTerms}/>
+<Checkbox shape="circle" checked={acceptedTerms} onChange={setAcceptedTerms}/>
+     <Stepper
+        currentStep={currentStep}
+        completedSteps={completedSteps}
+        steps={steps}
+        onStepChange={goToStep}
+      />
+
+      
+
+      <button
+        type="button"
+        onClick={() => {
+          if (currentStep > 0) {
+            goToStep(currentStep - 1);
+          }
+        }}
+      >
+        Previous Step
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+   if (currentStep < steps.length - 1) {
+     setCompletedSteps(prev => new Set(prev).add(steps[currentStep].key));
+     setCurrentStep(currentStep + 1);
+   }
+}}
+      >
+        Next Step
+      </button>
+
+
+      <h2>Current Step: {currentStep + 1}</h2>
+
+      {STEP_CONTENT[currentStep]}
+      <Button
+    variant="primery"
+    size="medium"
+    onClick={() => {
+        addPortalComponent({
+            type: PORTAL_TYPE_ENUM.MODAL,
+
+            props: {
+                title: "Create Gym",
+
+                children: (
+                    <div>
+                        <h1>Create Gym</h1>
+
+                        <p>
+                            Welcome to My Gym Dashboard.
+                        </p>
+                    </div>
+                ),
+            },
+        });
+    }}
+>
+    Open Modal
+</Button>
 </div>
  </div>
   )

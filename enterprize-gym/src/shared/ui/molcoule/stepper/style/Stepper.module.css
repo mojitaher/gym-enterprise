@@ -1,0 +1,135 @@
+.stepper {
+    @apply flex items-center w-full p-0 m-0 list-none;
+}
+
+.item {
+    @apply flex items-center flex-1 min-w-0;
+}
+
+.item:last-child {
+    @apply flex-none;
+}
+
+/*==================================================
+  Control
+==================================================*/
+
+.control {
+    @apply inline-flex items-center  p-0 m-0 border-none bg-transparent cursor-pointer;
+}
+
+.control:disabled {
+    @apply cursor-not-allowed;
+}
+
+.control:focus-visible {
+    outline: none;
+}
+
+/*==================================================
+  Indicator — glassy circle, 25px
+==================================================*/
+
+.indicator {
+    @apply relative flex flex-none items-center justify-center rounded-full transition-all duration-300 ease-in-out;
+
+    width: 1.5625rem;   /* 25px */
+    height: 1.5625rem;  /* 25px */
+
+    border: 1px solid rgb(255 255 255 / 18%);
+
+    /* Glass fill */
+    background: rgb(255 255 255 / 8%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    /* White inner shadow: top-left + bottom-right */
+    box-shadow:
+            -3px -3px 6px rgba(255, 255, 255, .08),
+            3px 3px 6px rgba(0, 0, 0, .45);
+}
+
+.control:focus-visible .indicator {
+    box-shadow:
+            -3px -3px 6px rgba(255, 255, 255, .08),
+            3px 3px 6px rgba(0, 0, 0, .45);
+}
+
+/*==================================================
+  Label
+==================================================*/
+
+.label {
+    @apply whitespace-nowrap text-sm text-zinc-400 transition-all duration-300 ease-in-out;
+}
+
+/*==================================================
+  Connector
+==================================================*/
+
+.connector {
+    @apply flex-1 h-[2px] mx-3 bg-zinc-700 transition-all duration-300 ease-in-out;
+}
+
+.item:last-child .connector {
+    @apply hidden;
+}
+
+/*==================================================
+  Complete — glass circle filled blue inside
+==================================================*/
+
+.complete .indicator {
+    border-color: rgb(59 130 246 / 55%);
+    background: rgb(59 130 246 / 85%);
+}
+
+.complete .label {
+    @apply text-zinc-200;
+}
+
+.complete .connector {
+    @apply bg-blue-500;
+}
+
+/*==================================================
+  Current — small gray dot centered inside, same inner shadow
+==================================================*/
+
+/* Not completed yet → gray fill */
+.current .indicator {
+    background: rgb(63 63 70 / 85%);
+}
+
+/* Already completed → blue fill */
+.current.completed .indicator {
+    background: rgb(59 130 246 / 85%);
+}
+
+.current .indicator::before {
+    content: "";
+
+    @apply block rounded-full;
+
+    width: 0.9375rem;   /* 15px */
+    height: 0.9375rem;  /* 15px */
+
+    background: rgb(161 161 170 / 90%);
+
+    /* White inner shadow: top-left + bottom-right */
+    box-shadow:
+        inset 2px 2px 3px rgb(255 255 255 / 45%),
+        inset -2px -2px 3px rgb(255 255 255 / 28%);
+}
+
+.current .label {
+    @apply text-white font-semibold;
+}
+
+/*==================================================
+  Pending
+==================================================*/
+
+.pending .label {
+    @apply text-zinc-500;
+}

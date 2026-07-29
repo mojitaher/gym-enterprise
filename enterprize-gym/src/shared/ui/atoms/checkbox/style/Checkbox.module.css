@@ -1,0 +1,84 @@
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    padding: 0;
+    margin: 0;
+
+    border: 2px solid #3f3f46;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+/* ========================= */
+/* Shapes                    */
+/* ========================= */
+
+.square {
+    border-radius: 0.375rem;
+}
+
+.circle {
+    border-radius: 9999px;
+}
+
+/* ========================= */
+/* Interaction states        */
+/* ========================= */
+
+.checkbox:hover {
+    border-color: #6366f1;
+}
+
+.checkbox:focus-visible {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, .2);
+}
+
+.checkbox[data-checked="true"] {
+    border-color: #8b5cf6;
+    background: #8b5cf6;
+}
+
+.checkbox:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* ========================= */
+/* Checkmark                 */
+/* ========================= */
+
+.icon {
+    width: 0.9rem;
+    height: 0.9rem;
+
+    opacity: 0;
+
+    transform: scale(.6);
+
+    transition:
+        opacity .15s ease,
+        transform .15s ease;
+
+    pointer-events: none;
+}
+
+.checkbox[data-checked="true"] .icon {
+    opacity: 1;
+    transform: scale(1);
+}

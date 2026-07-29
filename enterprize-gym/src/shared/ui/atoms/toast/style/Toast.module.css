@@ -1,0 +1,116 @@
+.container {
+    width: 340px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
+
+    overflow: hidden;
+}
+
+.container_success {
+    border-left: 5px solid #22c55e;
+}
+
+.container_warning {
+    border-left: 5px solid #f59e0b;
+}
+
+.container_error {
+    border-left: 5px solid #ef4444;
+}
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+}
+
+.content {
+    flex: 1;
+}
+
+.title {
+    margin: 0;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.message {
+    margin-top: 6px;
+
+    font-size: 14px;
+
+    color: #666;
+}
+
+/* ---------------------- */
+
+.progressContainer {
+    width: 100%;
+
+    height: 4px;
+
+    background: #e5e7eb;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.progress {
+    width: 100%;
+    height: 100%;
+
+    transform-origin: left;
+
+    animation: toast_progress_animation 5s linear forwards;
+}
+
+@keyframes toast_progress_animation {
+    from {
+        transform: scaleX(1);
+    }
+
+    to {
+        transform: scaleX(0);
+    }
+}
+.progress_success {
+    background: #22c55e;
+}
+
+.progress_warning {
+    background: #f59e0b;
+}
+
+.progress_error {
+    background: #ef4444;
+}
+
+/* ---------------------- */
+
+.closeButton {
+    width: 28px;
+
+    height: 28px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
