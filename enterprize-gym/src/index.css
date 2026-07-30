@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap');
 @import "tailwindcss";
 
+/* Tailwind design tokens — these generate utilities like `bg-input`, `text-primary`, etc. */
+@theme {
+    --color-input: #B1D1F0;   /* Input background */
+    --color-primary: #5CABFF; /* Primary accent — used for input placeholders */
+}
+
 :root {
     /* Typography */
     --font-primary: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     /* Colors */
     --color-bg: #f8fafc;
-    --color-primary: #2563eb;
-    --color-primary-dark: #1d4ed8;
     --color-secondary: #14b8a6;
     --color-text: #0f172a;
     --color-muted: #475569;
@@ -28,8 +32,6 @@ body {
     font-family: var(--font-primary);
     color: var(--color-text);
     line-height: 1.5;
-
-    /* 🌌 Gradient background جایگزین bg-color */
     background: linear-gradient(135deg,
             #0a0a0a 0%,
             #120018 50%,

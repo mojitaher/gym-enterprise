@@ -52,6 +52,7 @@ export const Search = ({
       }}
     >
       <Input
+      title="search"
         ref={ref}
         type="text"
         mode={mode}

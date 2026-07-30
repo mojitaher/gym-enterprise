@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Classes from "./style/Textarea.module.css";
 import type TEXTAREA_PROPS_INTERFACE from "./interfaces/textareaInterface";
+import { Text } from "../text/text";
 
 /**
  * Textarea Component
@@ -34,6 +35,7 @@ import type TEXTAREA_PROPS_INTERFACE from "./interfaces/textareaInterface";
  */
 
 export const Textarea = ({
+  title,
   mode,
   size,
   placeholder,
@@ -43,6 +45,8 @@ export const Textarea = ({
   ref,
 }: TEXTAREA_PROPS_INTERFACE) => {
   return (
+    <>
+    <Text text={title}/>
     <textarea
       ref={ref}
       className={clsx(
@@ -55,5 +59,6 @@ export const Textarea = ({
       disabled={disabled}
       defaultValue={defaultValue}
     />
+      </>
   );
 };

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Classes from "./style/Input.module.css";
 import type INPUT_PROPS_INTERFACE from "./interfaces/inputInterface";
+import { Text } from "../text/text";
 
 /**
  * Input Component
@@ -34,6 +35,7 @@ import type INPUT_PROPS_INTERFACE from "./interfaces/inputInterface";
  */
 
 export const Input = ({
+  title,
   type,
   mode,
   size,
@@ -43,17 +45,22 @@ export const Input = ({
   ref,
 }: INPUT_PROPS_INTERFACE) => {
   return (
+    <>
+    <Text text={title} className={Classes.title}/>
+
     <input
-      ref={ref}
-      className={clsx(
-        Classes.input,
-        Classes[mode],
-        Classes[size]
-      )}
-      type={type}
+    aria-label={type}
+    ref={ref}
+    className={clsx(
+      Classes.input,
+      Classes[mode],
+      Classes[size]
+    )}
+    type={type}
       placeholder={placeholder}
       disabled={disabled}
       defaultValue={defaultValue}
     />
+    </>
   );
 };

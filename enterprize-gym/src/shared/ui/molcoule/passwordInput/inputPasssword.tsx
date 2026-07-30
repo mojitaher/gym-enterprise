@@ -25,6 +25,7 @@ export const InputPassword = ({
   return (
     <div className={Classes.container}>
       <Input
+      title="password"
         ref={inputRef}
         type="password"
         mode={mode}

@@ -15,6 +15,7 @@ import { PORTAL_TYPE_ENUM } from "./shared/ui/organisms/portalManager/enums/port
 import { TOAST_MODE_ENUM } from "./shared/ui/atoms/toast/enums/toastModeEnum";
 import { Checkbox } from "./shared/ui/atoms/checkbox/checkbox";
 import { Stepper } from "./shared/ui/molcoule/stepper/stepper";
+import { Input } from "./shared/ui/atoms/input/input";
 
 function App() {
   const searchRef = useRef<HTMLInputElement>(null);
@@ -157,6 +158,10 @@ const STEP_CONTENT = [
   size="large"
   placeholder="Password"
 />
+<Input title="extraSmall" type="text" mode="success" size="extraSmall" placeholder="extraSmall" />
+<Input title="small" type="text" mode="warn" size="small" placeholder="small" />
+<Input title="medium" type="text" mode="error" size="medium" placeholder="medium" />
+<Input title="large" type="text" mode="success" size="large" placeholder="large" />
 
 <Spinner size="small"/><Spinner size="medium"/>
 <Spinner size="large"/>
@@ -169,6 +174,7 @@ const STEP_CONTENT = [
       onSearch={handleSearch}
     />
     <Textarea
+    title="text area"
       ref={noteRef}
       mode="success"
       size="large"
