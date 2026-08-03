@@ -46,7 +46,9 @@ export const Input = ({
 }: INPUT_PROPS_INTERFACE) => {
   return (
     <>
-    <Text text={title} className={Classes.title}/>
+    <p className={clsx(Classes.title)}>
+      {title}
+      </p>
 
     <input
     aria-label={type}

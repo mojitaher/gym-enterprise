@@ -5,6 +5,19 @@
 @theme {
     --color-input: #B1D1F0;   /* Input background */
     --color-primary: #5CABFF; /* Primary accent — used for input placeholders */
+
+    /* Toast colors — X1 = text color, X2 = background color */
+    --color-Success1: #34C759;
+    --color-Success2: #B7FFC9;
+
+    --color-Warn1: #FFCC00;
+    --color-Warn2: #FFF0B3;
+
+    --color-Error1: #FF383C;
+    --color-Error2: #FFC5C7;
+
+    --color-Info1: #0088FF;
+    --color-Info2: #C5E4FF;
 }
 
 :root {

@@ -1,6 +1,6 @@
-import ToastClose from "./components/closeTab";
-import ToastProgress from "./components/toastProgress";
-import { HandlerCloseToast } from "./handler/closeToast";
+import { TOAST_MESSAGE_ICON } from "./constants/toastMessageIcon";
+import { TOAST_MESSAGE_ENUM } from "./enums/toastMessageEnum";
+import { HandlerProgressAnimationEnd } from "./handler/closeToast";
 import type { TOAST_PROPS_INTERFACE } from "./interfaces/toastProps.interface";
 import Classes from "./style/Toast.module.css";
 
@@ -8,54 +8,39 @@ import Classes from "./style/Toast.module.css";
 
 
 export default function Toast({
-    title,
     message,
     mode,
-    pauseOnHover ,
-    closeOnClick=true ,
+    pauseOnHover=true,
+    // closeOnClick = true,
     onSelfUnmount,
 }: TOAST_PROPS_INTERFACE) {
-    console.log(Classes);
-    console.log({
-    title,
-    message,
-    mode,
-});
+
     return (
         <div
             className={`
                 ${Classes.container}
                 ${Classes[`container_${mode}`]}
+                ${pauseOnHover && Classes.pauseOnHover}
             `}
-            onClick={(event) =>
-                HandlerCloseToast(
+            
+            onAnimationEnd={(event) =>
+                HandlerProgressAnimationEnd(
                     event,
-                    closeOnClick,
-                    onSelfUnmount
+                    onSelfUnmount,
                 )
             }
         >
-            <div className={Classes.header}>
-                <div className={Classes.content}>
-                    <h3 className={Classes.title}>{title}</h3>
+            <div className={Classes.content}>
+                <img
+    src={TOAST_MESSAGE_ICON[message]}
+    alt={message}
+    className={Classes.icon}
+/>
 
-                    {message && (
-                        <p className={Classes.message}>
-                            {message}
-                        </p>
-                    )}
-                </div>
-
-                <ToastClose
-                    onClick={onSelfUnmount}
-                />
+                <p className={Classes.message}>
+                    {message}
+                </p>
             </div>
-
-            <ToastProgress
-                mode={mode}
-                pauseOnHover={pauseOnHover}
-                onAnimationEnd={onSelfUnmount}
-            />
         </div>
     );
 }

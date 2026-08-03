@@ -1,22 +1,13 @@
-/* ========================= */
-/* Title                     */
-/* ========================= */
 
 .title {
-    @apply text-amber-500;
-    margin-bottom: 0.5rem;
-    /* 8px */
+    @apply text-amber-500  mb-2 p-0;
 }
 
-/* ========================= */
-/* Input                     */
-/* ========================= */
 
 .input {
-    @apply w-full rounded-[0.625rem] border border-[#B2B6B9] bg-input text-[0.95rem] text-slate-900 outline-none;
+    @apply w-full rounded-[0.625rem] border-2 bg-input text-[0.95rem] text-slate-900 outline-none;
     font-family: inherit;
 
-    ```
     /* Placeholder spacing */
     padding-block: 0.75rem;
     /* 12px (top & bottom) */
@@ -28,11 +19,10 @@
         border-color .2s ease,
         box-shadow .2s ease,
         background .2s ease;
-    ```
 }
 
 .input::placeholder {
-    @apply text-primary;
+    @apply text-primary text-[10px];
 }
 
 .input:hover {
@@ -63,10 +53,6 @@
 .large {
     @apply w-[400px] h-[40px];
 }
-
-/* ========================= */
-/* Modes                     */
-/* ========================= */
 
 .success {
     border-color: #22c55e;

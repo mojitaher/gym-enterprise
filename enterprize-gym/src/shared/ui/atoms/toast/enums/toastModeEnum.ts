@@ -1,5 +1,6 @@
 export enum TOAST_MODE_ENUM {
-success= "success",
+    success = "success",
     warning = "warning",
     error = "error",
+    info = "info",
 }

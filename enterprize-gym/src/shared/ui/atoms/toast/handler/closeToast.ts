@@ -1,23 +1,10 @@
-import type { MouseEvent } from "react";
+import type { AnimationEvent } from "react";
 
-export function HandlerCloseToast(
-
-    event: MouseEvent,
-
-    closeOnClick: boolean,
-
+export function HandlerProgressAnimationEnd(
+    event: AnimationEvent<HTMLDivElement>,
     onSelfUnmount?: () => void,
-
 ) {
-
     event.stopPropagation();
 
-    if (!closeOnClick) {
-
-        return;
-
-    }
-
     onSelfUnmount?.();
-
 }

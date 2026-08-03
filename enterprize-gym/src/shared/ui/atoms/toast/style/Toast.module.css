@@ -1,86 +1,84 @@
 .container {
-    width: 340px;
+    position: relative;
+
+    width: fit-content;
+    max-width: 340px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 12px;
+    padding: 8px 16px;
 
-    padding: 16px;
+    border-radius: 52px;
 
-    border-radius: 12px;
-
-    background: #ffffff;
+    overflow: hidden;
 
     box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
 
-    overflow: hidden;
+    background: #ffffff;
+
+    animation: toast_life 3s linear forwards;
 }
 
-.container_success {
-    border-left: 5px solid #22c55e;
+/*======================================
+Pause
+======================================*/
+
+.pauseOnHover:hover,
+.pauseOnHover:hover::before {
+    animation-play-state: paused;
 }
 
-.container_warning {
-    border-left: 5px solid #f59e0b;
-}
+/*======================================
+Background Progress
+======================================*/
 
-.container_error {
-    border-left: 5px solid #ef4444;
-}
+.container::before {
+    content: "";
 
-.header {
-    display: flex;
+    position: absolute;
 
-    justify-content: space-between;
+    inset: 0;
 
-    align-items: flex-start;
-}
-
-.content {
-    flex: 1;
-}
-
-.title {
-    margin: 0;
-
-    font-size: 16px;
-
-    font-weight: 600;
-}
-
-.message {
-    margin-top: 6px;
-
-    font-size: 14px;
-
-    color: #666;
-}
-
-/* ---------------------- */
-
-.progressContainer {
-    width: 100%;
-
-    height: 4px;
-
-    background: #e5e7eb;
-
-    border-radius: 999px;
-
-    overflow: hidden;
-}
-
-.progress {
-    width: 100%;
-    height: 100%;
+    background: var(--toast-bg);
 
     transform-origin: left;
 
-    animation: toast_progress_animation 5s linear forwards;
+    animation: toast_progress 3s linear forwards;
+
+    z-index: 0;
 }
 
-@keyframes toast_progress_animation {
+/*======================================
+Variants
+======================================*/
+
+.container_success {
+    --toast-bg: #B7FFC9;
+    color: #34C759;
+}
+
+.container_warning {
+    --toast-bg: #FFF0B3;
+    color: #FFCC00;
+}
+
+.container_error {
+    --toast-bg: #FFC5C7;
+    color: #FF383C;
+}
+
+.container_info {
+    --toast-bg: #C5E4FF;
+    color: #0088FF;
+}
+
+/*======================================
+Animations
+======================================*/
+
+@keyframes toast_progress {
+
     from {
         transform: scaleX(1);
     }
@@ -89,28 +87,69 @@
         transform: scaleX(0);
     }
 }
-.progress_success {
-    background: #22c55e;
+
+@keyframes toast_life {
+
+    /* خارج از صفحه */
+    0% {
+        transform: translateX(calc(-100% - 24px)) scale(.9);
+        opacity: 0;
+    }
+
+    /* ورود */
+    8% {
+        transform: translateX(10%) scale(1.02);
+        opacity: 1;
+    }
+
+    /* Bounce */
+    12% {
+        transform: translateX(-3%) scale(1);
+    }
+
+    /* حالت نهایی */
+    16% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* ماندن */
+    84% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* خروج */
+    100% {
+        transform: translateX(calc(-100% - 24px));
+        opacity: 0;
+    }
 }
 
-.progress_warning {
-    background: #f59e0b;
+/*======================================
+Content
+======================================*/
+
+.content {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0;
+
+    flex: 1;
 }
 
-.progress_error {
-    background: #ef4444;
+.icon {
+    width: 16px;
+    height: 20px;
 }
 
-/* ---------------------- */
-
-.closeButton {
-    width: 28px;
-
-    height: 28px;
-
-    border: none;
-
-    background: transparent;
-
-    cursor: pointer;
+.message {
+    margin-left: 0.5rem;
+    font-size: 14px;
 }

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath } from 'node:url'
+import svgr from "vite-plugin-svgr";
 
 // Absolute path to the single Tailwind entry (the file that has `@import "tailwindcss"`).
 const tailwindEntry = fileURLToPath(new URL('./src/index.css', import.meta.url)).replace(/\\/g, '/')
@@ -26,5 +27,5 @@ function tailwindReferenceInModules() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [tailwindReferenceInModules(), react(), tailwindcss()],
+  plugins: [tailwindReferenceInModules(), react(), tailwindcss(),svgr()],
 })

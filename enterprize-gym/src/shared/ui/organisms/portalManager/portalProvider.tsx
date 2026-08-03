@@ -10,6 +10,7 @@ import Modal from "../../atoms/modal/modal";
 import type { PORTAL_PROPS_INTERFACE } from "./interfaces/portalManagerProps.interface";
 import type { PORTAL_MANAGER_ITEMS_PROPS_INTERFACE } from "./interfaces/portalManagerProvider.interface";
 import PortalContext from "./context/portalManager.context";
+import Classes from './style/portalStyle.module.css'
 
 
 
@@ -24,6 +25,7 @@ export default function PortalProvider({
     const container = document.createElement("div");
 
     container.className = "portal-container";
+    container.className = Classes.portal_root_container;
 
     document.body.appendChild(container);
 
@@ -49,18 +51,20 @@ export default function PortalProvider({
         containerRef.current.appendChild(wrapper);
 
         const root = createRoot(wrapper);
-console.log(portal);
-console.log(portal.props);
+
         switch (portal.type) {
             case PORTAL_TYPE_ENUM.TOAST:
                 root.render(
-                    <Toast
-                        {...portal.props}
-                        onSelfUnmount={() => {
-                            root.unmount();
-                            wrapper.remove();
-                        }}
-                    />
+                    <div className={Classes.toastContainer}>
+
+                        <Toast
+                            {...portal.props}
+                            onSelfUnmount={() => {
+                                root.unmount();
+                                wrapper.remove();
+                            }}
+                        />
+                    </div>
                 );
 
                 break;

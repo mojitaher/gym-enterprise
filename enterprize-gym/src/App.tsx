@@ -16,6 +16,7 @@ import { TOAST_MODE_ENUM } from "./shared/ui/atoms/toast/enums/toastModeEnum";
 import { Checkbox } from "./shared/ui/atoms/checkbox/checkbox";
 import { Stepper } from "./shared/ui/molcoule/stepper/stepper";
 import { Input } from "./shared/ui/atoms/input/input";
+import { TOAST_MESSAGE_ENUM } from "./shared/ui/atoms/toast/enums/toastMessageEnum";
 
 function App() {
   const searchRef = useRef<HTMLInputElement>(null);
@@ -91,32 +92,15 @@ const STEP_CONTENT = [
     <div>
    <h1>button</h1>
    {/* <Button mode='error' variant='primery' size='large' >{Text}</Button> */}
-   <Button mode='success' variant='secondary' size='medium' >
+   <Button  variant='secondary' size='medium' >
    <h1>salam</h1></Button>
 <Button
-  mode="warn"
   variant="primery"
   size="small"
 >
   <Text className='' text="یسیسشیdsadsadasdasd"></Text>
 </Button>
-{/* <Input
-    mode="warn"
-    size="small"
-    placeholder="username"
-  
-/>
-<Input
-    mode="success"
-    size="medium"
-    placeholder="Username"
-/>
-<Input
-    mode="error"
-    size="large"
-    placeholder="Username"
-   */}
-{/* /> */}
+
 <Avatar
  src="https://i.pravatar.cc/300"
     size="small"
@@ -155,6 +139,21 @@ const STEP_CONTENT = [
 
 <InputPassword
   mode="success"
+  size="extraSmall"
+  placeholder="Password"
+/>
+<InputPassword
+  mode="success"
+  size="small"
+  placeholder="Password"
+/>
+<InputPassword
+  mode="success"
+  size="medium"
+  placeholder="Password"
+/>
+<InputPassword
+  mode="success"
   size="large"
   placeholder="Password"
 />
@@ -170,6 +169,27 @@ const STEP_CONTENT = [
       ref={searchRef}
       mode="warn"
       size="large"
+      placeholder="Search members..."
+      onSearch={handleSearch}
+    />
+      <Search
+        ref={searchRef}
+        mode="warn"
+        size="medium"
+        placeholder="Search members..."
+        onSearch={handleSearch}
+      />
+    <Search
+      ref={searchRef}
+      mode="warn"
+      size="small"
+      placeholder="Search members..."
+      onSearch={handleSearch}
+    />
+    <Search
+      ref={searchRef}
+      mode="warn"
+      size="extraSmall"
       placeholder="Search members..."
       onSearch={handleSearch}
     />
@@ -204,15 +224,13 @@ const STEP_CONTENT = [
     multiple
     />
     <Button
-    mode="success"
     variant="primery"
     size="medium"
     onClick={() => {
         addPortalComponent({
             type: PORTAL_TYPE_ENUM.TOAST,
             props: {
-                title: "Success",
-                message: "Portal works 🎉",
+                message: TOAST_MESSAGE_ENUM.DeleteAccount,
                 mode: TOAST_MODE_ENUM.success,
             },
         });
@@ -221,15 +239,13 @@ const STEP_CONTENT = [
     Test Portal
 </Button>
 <Button
-    mode="warn"
     variant="secondary"
     size="medium"
     onClick={() => {
         addPortalComponent({
             type: PORTAL_TYPE_ENUM.TOAST,
             props: {
-                title: "warning",
-                message: "Portal works 🎉",
+                message: TOAST_MESSAGE_ENUM.SuspendAccount,
                 mode: TOAST_MODE_ENUM.warning,
             },
         });
@@ -238,15 +254,13 @@ const STEP_CONTENT = [
     Test Portal
 </Button>
 <Button
-    mode="error"
     variant="secondary"
     size="medium"
     onClick={() => {
         addPortalComponent({
             type: PORTAL_TYPE_ENUM.TOAST,
             props: {
-                title: "error",
-                message: "Portal works 🎉",
+                message: TOAST_MESSAGE_ENUM.IncompleteInformation,
                 mode: TOAST_MODE_ENUM.error,
             },
         });

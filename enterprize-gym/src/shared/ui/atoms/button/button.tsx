@@ -15,7 +15,6 @@
  * Example Usage:
  * 
  * <Button
- *   mode="success"
  *   variant="primary"
  *   size="medium"
  *   onClick={() => console.log("clicked")}
@@ -34,7 +33,6 @@ import type BUTTON_PROPS_INTERFACE from "./interface/buttoninterface";
 
 
 export const Button = ({
-  mode,
   variant,
   size,
   disabled,
@@ -45,7 +43,6 @@ export const Button = ({
     <button
       className={clsx(
         Classes.button,
-        Classes[mode],
         Classes[variant],
         Classes[size]
       )}
