@@ -5,7 +5,6 @@
  * submitting forms, triggering actions, or navigation.
  * 
  * Supports:
- * - mode (visual state like success, error, warn)
  * - variant (style type like primary, secondary)
  * - size (small, medium, large)
  * - disabled state
@@ -48,9 +47,8 @@ export const Button = ({
       )}
       disabled={disabled}
       onClick={onClick}
-      
     >
-        {children}
+      {children}
     </button>
   );
 };

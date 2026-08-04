@@ -91,14 +91,14 @@ const STEP_CONTENT = [
   return (
     <div>
    <h1>button</h1>
-   {/* <Button mode='error' variant='primery' size='large' >{Text}</Button> */}
-   <Button  variant='secondary' size='medium' >
+   <Button  variant='secondary' size='large' >
    <h1>salam</h1></Button>
 <Button
-  variant="primery"
+  variant="primary"
   size="small"
->
-  <Text className='' text="یسیسشیdsadsadasdasd"></Text>
+><h1>salam</h1>
+  {/* <Text className='' text="یسیسشیdsadsadasdasd"></Text> */}
+
 </Button>
 
 <Avatar

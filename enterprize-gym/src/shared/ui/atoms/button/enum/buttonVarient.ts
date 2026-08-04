@@ -1,4 +1,4 @@
 export enum BUTTON_VARIANT_ENUM{
-    primery='primery',
+    primary='primary',
     secondary='secondary'
 }

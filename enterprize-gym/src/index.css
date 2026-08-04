@@ -18,6 +18,10 @@
 
     --color-Info1: #0088FF;
     --color-Info2: #C5E4FF;
+
+    /* Button colors — base color per variant (state colors live in the button styles) */
+    --color-button-primary: #607C98;
+    --color-button-secondary: #94B3D3;
 }
 
 :root {

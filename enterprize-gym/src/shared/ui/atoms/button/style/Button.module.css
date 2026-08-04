@@ -1,94 +1,66 @@
 /* Base */
 
 .button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: all 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
+    @apply inline-flex items-center justify-center select-none cursor-pointer outline-none border border-transparent rounded-[10px] font-semibold transition-all duration-[250ms] ease-in-out w-[7.625rem];
 }
 
 /* ========================= */
-/* Mode */
+/* Variant — primary */
 /* ========================= */
 
 .primary {
-    background-color: #2563eb;
-    color: #ffffff;
+    @apply bg-button-primary border-[#B2B6B9] text-[#F4F7F7];
 }
+
+.primary:hover {
+    @apply bg-[#7997B5] border-[#B2B6B9] text-[#F4F7F7];
+}
+
+.primary:active {
+    @apply bg-[#94B3D3] border-[#1F7FE6] text-[#4E5E6D] ;
+}
+
+/* ========================= */
+/* Variant — secondary */
+/* ========================= */
 
 .secondary {
-    background-color: #6b7280;
-    color: #ffffff;
+    @apply bg-button-secondary border-[#1F7FE6] text-[#4E5E6D];
 }
 
-.success {
-    background-color: #16a34a;
-    color: #ffffff;
+.secondary:hover {
+    @apply bg-[#7997B5] border-[#1F7FE6] text-[#4E5E6D];
 }
 
-.error {
-    background-color: #dc2626;
-    color: #ffffff;
+.secondary:active {
+    @apply bg-[#607C98] border-[#B2B6B9] text-[#F4F7F7];
 }
-.warn{
-    background-color: #ffe100;
-        color: #ffffff;
-}
-
-/* ========================= */
-/* Variant */
-/* ========================= */
-
-/* .solid {
-    border: none;
-}
-
-.outline {
-    background: transparent;
-    border: 2px solid currentColor;
-}
- */
 
 /* ========================= */
 /* Size */
 /* ========================= */
 
 .small {
-    width: 100px;
-    padding: 8px 14px;
-    font-size: 14px;
+    @apply h-10 ;
 }
 
-.medium {
-    padding: 10px 20px;
-    font-size: 16px;
-}
 
 .large {
-    padding: 14px 28px;
-    font-size: 18px;
+    @apply h-11 ;
 }
 
 /* ========================= */
 /* States */
 /* ========================= */
 
-.button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    opacity: 0.9;
+/* .button:hover:not(:disabled) {
+    @apply -translate-y-0.5;
 }
 
 .button:active:not(:disabled) {
-    transform: scale(0.97);
+    @apply scale-[0.97];
 }
 
 .button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-}
+    @apply cursor-not-allowed opacity-50;
+} */
