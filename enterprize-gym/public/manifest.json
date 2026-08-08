@@ -1,0 +1,17 @@
+{
+  "name": "enterprize-gym",
+  "short_name": "Gym",
+  "description": "Enterprise Gym Management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#9CA3AF",
+  "theme_color": "#9CA3AF",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

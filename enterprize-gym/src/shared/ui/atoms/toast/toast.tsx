@@ -1,5 +1,4 @@
-import { TOAST_MESSAGE_ICON } from "./constants/toastMessageIcon";
-import { TOAST_MESSAGE_ENUM } from "./enums/toastMessageEnum";
+import {  TOAST_MESSAGE_ICON_AND_MODE } from "./constants/toastMessageIcon";
 import { HandlerProgressAnimationEnd } from "./handler/closeToast";
 import type { TOAST_PROPS_INTERFACE } from "./interfaces/toastProps.interface";
 import Classes from "./style/Toast.module.css";
@@ -9,7 +8,6 @@ import Classes from "./style/Toast.module.css";
 
 export default function Toast({
     message,
-    mode,
     pauseOnHover=true,
     // closeOnClick = true,
     onSelfUnmount,
@@ -19,7 +17,7 @@ export default function Toast({
         <div
             className={`
                 ${Classes.container}
-                ${Classes[`container_${mode}`]}
+                ${TOAST_MESSAGE_ICON_AND_MODE[message].className}
                 ${pauseOnHover && Classes.pauseOnHover}
             `}
             
@@ -32,7 +30,7 @@ export default function Toast({
         >
             <div className={Classes.content}>
                 <img
-    src={TOAST_MESSAGE_ICON[message]}
+    src={TOAST_MESSAGE_ICON_AND_MODE[message].icon}
     alt={message}
     className={Classes.icon}
 />

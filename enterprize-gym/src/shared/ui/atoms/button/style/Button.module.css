@@ -1,7 +1,21 @@
 /* Base */
 
 .button {
-    @apply inline-flex items-center justify-center select-none cursor-pointer outline-none border border-transparent rounded-[10px] font-semibold transition-all duration-[250ms] ease-in-out w-[7.625rem];
+    @apply  inline-flex items-center justify-center select-none cursor-pointer outline-none border border-transparent rounded-[10px]  transition-all duration-[250ms] ease-in-out min-w-[7.625rem] px-3 gap-[8px];
+}
+
+
+.firstIcon svg,
+.lastIcon svg {
+    @apply block w-5 h-5 shrink-0  ;
+}
+
+/* força fill روی pathهای SVG برای رنگ‌گیری مطمئن */
+.firstIcon svg path,
+.lastIcon svg path,
+.firstIcon svg g,
+.lastIcon svg g {
+    fill: inherit;
 }
 
 /* ========================= */
@@ -20,6 +34,26 @@
     @apply bg-[#94B3D3] border-[#1F7FE6] text-[#4E5E6D] ;
 }
 
+/* رنگ آیکون — مستقیم روی SVG و pathها */
+.primary .firstIcon svg,
+.primary .lastIcon svg,
+.primary .firstIcon svg path,
+.primary .lastIcon svg path {
+    @apply text-[#80BDFF] fill-current;
+}
+.primary:hover .firstIcon svg,
+.primary:hover .lastIcon svg,
+.primary:hover .firstIcon svg path,
+.primary:hover .lastIcon svg path {
+    @apply text-[#80BDFF] fill-current;
+}
+.primary:active .firstIcon svg,
+.primary:active .lastIcon svg,
+.primary:active .firstIcon svg path,
+.primary:active .lastIcon svg path {
+    @apply text-[#1F7FE6] fill-current;
+}
+
 /* ========================= */
 /* Variant — secondary */
 /* ========================= */
@@ -34,6 +68,26 @@
 
 .secondary:active {
     @apply bg-[#607C98] border-[#B2B6B9] text-[#F4F7F7];
+}
+
+/* رنگ آیکون */
+.secondary .firstIcon svg,
+.secondary .lastIcon svg,
+.secondary .firstIcon svg path,
+.secondary .lastIcon svg path {
+    @apply text-[#1F7FE6] fill-current;
+}
+.secondary:hover .firstIcon svg,
+.secondary:hover .lastIcon svg,
+.secondary:hover .firstIcon svg path,
+.secondary:hover .lastIcon svg path {
+    @apply text-[#1F7FE6] fill-current;
+}
+.secondary:active .firstIcon svg,
+.secondary:active .lastIcon svg,
+.secondary:active .firstIcon svg path,
+.secondary:active .lastIcon svg path {
+    @apply text-[#80BDFF] fill-current;
 }
 
 /* ========================= */

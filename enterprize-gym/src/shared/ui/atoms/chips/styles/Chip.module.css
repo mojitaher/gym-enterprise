@@ -1,0 +1,102 @@
+.chip {
+    @apply inline-flex items-center justify-center gap-[4px] rounded-full font-semibold whitespace-nowrap select-none cursor-pointer transition-all duration-200;
+
+    /* ===== تنظیمات پایه ===== */
+    padding: 4px 10px;
+    color: #fff;
+
+    /* ===== افکت شیشه‌ای (Glassmorphism) ===== */
+    /* پس‌زمینه شیشه‌ای با کدورت 80% */
+    background: rgba(9, 96, 189, 0.08);
+
+    /* گرادیان نور با زاویه -45 درجه (Light) */
+    background-image:
+        linear-gradient(-45deg,
+            rgba(255, 255, 255, 0.30) 0%,
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(255, 255, 255, 0.15) 70%,
+            rgba(255, 255, 255, 0.35) 100%);
+    background-blend-mode: overlay;
+
+    /* مات‌سازی (Frost + Refraction) */
+    backdrop-filter: blur(12px) brightness(1.1);
+    -webkit-backdrop-filter: blur(12px) brightness(1.1);
+
+    /* حاشیه شیشه‌ای با شکست نور */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* ===== Depth (عمق) با سایه ===== */
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.25),
+        /* سایه اصلی */
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        /* Frost (یخ‌زدگی) */
+        inset 0 0 40px rgba(200, 230, 255, 0.06),
+        /* Dispersion (پراکندگی رنگ) - 35px */
+        35px 0 30px -8px rgba(255, 100, 150, 0.12),
+        -35px 0 30px -8px rgba(100, 150, 255, 0.12);
+
+    /* ===== Splay (گسترش) ===== */
+    transform: perspective(600px) rotateX(1.5deg) rotateY(-1.5deg);
+
+    /* متن */
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+
+    /* ===== هاور برای تعامل بهتر ===== */
+    &:hover {
+        transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.05);
+        box-shadow:
+            0 6px 24px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 0 50px rgba(200, 230, 255, 0.1),
+            35px 0 40px -8px rgba(255, 100, 150, 0.2),
+            -35px 0 40px -8px rgba(100, 150, 255, 0.2);
+        background: rgba(9, 96, 189, 0.12);
+        background-image:
+            linear-gradient(-45deg,
+                rgba(255, 255, 255, 0.35) 0%,
+                rgba(255, 255, 255, 0.08) 40%,
+                rgba(255, 255, 255, 0.2) 70%,
+                rgba(255, 255, 255, 0.40) 100%);
+        background-blend-mode: overlay;
+    }
+
+    /* ===== اکتیو (کلیک) ===== */
+    &:active {
+        transform: scale(0.95);
+        transition-duration: 0.05s;
+    }
+}
+
+/* Sizes */
+.small {
+    @apply px-3 py-[0.2rem] text-[0.7rem];
+}
+
+.medium {
+    @apply px-4 py-[0.3rem] text-[0.8rem];
+}
+
+.large {
+    @apply px-5 py-[0.45rem] text-[0.9rem];
+}
+
+/* Hover state */
+.chip:hover {
+    @apply opacity-90;
+}
+
+/* Active/pressed state */
+.chip:active {
+    @apply scale-[0.98];
+}
+
+/* Icon wrapper — forces 20x20 icon size, inherits text color */
+.iconWrapper {
+    @apply flex items-center shrink-0;
+}
+.iconWrapper svg {
+    @apply w-5 h-5 text-current;
+}

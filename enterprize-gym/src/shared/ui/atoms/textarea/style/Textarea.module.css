@@ -24,7 +24,7 @@
     /* 9px (left in LTR / right in RTL) */
     padding-inline-end: 0.5625rem;
 
-    resize: vertical;
+    resize: none;
 
     transition:
         border-color .2s ease,

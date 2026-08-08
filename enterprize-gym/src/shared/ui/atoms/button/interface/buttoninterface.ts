@@ -8,5 +8,6 @@ export default interface BUTTON_PROPS_INTERFACE{
     disabled?: boolean;
   onClick?: (event:MouseEvent<HTMLButtonElement>) => void;
   children: ReactNode;
-
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
