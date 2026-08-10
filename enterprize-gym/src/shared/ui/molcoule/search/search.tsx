@@ -51,7 +51,8 @@ export const Search = ({
         }
       }}
     >
-      <Input
+      <Input 
+      // className="rounded-[52px]"
       title="search"
         ref={ref}
         type="text"

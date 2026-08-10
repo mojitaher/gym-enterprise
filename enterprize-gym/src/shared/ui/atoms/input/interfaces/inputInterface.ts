@@ -19,4 +19,5 @@ export default interface INPUT_PROPS_INTERFACE {
 
   /** Ref to the underlying input; read `.value` from it to get the input. */
   ref?: Ref<HTMLInputElement>;
+  className?:string;
 }

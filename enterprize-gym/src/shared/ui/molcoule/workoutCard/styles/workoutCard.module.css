@@ -1,0 +1,35 @@
+/* ================================================
+   Workout Card
+   Structure: image → title → meta (time|set) → description → actions
+   ================================================ */
+
+.workoutCard {
+    @apply w-92.5 rounded-2xl text-white border border-[#7997B5] bg-transparent px-4 py-4 flex flex-col gap-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
+}
+
+/* ============ عکس ============ */
+.image {
+    @apply w-84.5 h-75 object-cover rounded-xl;
+}
+
+/* ============ متن‌ها ============ */
+.body {
+    @apply flex flex-col gap-1;
+}
+
+.title {
+    @apply text-[20px] font-semibold mb-2 mt-4;
+}
+
+.meta {
+    @apply text-[16px] mb-2;
+}
+
+.description {
+    @apply  text-sm mb-12;
+}
+
+/* ============ باتن‌های نکست/پرویوس ============ */
+.actions {
+    @apply flex items-center justify-between gap-2;
+}

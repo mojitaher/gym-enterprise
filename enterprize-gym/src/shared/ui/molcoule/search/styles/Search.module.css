@@ -17,6 +17,12 @@
  */
 .container input {
     padding-inline-end: 2.5rem;
+    border-radius: 52px;
+    border:none;
+    background-color: #49627B;
+}
+.container input::placeholder{
+color: #B1D1F0;
 }
 
 .container button {

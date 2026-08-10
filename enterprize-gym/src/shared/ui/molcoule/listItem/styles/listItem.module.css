@@ -1,0 +1,32 @@
+/* ================================================
+   List Item
+   Structure: avatar → user (username + secondary) → icon
+   ================================================ */
+
+.listItem {
+    @apply w-92.5 h-15 flex items-center gap-2  rounded-[52px] border border-[#7997B5] bg-white px-4 py-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
+}
+
+.user {
+    @apply flex flex-col min-w-0 flex-1;
+}
+
+.username {
+    @apply text-slate-900 font-medium;
+}
+
+.secondaryInfo {
+    @apply text-slate-500 text-sm;
+}
+
+.accept {
+    @apply flex items-center gap-2 shrink-0;
+}
+
+.info {
+    @apply text-slate-500 text-sm;
+}
+
+.icon {
+    @apply w-5 h-5 shrink-0;
+}

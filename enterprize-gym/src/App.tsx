@@ -17,6 +17,19 @@ import { Stepper } from "./shared/ui/molcoule/stepper/stepper";
 import { Input } from "./shared/ui/atoms/input/input";
 import { TOAST_MESSAGE_ENUM } from "./shared/ui/atoms/toast/enums/toastMessageEnum";
 import { PlanCard } from "./entities/planCard/ui/planCard";
+import { SubscriptionCard } from "./entities/subscriptionCard/ui/subscriptionCard";
+import { PlanDetailCard } from "./entities/planDetailCard/ui/planDetailCard";
+import { ConversationCard } from "./entities/conversationCard/ui/conversationCard";
+import { ProfileCard } from "./entities/profileCard/ui/profileCard";
+import { BodyCard } from "./shared/ui/molcoule/bodyCard/bodyCard";
+import { WorkoutCard } from "./shared/ui/molcoule/workoutCard/workoutCard";
+import { ListItem } from "./shared/ui/molcoule/listItem/listItem";
+import { SquareCard } from "./shared/ui/molcoule/squareCard/squareCard";
+import profileAcceptIcon from "./assets/icons/profileAccrpter.svg";
+import { usePlanDelete } from "./entities/planCard/ui/hooks/usePlanDelete";
+import { useStepNavigation } from "./shared/ui/molcoule/stepper/hooks/useStepNavigation";
+import type { PLAN_INTERFACE } from "./entities/planCard/ui/interfaces/planInterface";
+import { ACTIVITY_PERIOD_ENUM } from "./entities/planCard/ui/enums/activityPeriodEnum";
 
 function App() {
   const searchRef = useRef<HTMLInputElement>(null);
@@ -81,9 +94,18 @@ const { addPortalComponent } = usePortal();
 const handleSearch=() => console.log("search:" , searchRef.current?.value ?? "")
 const [acceptedTerms, setAcceptedTerms] = useState(false);
 
-// Moves to a step and remembers the furthest step ever reached, so passed
-// steps stay complete. Used by the Stepper clicks and the Next/Previous buttons.
- const goToStep = (step: number) => setCurrentStep(step);
+// هر پلن یک id یکتا می‌گیرد — title کلید امنی نیست.
+// const planId=useId()
+// Plans rendered as PlanCards — onDelete removes the card from this list.
+const [plans, setPlans] = useState<PLAN_INTERFACE[]>(() => [
+  { id: 1, title: "Football", coach: "John Smith", session: 12, present: 10, absent: 2,month:ACTIVITY_PERIOD_ENUM.April },
+  { id: 2, title: "Basketball", coach: "Jane Doe", session: 8, present: 7, absent: 1 ,month:ACTIVITY_PERIOD_ENUM.February },
+]);
+
+const { onDelete } = usePlanDelete(setPlans);
+const { goToStep, nextStep, previousStep } = useStepNavigation(
+  currentStep, setCurrentStep, setCompletedSteps, steps
+);
 
 
 const STEP_CONTENT = [
@@ -323,21 +345,95 @@ startIcon={svgIcon} endIcon={svgIcon}
    IncompleteInformation toast
 </Button>
 <h1>Plan Card</h1>
-<PlanCard
-  title="Football"
-  coach="John Smith"
-  session={12}
-  present={10}
-  absent={2}
-  onDelete={() => console.log("delete")}
+{plans.map((plan) => (
+  <PlanCard
+    key={plan.id}
+    title={plan.title}
+    coach={plan.coach}
+    session={plan.session}
+    present={plan.present}
+    absent={plan.absent}
+    month={plan.month}
+    onDelete={() => onDelete(plan.id)}
+  />
+))}
+
+<h1>Subscription Card</h1>
+<SubscriptionCard
+  planNumber={1}
+  planName="Plan's name"
+  bestFor="Best for those who want to progress quickly"
+  coach="The Couch Number"
+  trainee="The Trainee Number"
+  duration="1-Year Subscription"
+  price={250000}
 />
-<PlanCard
-  title="Basketball"
-  coach="Jane Doe"
-  session={8}
-  present={7}
-  absent={1}
-  onDelete={() => console.log("delete")}
+
+<h1>Plan Detail Card</h1>
+<PlanDetailCard
+  id={1}
+  title="Football"
+  data={[
+    { exersize: "Squat", set: 3, rep: 12 },
+    { exersize: "Bench Press", set: 4, rep: 10 },
+    { exersize: "Running", time: 20 },
+  ]}
+  // onEdit={() => console.log("Edit clicked")}
+/>
+
+<h1>Conversation Card</h1>
+<ConversationCard
+  avatar="https://i.pravatar.cc/100"
+  username="John Doe"
+  text="Hello! When is our next gym session?"
+  image="https://picsum.photos/200/200"
+/>
+
+<h1>Profile Card</h1>
+<ProfileCard
+  avatar="https://i.pravatar.cc/200"
+  username="John Doe"
+  secondaryInfo="john@example.com"
+  info={[
+    "Age: 28",
+    "Height: 180 cm",
+    "Weight: 78 kg",
+  ]}
+  buttons={["Message", "Follow", "Block", "Report"]}
+  onRemove={() => console.log("remove profile")}
+/>
+
+<h1>Body Card</h1>
+<BodyCard
+  image="https://picsum.photos/200/200"
+  title="Morning Workout"
+  subtitle="Full body routine"
+  description="A complete workout plan covering strength and cardio, designed for beginners."
+>
+  <Button variant="primary" size="small">Start</Button>
+  <Button variant="secondary" size="small">View Details</Button>
+</BodyCard>
+
+<h1>Workout Card</h1>
+<WorkoutCard
+  image="https://picsum.photos/200/300"
+  title="Squat"
+  set="3 × 12"
+  description="Builds lower body strength with proper form and controlled tempo."
+  previous={<Button variant="primary" size="small">Previous</Button>}
+  next={<Button variant="primary" size="small">Next</Button>}
+/>
+
+<h1>Square Card</h1>
+<SquareCard text="text" />
+
+<h1>List Item</h1>
+<ListItem
+  avatar="https://i.pravatar.cc/100"
+  username="John Doe"
+  secondaryInfo="john@example.com"
+  info="Accepted"
+  icon={profileAcceptIcon}
 />
 
 <div>Checkbox</div>
@@ -354,23 +450,14 @@ startIcon={svgIcon} endIcon={svgIcon}
 
       <button
         type="button"
-        onClick={() => {
-          if (currentStep > 0) {
-            goToStep(currentStep - 1);
-          }
-        }}
+        onClick={previousStep}
       >
         Previous Step
       </button>
 
       <button
         type="button"
-        onClick={() => {
-   if (currentStep < steps.length - 1) {
-     setCompletedSteps(prev => new Set(prev).add(steps[currentStep].key));
-     setCurrentStep(currentStep + 1);
-   }
-}}
+        onClick={nextStep}
       >
         Next Step
       </button>

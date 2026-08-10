@@ -1,0 +1,44 @@
+/* ================================================
+   Profile Card
+   Structure: header → infoList → buttons
+   ================================================ */
+
+.profileCard {
+    @apply w-[23.125rem] rounded-2xl border border-[#7997B5] bg-[#49627B80] px-4 py-4 flex flex-col gap-3 font-[Inter,sans-serif] font-normal text-base leading-[1.375rem] transition duration-200;
+}
+
+/* ============ Header ============ */
+.header {
+    @apply flex items-center gap-2;
+}
+
+.user {
+    @apply flex flex-col min-w-0 flex-1;
+}
+
+.username {
+    @apply text-white font-medium;
+}
+
+.secondaryInfo {
+    @apply text-white/80 text-sm;
+}
+
+.removeButton {
+    @apply cursor-pointer border-none outline-none bg-transparent text-white hover:text-slate-200 transition-colors duration-200;
+}
+
+/* ============ User info ============ */
+.infoList {
+    @apply flex flex-col gap-1;
+}
+
+.infoLine {
+    @apply text-white;
+    margin: 0;
+}
+
+/* ============ Buttons (چهارخانه 2×2) ============ */
+.buttons {
+    @apply grid grid-cols-2 gap-x-8 gap-y-4;
+}

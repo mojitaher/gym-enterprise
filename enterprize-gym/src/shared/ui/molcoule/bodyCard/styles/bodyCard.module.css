@@ -1,0 +1,47 @@
+/* ================================================
+   Body Card
+   Structure: imageCard (full image) → content (outside card)
+   ================================================ */
+
+.container {
+    @apply flex items-stretch gap-17;
+}
+
+/* ============ کارت عکس ============ */
+.imageCard {
+    @apply w-82.5 h-82.5 rounded-2xl border border-[#7997B5] overflow-hidden shrink-0;
+}
+
+.image {
+    @apply w-full h-full object-cover;
+}
+
+/* ============ متن‌ها و باتن‌ها (خارج از کارت) ============ */
+.content {
+    @apply text-white w-51.75 flex flex-col gap-1 min-w-0;
+}
+
+.titleRow {
+    @apply flex items-center gap-2;
+}
+
+.titleIcon {
+    @apply w-6 h-6 shrink-0;
+}
+
+.title {
+    @apply text-[26px] font-semibold;
+}
+
+.subtitle {
+    @apply  text-[20px] font-semibold;
+}
+
+.description {
+    @apply text-sm;
+    margin: 0;
+}
+
+.buttons {
+    @apply flex flex-col gap-2 mt-auto;
+}

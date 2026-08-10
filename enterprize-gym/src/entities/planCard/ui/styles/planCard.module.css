@@ -1,40 +1,108 @@
+/* ================================================
+   Plan Card — 273 × 175 px
+   Structure: topSection → separator → bottomSection
+   ================================================ */
+
 .planCard {
-    @apply rounded-md border border-[#B2B6B9] bg-white p-4;
+    @apply rounded-[16px]  bg-white px-[8px] py-[16px];
+    width: 273px;
+    background-color: #94B3D3;
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    /* Card text specs */
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Header */
+/* ============ Top section (above separator) ============ */
+.topSection {
+    @apply flex items-center justify-between gap-2;
+}
+
 .header {
-    @apply mb-3;
+    @apply flex items-center;
 }
 
 .title {
-    @apply text-sm font-semibold text-slate-800;
+    @apply text-slate-800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-/* Stats */
+.actions {
+    @apply flex items-center justify-end gap-2;
+    flex-shrink: 0;
+}
+
+/* ============ ماه فعال (از والد) ============ */
+.month {
+    @apply text-white;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+
+/* ============ Separator ============ */
+.separator {
+    border-top: 1px solid #B2B6B9;
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
+
+/* ============ Bottom section (below separator) ============ */
+.bottomSection {
+    @apply flex;
+    flex: 1;
+    min-width: 0;
+    gap: 12px;
+    position: relative;
+}
+
 .stats {
-    @apply grid grid-cols-2 gap-2 mb-4;
+    @apply flex flex-col;
+    flex: 1;
+    min-width: 0;
 }
 
 .statItem {
-    @apply flex flex-col;
+    @apply flex items-center justify-between;
+    min-width: 0;
 }
 
-.statLabel {
-    @apply text-[10px] text-slate-500 font-medium;
-}
-
+.statLabel,
 .statValue {
-    @apply text-sm font-semibold text-slate-800;
+    @apply text-slate-800;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-/* Actions */
-.actions {
-    @apply flex items-center justify-end gap-2;
+/* Submit wrapper — bottom-right, 16px from the bottom edge */
+.submitButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 122px;
+    display: flex;
 }
 
-/* Icon Button */
+.submitButton button {
+    width: 100%;
+}
+
+/* ============ Shared atoms ============ */
+
 .iconButton {
     @apply w-8 h-8 flex items-center justify-center rounded-full;
     @apply bg-transparent hover:bg-slate-100 transition-colors duration-150;
@@ -42,5 +110,5 @@
 }
 
 .placeholderIcon {
-    @apply text-base;
+    @apply w-5 h-5;
 }

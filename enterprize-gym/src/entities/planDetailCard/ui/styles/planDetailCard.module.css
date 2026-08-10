@@ -1,0 +1,42 @@
+/* ================================================
+   Plan Detail Card
+   Structure: header → dataList
+   ================================================ */
+
+.planDetailCard {
+    @apply w-[16.6875rem] text-[#F4F7F7] rounded-2xl border border-[#7997B5] pb-[16px] pt-[8px] px-[16px] flex flex-col gap-3 font-[Inter,sans-serif] font-normal text-base leading-[1.375rem] transition duration-200;
+}
+
+/* ============ Header ============ */
+.header {
+    @apply flex items-center justify-between;
+}
+
+.title {
+    @apply  overflow-hidden text-ellipsis whitespace-nowrap;
+}
+
+.editButton {
+    @apply cursor-pointer border-none outline-none bg-transparent text-slate-500 hover:text-slate-800 transition-colors duration-200;
+}
+
+/* ============ Data list ============ */
+.dataList {
+    @apply flex flex-col gap-2 flex-1 min-w-0 overflow-y-auto;
+}
+
+.dataItem {
+    @apply flex items-center gap-2 min-w-0;
+}
+
+.exerciseDash {
+    @apply  shrink-0;
+}
+
+.exerciseName {
+    @apply min-w-0 overflow-hidden text-ellipsis whitespace-nowrap;
+}
+
+.exerciseValue {
+    @applyshrink-0;
+}

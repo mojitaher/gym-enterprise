@@ -1,0 +1,45 @@
+/* ================================================
+   Subscription Card
+   Structure: header → planName → bestFor → infoItems → price
+   ================================================ */
+
+.subscriptionCard {
+    @apply w-[23.125rem] rounded-2xl border border-[#7997B5] bg-[#49627B80] px-[25px] py-[87px] flex flex-col gap-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
+}
+
+/* ============ هدر ============ */
+.header {
+    @apply flex items-center gap-[10px];
+}
+
+.awardIcon {
+    @apply w-[30px] h-[30px] shrink-0;
+}
+
+.title {
+    @apply text-white font-semibold ;
+}
+
+.planName {
+    @apply text-white text-[20px]  mt-[40px] mb-[32px];
+}
+
+.bestFor {
+    @apply text-white/80 text-sm;
+    margin: 0;
+}
+
+/* ============ اطلاعات (مربی، ورزشکار، مدت) ============ */
+.infoItems {
+    @apply flex flex-wrap gap-x-3 gap-y-1;
+}
+
+.infoItem {
+    @apply text-white text-sm ;
+    margin: 0;
+}
+
+/* ============ قیمت ============ */
+.price {
+    @apply text-white font-semibold mt-[32px];
+}

@@ -1,0 +1,12 @@
+/* ================================================
+   Square Card
+   Structure: تکست در وسط مربع
+   ================================================ */
+
+.squareCard {
+    @apply w-43.75 h-43.75 rounded-2xl border border-[#7997B5] bg-[#7997B54D] flex items-center justify-center font-[Inter,sans-serif] transition duration-200;
+}
+
+.text {
+    @apply text-[20px] font-semibold text-[#F4F7F7];
+}

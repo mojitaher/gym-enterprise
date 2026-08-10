@@ -43,6 +43,7 @@ export const Input = ({
   disabled,
   defaultValue,
   ref,
+  className,
 }: INPUT_PROPS_INTERFACE) => {
   return (
     <>
@@ -56,7 +57,8 @@ export const Input = ({
     className={clsx(
       Classes.input,
       Classes[mode],
-      Classes[size]
+      Classes[size],
+      className
     )}
     type={type}
       placeholder={placeholder}

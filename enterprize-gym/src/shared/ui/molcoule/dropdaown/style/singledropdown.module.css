@@ -28,6 +28,7 @@
         --select-badge-remove-size: 15px;
         --select-badge-bg: #49627B;
         --select-checkmark-color:transparent ;
+        --select-arrow-hover-bg:none;
 }
 .mySelect::part(option).selected {
     background: #000;
