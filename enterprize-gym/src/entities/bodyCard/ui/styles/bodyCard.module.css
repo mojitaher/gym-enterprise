@@ -1,0 +1,39 @@
+/* ================================================
+   Body Card — image on one side, content on the other
+   dir: "right" | "left" controls the image side
+   ================================================ */
+
+.bodyCard {
+  @apply flex items-center gap-6 w-full rounded-2xl px-8 py-6;
+  font-family: Inter, sans-serif;
+}
+
+/* Default row → image first (left), content second (right) */
+.image {
+  @apply w-50 h-50 object-cover rounded-xl;
+}
+
+.imageRight {
+  flex-direction: row-reverse;
+}
+
+.imageLeft {
+  flex-direction: row;
+}
+
+.content {
+  @apply flex flex-col gap-2 flex-1 min-w-0;
+}
+
+.title {
+  @apply text-slate-800 m-0;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 100%;
+}
+
+.description {
+  @apply text-slate-700 m-0;
+  font-size: 16px;
+  line-height: 1.6;
+}

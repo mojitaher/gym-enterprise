@@ -223,4 +223,4 @@ This structure will evolve as the project grows.
 
 # 📄 License
 
-This project is currently private.
+This project is under development.

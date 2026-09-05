@@ -1,83 +1,23 @@
 .overlay {
-    position: fixed;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0, 0, 0, 0.6);
-
-    z-index: 1000;
+  @apply fixed inset-0 flex items-center justify-center z-[1000];
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 .container {
-    width: fit-content;
-    height: fit-content;
-    max-width: 95vw;
-    max-height: 95vh;
-
-    overflow: auto;
-
-    background: #18181b;
-    border: 1px solid #3f3f46;
-    border-radius: 0.75rem;
-
-    color: #ffffff;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 1rem;
-
-    padding: 1rem 1.25rem;
-
-    border-bottom: 1px solid #3f3f46;
+  @apply w-fit max-w-[95vw] max-h-[95vh] overflow-auto rounded-3xl py-28 px-[2.375rem];
+  background: #49627B;
 }
 
 .title {
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 600;
-}
-
-.closeButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* Keep the button pinned to the end even when there is no title. */
-    margin-inline-start: auto;
-
-    width: 2rem;
-    height: 2rem;
-
-    padding: 0;
-
-    border: none;
-    background: transparent;
-
-    color: #a1a1aa;
-
-    cursor: pointer;
-
-    transition: color .2s ease;
-}
-
-.closeButton:hover {
-    color: #ffffff;
-}
-
-.closeIcon {
-    width: 1.25rem;
-    height: 1.25rem;
-
-    pointer-events: none;
+  @apply font-semibold text-white text-center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0;
 }
 
 .body {
-    padding: 1.25rem;
+  @apply px-5 pt-9;
 }

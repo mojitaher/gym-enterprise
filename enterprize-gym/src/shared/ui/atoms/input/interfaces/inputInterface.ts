@@ -1,12 +1,12 @@
-import type { Ref } from "react";
+import type { InputHTMLAttributes, Ref } from "react";
 import type { INPUT_TYPE_SIZE } from "../types/inputSizeType";
 import type { INPUT_TYPE_MODE } from "../types/inputModeType";
 
 export default interface INPUT_PROPS_INTERFACE {
-  title:string;
+  title?:string;
   type: string;
 
-  mode: INPUT_TYPE_MODE;
+  mode?: INPUT_TYPE_MODE;
 
   size: INPUT_TYPE_SIZE;
 
@@ -14,10 +14,14 @@ export default interface INPUT_PROPS_INTERFACE {
 
   disabled?: boolean;
 
-  /** Uncontrolled initial value. The DOM owns the value after mount. */
   defaultValue?: string;
 
-  /** Ref to the underlying input; read `.value` from it to get the input. */
   ref?: Ref<HTMLInputElement>;
   className?:string;
+
+  pattern?: string;
+
+  inputMode?: InputHTMLAttributes<HTMLInputElement>["inputMode"];
+  required?:boolean;
+  errorMsg:string;
 }

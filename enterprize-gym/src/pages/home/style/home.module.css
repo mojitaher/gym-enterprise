@@ -1,0 +1,106 @@
+/* ================================================
+   Home / Landing Page
+   ================================================ */
+
+.homePage {
+  @apply fixed inset-0 w-full h-full overflow-hidden;
+  background-color: #0B141C;
+}
+
+.bgImage {
+  @apply absolute top-0 -left-65 w-full h-full bg-no-repeat bg-contain bg-center z-[1] pointer-events-none;
+  background-image: url("/images/homeBg.png");
+}
+
+.layeredBg {
+  @apply absolute top-0 right-0 w-full h-full bg-no-repeat bg-contain z-[2] pointer-events-none;
+  background-image: url("/images/layerdbg.svg");
+  background-position: right center;
+}
+
+.content {
+  @apply relative z-[3] flex flex-col items-start justify-center h-full pl-[50%] pr-20;
+}
+
+.title {
+  @apply font-bold text-[64px] leading-none text-white m-0 mb-6 text-left;
+  font-family: Inter, sans-serif;
+}
+
+.description {
+  @apply font-normal text-base text-[#94B3D3] max-w-[480px] m-0 mb-10 text-left;
+  font-family: Inter, sans-serif;
+  line-height: 1.6;
+}
+
+.actions {
+  @apply flex gap-15;
+}
+
+.roleContent {
+  @apply flex flex-col items-center gap-4;
+}
+
+.roleContent button {
+  width: 100px;
+  min-width: 100px;
+}
+
+.roleRow {
+  @apply flex gap-[10px];
+}
+
+.phoneContent {
+  @apply flex flex-col items-center gap-[10px];
+}
+
+.modalTitle {
+  @apply text-center text-[#1E1E1E] font-semibold;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0;
+  margin: 0 0 0.5rem 0;
+}
+
+.changePhoneLink {
+  @apply text-center text-sm text-[#00346B] cursor-pointer;
+  margin: 0px;
+  align-self: baseline;
+  font-family: Inter, sans-serif;
+  background: none;
+  border: none;
+}
+
+.changePhoneLink:hover {
+  @apply text-white;
+}
+
+.footer {
+  @apply flex items-center justify-between w-full;
+  margin-top: 8px;
+}
+
+.error {
+  @apply text-sm text-red-500 text-center w-full mb-2;
+  font-family: Inter, sans-serif;
+}
+
+.choiceDescription {
+  @apply text-center text-sm text-[#7997B5] m-0 mb-6;
+  font-family: Inter, sans-serif;
+}
+
+.choiceButtons {
+  @apply flex flex-row justify-center gap-[20px] w-full;
+}
+
+.adminLink {
+  @apply absolute bottom-10 left-1/2 -translate-x-1/2 font-normal text-sm text-[#7997B5] m-0 cursor-pointer;
+  font-family: Inter, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.adminLink:hover {
+  @apply text-white;
+}

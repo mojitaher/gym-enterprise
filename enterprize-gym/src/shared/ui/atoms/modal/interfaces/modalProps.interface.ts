@@ -1,8 +1,6 @@
 import type { ReactNode } from "react";
 
 export interface MODAL_PROPS_INTERFACE {
-    title?: string;
-
     children: ReactNode;
 
     /**

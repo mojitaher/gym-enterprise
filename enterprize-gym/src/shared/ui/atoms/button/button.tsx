@@ -41,21 +41,23 @@ export const Button = ({
   endIcon,
   disabled,
   onClick,
-  children
+  children,
+  className
 }: BUTTON_PROPS_INTERFACE) => {
   return (
     <button
       className={clsx(
         Classes.button,
         Classes[variant],
-        Classes[size]
+        Classes[size],
+        className
       )}
       disabled={disabled}
       onClick={onClick}
     >
-      {startIcon && <span className={Classes.firstIcon}>{startIcon}</span>}
+       <span className={Classes.firstIcon}>{startIcon}</span>
       {children}
-      {endIcon && <span className={Classes.lastIcon}>{endIcon}</span>}
+      <span className={Classes.lastIcon}>{endIcon}</span>
     </button>
   );
 };

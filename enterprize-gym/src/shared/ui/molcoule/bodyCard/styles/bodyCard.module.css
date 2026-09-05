@@ -1,47 +1,135 @@
 /* ================================================
    Body Card
-   Structure: imageCard (full image) → content (outside card)
+   50% Image + 50% Content
    ================================================ */
 
 .container {
-    @apply flex items-stretch gap-17;
+    @apply flex w-full h-full  items-end;
 }
 
-/* ============ کارت عکس ============ */
-.imageCard {
-    @apply w-82.5 h-82.5 rounded-2xl border border-[#7997B5] overflow-hidden shrink-0;
+
+/* ================================================
+   Direction
+   ================================================ */
+
+.imageRight {
+    @apply flex-row-reverse ;
 }
+
+.imageLeft {
+    @apply flex-row ;
+}
+
+
+/* ================================================
+   Image Section
+   Exactly 50%
+   ================================================ */
+
+.imageCard {
+    @apply w-[50%] h-full min-h-0 flex  ;
+    
+}
+.imageRight .imageCard {
+    @apply justify-end items-end;
+}
+
+.imageLeft .imageCard {
+    @apply justify-start items-baseline;
+}
+
+/* Image */
 
 .image {
-    @apply w-full h-full object-cover;
+    @apply block ;
+    
 }
 
-/* ============ متن‌ها و باتن‌ها (خارج از کارت) ============ */
+
+/* ================================================
+   Content Section
+   Exactly 50%
+   ================================================ */
+
 .content {
-    @apply text-white w-51.75 flex flex-col gap-1 min-w-0;
+    @apply w-1/2 h-full min-h-0 text-white flex flex-col items-start gap-1 pb-8;
 }
+
+
+/* ================================================
+   Title
+   ================================================ */
 
 .titleRow {
     @apply flex items-center gap-2;
 }
 
 .titleIcon {
-    @apply w-6 h-6 shrink-0;
+    @apply w-5 h-5 shrink-0;
+
+    filter: brightness(0) invert(1);
 }
 
 .title {
-    @apply text-[26px] font-semibold;
+    @apply m-0 text-[28px] font-semibold leading-tight;
 }
+
+
+/* ================================================
+   Subtitle
+   ================================================ */
 
 .subtitle {
-    @apply  text-[20px] font-semibold;
+    @apply m-0 text-[16px] font-semibold leading-tight;
 }
+
+
+/* ================================================
+   Description
+   ================================================ */
 
 .description {
-    @apply text-sm;
-    margin: 0;
+    @apply m-0 max-w-[520px] text-[16px] font-normal leading-[1.5];
 }
 
+
+/* ================================================
+   Buttons
+   ================================================ */
+
 .buttons {
-    @apply flex flex-col gap-2 mt-auto;
+    @apply flex flex-col items-start gap-2 mt-3;
+}
+
+
+/* ================================================
+   Mobile — ≤400px
+   جایگزینی / حذف عکس فقط با CSS
+   ================================================ */
+
+/* عکس جایگزین موبایل — به‌طور پیش‌فرض مخفی است */
+.mobileImage {
+    display: none;
+}
+
+
+@media (min-width: 400px) and (max-width:700px) {
+    /* فقط وقتی عکس جایگزین موبایل وجود دارد، عکس اصلی دسکتاپ مخفی می‌شود */
+    .desktopImage:has(+ .mobileImage) {
+        display: none;
+    }
+
+    /* عکس جایگزین موبایل نمایش داده می‌شود (aboutus1 — ۱۸۰ درجه) */
+    .mobileImage {
+        display: block;
+    }
+
+    /* وقتی hideImageOnMobile ست شود، کل ستون عکس حذف و محتوا تمام‌عرض می‌شود */
+    .hideImageOnMobile .imageCard {
+        display: none;
+    }
+
+    .hideImageOnMobile .content {
+        width: 100%;
+    }
 }

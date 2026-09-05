@@ -1,0 +1,161 @@
+/* ================================================
+   About Us Page
+   Header + 4 Body Rows
+   ================================================ */
+
+.aboutPage {
+  @apply fixed inset-0 w-full min-h-screen flex flex-col overflow-y-auto overflow-x-hidden;
+
+  background-color: #0B141C;
+
+  scrollbar-gutter: stable;
+}
+
+
+/* ================================================
+   Background
+   ================================================ */
+
+.aboutBg {
+  @apply absolute inset-0 w-full h-full bg-no-repeat bg-cover pointer-events-none;
+
+  background-image: url("/images/layoutAbout.png");
+  background-position: center;
+
+  z-index: 1;
+}
+
+
+/* ================================================
+   Header
+   ================================================ */
+
+.header {
+  @apply relative z-20 flex items-center justify-between flex-shrink-0 w-full px-10 py-4;
+
+  min-height: 72px;
+}
+
+
+.brandWrap {
+  @apply flex items-center gap-3;
+}
+
+
+.logo {
+  @apply w-[50px] h-[23px];
+}
+
+
+.brand {
+  @apply text-white text-2xl font-bold m-0;
+
+  font-family: Inter, sans-serif;
+  letter-spacing: 0;
+}
+
+
+.profileBtn {
+  @apply flex items-center justify-center rounded-full cursor-pointer;
+
+  width: 44px;
+  height: 44px;
+}
+
+
+.profileBtn:hover {
+  @apply border-white;
+}
+
+
+.profileIcon {
+  @apply w-[23px] h-[50px];
+}
+
+
+/* ================================================
+   Sections
+   ================================================ */
+
+.sections {
+  @apply relative z-[2] flex flex-col flex-1 w-full pl-10 rtl:pr-10 pt-10 gap-20 ;
+}
+
+
+/* ================================================
+   Body Row
+   ================================================ */
+
+.bodyRow {
+  @apply flex  w-full ;
+}
+
+
+/* ================================================
+   Login Modal Roles
+   ================================================ */
+
+.roleContent {
+  @apply flex flex-col items-center gap-4;
+}
+
+
+.roleContent button {
+  width: 100px;
+  min-width: 100px;
+}
+
+
+.roleRow {
+  @apply flex gap-4;
+}
+
+
+/* ================================================
+   Tablet — 768px تا 1023px
+   کل صفحه از سمت چپ 17px فاصله دارد
+   ================================================ */
+
+@media (min-width: 710px) and (max-width: 1023px) {
+  .header {
+    padding-left: 17px;
+  }
+
+  .sections {
+    padding-left: 17px;
+  }
+
+  /* اولین عکس — عرض 86٪ در تبلت */
+  .firstImage {
+    width: 86% !important;
+  }
+}
+
+
+/* ================================================
+   Mobile — 400px و کوچیک‌تر
+   ۱۰٪ پدینگ از دو طرف (آزمایشی)
+   ================================================ */
+
+@media (min-width: 400px) and (max-width:700px){
+  .header {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .sections {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /* عکس دوم (aboutus1) — چرخش ۱۸۰ درجه */
+  .secondImage {
+    transform:scaleX(-1);
+  }
+
+  /* عکس آخر — کمی به چپ و چسبیده به انتهای صفحه */
+  .lastImage {
+    transform: translateX(-20px);
+    margin-bottom: -24px;
+  }
+}

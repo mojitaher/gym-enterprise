@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Classes from "./style/Input.module.css";
+import { INPUT_MODE_STYLE } from "./constant/inputModeConstant";
 import type INPUT_PROPS_INTERFACE from "./interfaces/inputInterface";
-import { Text } from "../text/text";
 
 /**
  * Input Component
@@ -44,6 +44,10 @@ export const Input = ({
   defaultValue,
   ref,
   className,
+  pattern,
+  inputMode,
+  errorMsg,
+  required
 }: INPUT_PROPS_INTERFACE) => {
   return (
     <>
@@ -52,19 +56,33 @@ export const Input = ({
       </p>
 
     <input
-    aria-label={type}
-    ref={ref}
-    className={clsx(
-      Classes.input,
-      Classes[mode],
-      Classes[size],
-      className
-    )}
-    type={type}
+      aria-label={type}
+      ref={ref}
+   inputMode={inputMode}
+      pattern={pattern}
+      className={clsx(
+        Classes.input,
+        mode && INPUT_MODE_STYLE[mode],
+        Classes[size],
+        className
+      )}
+      required={required}
+      type={type}
       placeholder={placeholder}
       disabled={disabled}
       defaultValue={defaultValue}
+      onInvalid={(event) => {
+  event.currentTarget.classList.add(Classes.warn);
+  console.log('warn')
+
+  event.currentTarget.setCustomValidity(errorMsg);
+}}
+  onInput={(event) => {
+  event.currentTarget.classList.remove(Classes.warn);
+  event.currentTarget.setCustomValidity("");
+}}
     />
+    
     </>
   );
 };

@@ -1,7 +1,7 @@
 /* Base */
 
 .button {
-    @apply  inline-flex items-center justify-center select-none cursor-pointer outline-none border border-transparent rounded-[10px]  transition-all duration-[250ms] ease-in-out min-w-[7.625rem] px-3 gap-[8px];
+    @apply  inline-flex items-center justify-center select-none cursor-pointer outline-none border border-transparent rounded-[10px]  transition-all duration-[250ms] ease-in-out min-w-[7.625rem] px-3 gap-[8px] whitespace-nowrap;
 }
 
 

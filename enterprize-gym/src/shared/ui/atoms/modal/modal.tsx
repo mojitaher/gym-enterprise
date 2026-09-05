@@ -1,4 +1,5 @@
 import Classes from "./style/Modal.module.css";
+import clsx from "clsx";
 
 import { stopModalPropagation } from "./handler/stopModalPropagation";
 
@@ -23,7 +24,6 @@ import type { MODAL_PROPS_INTERFACE } from "./interfaces/modalProps.interface";
  */
 
 export default function Modal({
-    title,
     children,
     onClose,
 }: MODAL_PROPS_INTERFACE) {
@@ -33,31 +33,6 @@ export default function Modal({
                 className={Classes.container}
                 onClick={stopModalPropagation}
             >
-                <div className={Classes.header}>
-                    {title && <h3 className={Classes.title}>{title}</h3>}
-
-                    <button
-                        type="button"
-                        className={Classes.closeButton}
-                        aria-label="Close"
-                        onClick={onClose}
-                    >
-                        <svg
-                            className={Classes.closeIcon}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            aria-hidden="true"
-                        >
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                    </button>
-                </div>
-
                 <div className={Classes.body}>{children}</div>
             </div>
         </div>
