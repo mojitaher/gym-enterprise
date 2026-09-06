@@ -50,7 +50,7 @@ export const Input = ({
   required
 }: INPUT_PROPS_INTERFACE) => {
   return (
-    <>
+    <div className={Classes.wrapper}>
     <p className={clsx(Classes.title)}>
       {title}
       </p>
@@ -82,7 +82,7 @@ export const Input = ({
   event.currentTarget.setCustomValidity("");
 }}
     />
-    
-    </>
+
+    </div>
   );
 };

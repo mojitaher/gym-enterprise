@@ -29,6 +29,12 @@ export default function SignupSuccessStep({
           <p className={Classes.infoCardItem}>
             <span className={Classes.infoLabel}>تلفن:</span> {gymData.phone}
           </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>آدرس:</span> {gymData.address}
+          </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>نوع:</span> {gymData.type}
+          </p>
         </div>
       )}
 
@@ -38,13 +44,10 @@ export default function SignupSuccessStep({
             اطلاعات مدیر
           </h4>
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>نام کامل:</span> {managerData.firstName} {managerData.lastName}
+            <span className={Classes.infoLabel}>نام کامل:</span> {managerData.fullName}
           </p>
           <p className={Classes.infoCardItem}>
             <span className={Classes.infoLabel}>تلفن:</span> {managerData.phone}
-          </p>
-          <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>ایمیل:</span> {managerData.email}
           </p>
         </div>
       )}

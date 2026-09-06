@@ -28,5 +28,5 @@ export default function AuthModal({ onSignupClick }: AuthModalProps) {
     );
   }
 
-  return <ManagerLoginModal />;
+  return <ManagerLoginModal onSignupClick={onSignupClick} />;
 }

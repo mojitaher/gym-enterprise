@@ -86,6 +86,11 @@
   font-family: Inter, sans-serif;
 }
 
+.errorMessage {
+  @apply text-sm text-red-500 text-center w-full mb-4;
+  font-family: Inter, sans-serif;
+}
+
 .choiceDescription {
   @apply text-center text-sm text-[#7997B5] m-0 mb-6;
   font-family: Inter, sans-serif;

@@ -3,32 +3,22 @@ import logo from "../../assets/icons/logo.svg";
 import profileIcon from "../../assets/icons/profile1.svg";
 import { Button } from "../../shared/ui/atoms/button/button";
 import { useModal } from "../home/hooks/useLoginModal";
+import LoginModal from "../home/components/LoginModal";
 import { BodyCard } from "../../shared/ui/molcoule/bodyCard/bodyCard";
+import { useNavigate } from "react-router-dom";
+
 
 export default function AboutPage() {
-  const { openModal } = useModal(
-    <div className={Classes.roleContent}>
-      <div className={Classes.roleRow}>
-        <Button variant="primary" size="large" className="max-w-25">
-          Trainee
-        </Button>
-        <Button variant="primary" size="large" className="max-w-25">
-          Coach
-        </Button>
-      </div>
-      <Button variant="primary" size="large" className="max-w-25">
-        Manager
-      </Button>
-    </div>,
-    "choose your Role"
-  );
+  const { openModal } = useModal({
+    content: <LoginModal />,
+    title: "ورود ترینر/مربی",
+  });
+  const navigate=useNavigate()
 
   return (
     <div className={Classes.aboutPage}>
-      {/* ============ بک‌گراند About — پشت محتوا ============ */}
       <div className={Classes.aboutBg} />
 
-      {/* ============ Header — logo سمت چپ، پروفایل سمت راست ============ */}
       <header className={Classes.header}>
         <div className={Classes.brandWrap}>
           <img src={logo} alt="My Gym logo" className={Classes.logo} />
@@ -38,13 +28,12 @@ export default function AboutPage() {
           type="button"
           className={Classes.profileBtn}
           aria-label="Profile"
-          onClick={openModal}
+          onClick={()=>navigate('/')}
         >
           <img src={profileIcon} alt="profile" className={Classes.profileIcon} />
         </button>
       </header>
 
-      {/* ============ بخش‌ها — BodyCard به‌ترتیب راست/چپ/راست/چپ ============ */}
       <main className={Classes.sections}>
         <div className={Classes.bodyRow}>
           <BodyCard

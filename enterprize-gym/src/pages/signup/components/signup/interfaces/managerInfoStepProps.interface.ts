@@ -6,8 +6,8 @@ export interface ManagerInfoStepProps {
 }
 
 export interface ManagerInfoFormData {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   phone: string;
-  email: string;
+  pass: string;
+  confirmPass:string
 }

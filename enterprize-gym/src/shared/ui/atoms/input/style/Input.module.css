@@ -1,6 +1,9 @@
 
+.wrapper {
+    @apply flex flex-col w-full;
+}
 .title {
-    @apply text-amber-500  mb-2 p-0;
+    @apply text-[#F4F7F7]  mb-2 p-0;
 }
 
 

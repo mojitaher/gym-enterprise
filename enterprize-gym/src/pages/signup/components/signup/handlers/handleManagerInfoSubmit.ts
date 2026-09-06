@@ -1,22 +1,22 @@
 import type { FormEvent, RefObject } from "react";
-import type { ManagerInfoFormData } from "../../../interfaces/managerInfoStepProps.interface";
+import type { ManagerInfoFormData } from "../interfaces/managerInfoStepProps.interface";
 
 export const handleManagerInfoSubmit = (
   event: FormEvent<HTMLFormElement>,
-  firstNameRef: RefObject<HTMLInputElement | null>,
-  lastNameRef: RefObject<HTMLInputElement | null>,
+  fullNameRef: RefObject<HTMLInputElement | null>,
   phoneRef: RefObject<HTMLInputElement | null>,
-  emailRef: RefObject<HTMLInputElement | null>,
+  passRef: RefObject<HTMLInputElement | null>,
+  confirmPassRef: RefObject<HTMLInputElement | null>,
   onSubmit: (data: ManagerInfoFormData) => void
 ) => {
   event.preventDefault();
 
-  const firstName = firstNameRef.current?.value;
-  const lastName = lastNameRef.current?.value;
+  const fullName = fullNameRef.current?.value;
   const phone = phoneRef.current?.value;
-  const email = emailRef.current?.value;
+  const pass = passRef.current?.value;
+  const confirmPass = confirmPassRef.current?.value;
 
-  if (!firstName || !lastName || !phone || !email) return;
+  if (!fullName || !phone || !pass || !confirmPass) return;
 
-  onSubmit({ firstName, lastName, phone, email });
+  onSubmit({ fullName, phone, pass, confirmPass });
 };

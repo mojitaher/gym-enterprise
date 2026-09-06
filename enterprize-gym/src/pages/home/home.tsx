@@ -16,7 +16,6 @@ export default function HomePage() {
     title: "ورود ترینر/مربی",
   });
 
-  // AuthChoiceModal for Manager (Login or Signup)
   const { openModal: openManagerModal } = useModal({
     content: (closeModal) => (
       <AuthModal

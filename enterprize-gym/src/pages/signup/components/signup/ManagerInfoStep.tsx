@@ -15,10 +15,10 @@ import Classes from "../../style/signup.module.css";
 export default function ManagerInfoStep({
   onSubmit,
 }: ManagerInfoStepProps) {
-  const firstNameRef = useRef<HTMLInputElement>(null);
-  const lastNameRef = useRef<HTMLInputElement>(null);
+  const fullNameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const passRef = useRef<HTMLInputElement>(null);
+  const confirmPassRef = useRef<HTMLInputElement>(null);
 
   return (
     <form
@@ -26,66 +26,85 @@ export default function ManagerInfoStep({
       onSubmit={(event) =>
         handleManagerInfoSubmit(
           event,
-          firstNameRef,
-          lastNameRef,
+          fullNameRef,
           phoneRef,
-          emailRef,
+          passRef,
+          confirmPassRef,
           onSubmit
         )
       }
     >
-      <h3 className={Classes.modalTitle}>
-        اطلاعات مدیر باشگاه
-      </h3>
+      <div className={Classes.stepHeader}>
+        <h3 className={Classes.stepTitle}>
+          اطلاعات مدیر
+        </h3>
+        <p className={Classes.stepSubtitle}>
+          لطفاً اطلاعات مربوط به مدیر باشگاه را تکمیل کنید
+        </p>
+      </div>
 
-      <Input
-        type="text"
-        inputMode="text"
-        size={INPUT_SIZE_ENUM.small}
-        placeholder="نام"
-        ref={firstNameRef}
-        errorMsg="نام الزامی است"
-        required
-      />
+      <div className={Classes.formGrid}>
+        <Input
+          title="نام کامل"
+          type="text"
+          inputMode="text"
+          size={INPUT_SIZE_ENUM.medium}
+          placeholder="مثال: علی محمدی"
+          ref={fullNameRef}
+          errorMsg="نام الزامی است"
+          required
+          className={Classes.inputDark}
+          // labelClassName={Classes.labelDark}
+        />
 
-      <Input
-        type="text"
-        inputMode="text"
-        size={INPUT_SIZE_ENUM.small}
-        placeholder="نام خانوادگی"
-        ref={lastNameRef}
-        errorMsg="نام خانوادگی الزامی است"
-        required
-      />
+        <Input
+          title="شماره تلفن"
+          type="tel"
+          inputMode="numeric"
+          pattern="09[0-9]{9}"
+          size={INPUT_SIZE_ENUM.medium}
+          placeholder="09xxxxxxxxx"
+          ref={phoneRef}
+          errorMsg="شماره تلفن وارد شده نادرست است"
+          required
+          className={Classes.inputDark}
+          // labelClassName={Classes.labelDark}
+        />
 
-      <Input
-        type="text"
-        inputMode="numeric"
-        pattern="09[0-9]{9}"
-        size={INPUT_SIZE_ENUM.small}
-        placeholder="09xxxxxxxxx"
-        ref={phoneRef}
-        errorMsg="شماره تلفن وارد شده نادرست است"
-        required
-      />
+        <Input
+          title="رمز عبور"
+          type="password"
+          inputMode="text"
+          size={INPUT_SIZE_ENUM.medium}
+          placeholder="حداقل ۸ کاراکتر"
+          ref={passRef}
+          errorMsg="رمز عبور نامناسب است"
+          required
+          className={Classes.inputDark}
+          // labelClassName={Classes.labelDark}
+        />
 
-      <Input
-        type="email"
-        inputMode="email"
-        size={INPUT_SIZE_ENUM.small}
-        placeholder="ایمیل"
-        ref={emailRef}
-        errorMsg="ایمیل وارد شده نادرست است"
-        required
-      />
+        <Input
+          title="تکرار رمز عبور"
+          type="password"
+          inputMode="text"
+          size={INPUT_SIZE_ENUM.medium}
+          placeholder="رمز عبور را مجدداً وارد کنید"
+          ref={confirmPassRef}
+          errorMsg="تایید رمز عبور تطابق ندارد"
+          required
+          className={Classes.inputDark}
+          // labelClassName={Classes.labelDark}
+        />
+      </div>
 
       <Button
-        variant={BUTTON_VARIANT_ENUM.primary}
+        variant={BUTTON_VARIANT_ENUM.secondary}
         size={BUTTON_ENUMS_SIZE.large}
-        className="w-23!"
+        className={Classes.submitButton}
       >
-        ثبت نام نهایی
-      </Button>
+        ادامه     
+         </Button>
     </form>
   );
 }

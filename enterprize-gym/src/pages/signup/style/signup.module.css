@@ -7,7 +7,7 @@
 }
 
 .container {
-  @apply w-full max-w-md bg-white rounded-2xl p-8 shadow-xl;
+  @apply w-full max-w-3xl bg-[#0B141C] rounded-2xl p-8;
 }
 
 .content {
@@ -15,7 +15,7 @@
 }
 
 .backButton {
-  @apply block mx-auto mt-6 px-6 py-2 text-sm text-[#00346B] hover:text-white transition-colors;
+  @apply mt-6 px-6 py-2 text-sm text-[#00346B] hover:text-white transition-colors;
   background: none;
   border: none;
   cursor: pointer;
@@ -57,9 +57,61 @@
   @apply font-medium text-[#1E1E1E];
 }
 
+/* Form Styles */
+.stepHeader {
+  @apply text-center mb-8;
+}
+
+.stepTitle {
+  @apply text-2xl font-bold text-white mb-2;
+  font-family: Inter, sans-serif;
+}
+
+.stepSubtitle {
+  @apply text-sm text-[#7997B5];
+  font-family: Inter, sans-serif;
+}
+
+.formGrid {
+  @apply grid grid-cols-2 gap-4 w-full;
+}
+
+@media (max-width: 640px) {
+  .formGrid {
+    @apply grid-cols-1;
+  }
+}
+
+.formGroup {
+  @apply flex flex-col gap-1;
+}
+
+.formLabel {
+  @apply text-sm font-medium text-[#7997B5];
+  font-family: Inter, sans-serif;
+}
+
+
+
+.inputError {
+  @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+}
+
+.errorText {
+  @apply text-sm text-red-500 mt-1;
+  font-family: Inter, sans-serif;
+}
+
+.submitButton {
+  @apply w-[108px] mx-auto  py-3 bg-[#0066CC] text-white font-semibold rounded-lg hover:bg-[#0052A3] transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
 /* Reuse phoneContent from home styles for form layout */
 .phoneContent {
-  @apply flex flex-col items-center gap-[10px] w-full;
+  @apply flex flex-col gap-[10px] w-full;
 }
 
 .modalTitle {

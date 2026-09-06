@@ -5,12 +5,13 @@ export interface SignupSuccessStepProps {
   gymData: {
     name: string;
     phone: string;
-    password: string;
+    address: string;
+    type: string;
   } | null;
   managerData: {
-    firstName: string;
-    lastName: string;
+    fullName: string;
     phone: string;
-    email: string;
+    pass: string;
+    confirmPass: string;
   } | null;
 }
