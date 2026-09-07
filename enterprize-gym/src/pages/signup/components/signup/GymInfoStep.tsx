@@ -98,14 +98,11 @@ export default function GymInfoStep({
           className={Classes.inputDark}
         />
       </div>
+      <div className={Classes.buttonWrapper}>
 
-      <Button
-        variant={BUTTON_VARIANT_ENUM.primary}
-        size={BUTTON_ENUMS_SIZE.large}
-        className={Classes.submitButton}
-      >
-        ادامه
-      </Button>
+      
+
+      
       <Button
       variant={BUTTON_VARIANT_ENUM.secondary}
         size={BUTTON_ENUMS_SIZE.large}
@@ -114,6 +111,14 @@ export default function GymInfoStep({
           >
             بازگشت
           </Button>
+          <Button
+        variant={BUTTON_VARIANT_ENUM.primary}
+        size={BUTTON_ENUMS_SIZE.large}
+        className={Classes.submitButton}
+      >
+        ادامه
+      </Button>
+          </div>
     </form>
   );
 }

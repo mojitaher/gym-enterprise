@@ -11,14 +11,15 @@ import { handleManagerInfoSubmit } from "./handlers/handleManagerInfoSubmit";
 import type { ManagerInfoStepProps } from "./interfaces/managerInfoStepProps.interface";
 
 import Classes from "../../style/signup.module.css";
-
 export default function ManagerInfoStep({
+  onBack,
   onSubmit,
 }: ManagerInfoStepProps) {
   const fullNameRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const passRef = useRef<HTMLInputElement>(null);
   const confirmPassRef = useRef<HTMLInputElement>(null);
+  
 
   return (
     <form
@@ -97,14 +98,24 @@ export default function ManagerInfoStep({
           // labelClassName={Classes.labelDark}
         />
       </div>
-
-      <Button
-        variant={BUTTON_VARIANT_ENUM.secondary}
+<div className={Classes.buttonWrapper}>
+      
+         <Button
+      variant={BUTTON_VARIANT_ENUM.secondary}
+        size={BUTTON_ENUMS_SIZE.large}
+            className={Classes.backButton}
+            onClick={onBack}
+          >
+            اکانت دارم
+          </Button>
+          <Button
+        variant={BUTTON_VARIANT_ENUM.primary}
         size={BUTTON_ENUMS_SIZE.large}
         className={Classes.submitButton}
       >
         ادامه     
          </Button>
+         </div>
     </form>
   );
 }

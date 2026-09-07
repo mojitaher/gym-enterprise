@@ -9,6 +9,7 @@ import ManagerInfoStep from "./components/signup/ManagerInfoStep";
 import SignupSuccessStep from "./components/signup/SignupSuccessStep";
 
 import Classes from "./style/signup.module.css";
+import { useNavigate } from "react-router-dom";
 
 const SIGNUP_STEPS: SIGNUP_STEP[] = [
   SIGNUP_STEP_ENUM.managerInfo,
@@ -65,7 +66,11 @@ export default function SignupPage() {
     setCompletedSteps((prev) => new Set([...prev, SIGNUP_STEP_ENUM.managerInfo]));
     setCurrentStep(1);
   };
-
+  const navigate =useNavigate()
+  
+const handleBacktoLogin=()=>{
+  navigate('/')
+}
   const handleBack = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
@@ -80,7 +85,7 @@ export default function SignupPage() {
   const renderStepContent = () => {
     switch (SIGNUP_STEPS[currentStep]) {
       case SIGNUP_STEP_ENUM.managerInfo:
-        return <ManagerInfoStep onSubmit={handleManagerInfoSubmit} />;
+        return <ManagerInfoStep onBack={handleBacktoLogin} onSubmit={handleManagerInfoSubmit} />;
         case SIGNUP_STEP_ENUM.gymInfo:
         return <GymInfoStep onBack={handleBack} onSubmit={handleGymInfoSubmit} />;
       case SIGNUP_STEP_ENUM.success:

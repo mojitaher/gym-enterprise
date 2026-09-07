@@ -2,6 +2,7 @@
  * Manager Info Step Props Interface
  */
 export interface ManagerInfoStepProps {
+  onBack:()=>void;
   onSubmit: (data: ManagerInfoFormData) => void;
 }
 

@@ -1,5 +1,4 @@
 import Classes from "./style/Modal.module.css";
-import clsx from "clsx";
 
 import { stopModalPropagation } from "./handler/stopModalPropagation";
 
