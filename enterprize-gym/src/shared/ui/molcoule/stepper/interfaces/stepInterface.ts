@@ -3,5 +3,5 @@
  */
 export interface STEP_INTERFACE {
   readonly key: string;
-
+  readonly label: string;
 }

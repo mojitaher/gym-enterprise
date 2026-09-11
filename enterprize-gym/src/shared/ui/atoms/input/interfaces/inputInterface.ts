@@ -1,9 +1,9 @@
-import type { InputHTMLAttributes, Ref } from "react";
+import type { InputHTMLAttributes } from "react";
 import type { INPUT_TYPE_SIZE } from "../types/inputSizeType";
 import type { INPUT_TYPE_MODE } from "../types/inputModeType";
 
 export default interface INPUT_PROPS_INTERFACE {
-  title?:string;
+  title?: string;
   type: string;
 
   mode?: INPUT_TYPE_MODE;
@@ -14,14 +14,14 @@ export default interface INPUT_PROPS_INTERFACE {
 
   disabled?: boolean;
 
-  defaultValue?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 
-  ref?: Ref<HTMLInputElement>;
-  className?:string;
+  className?: string;
 
   pattern?: string;
 
   inputMode?: InputHTMLAttributes<HTMLInputElement>["inputMode"];
-  required?:boolean;
-  errorMsg:string;
+  required?: boolean;
+  errorMsg: string;
 }

@@ -1,14 +1,10 @@
+import type { ManagerInfo } from "../../../types/managerInfo";
+
 /**
  * Manager Info Step Props Interface
  */
 export interface ManagerInfoStepProps {
-  onBack:()=>void;
-  onSubmit: (data: ManagerInfoFormData) => void;
-}
-
-export interface ManagerInfoFormData {
-  fullName: string;
-  phone: string;
-  pass: string;
-  confirmPass:string
+  onBack: () => void;
+  onSubmit: (data: ManagerInfo) => void;
+  initialValues: ManagerInfo;
 }

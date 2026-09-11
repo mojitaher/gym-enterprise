@@ -34,7 +34,7 @@
 
 .input:focus {
     border-color: #8b5cf6;
-    box-shadow: 0 0 0 0.1875rem rgba(139, 92, 246, .2);
+    box-shadow: 0 0 0 0.1875rem rgba(138, 92, 246, 0.575);
 }
 
 /* ========================= */
@@ -66,19 +66,18 @@
 }
 
 .warn {
-    border-color: #f59e0b;
-}
+    @apply border-2 border-[#f59e0b]}
 
 .warn:focus {
-    box-shadow: 0 0 0 0.1875rem rgba(245, 158, 11, .2);
+    box-shadow: 0 0 0 0.1875rem rgba(163, 122, 52, 0.985);
 }
 
 .error {
-    border-color: #ef4444;
+    @apply border-2 border-[#ef4444];
 }
 
 .error:focus {
-    box-shadow: 0 0 0 0.1875rem rgba(239, 68, 68, .2);
+    box-shadow: 0 0 0 0.1875rem rgb(179, 33, 33);
 }
 
 .input:disabled {

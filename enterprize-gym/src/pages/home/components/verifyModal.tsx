@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { Button } from "../../../shared/ui/atoms/button/button";
 import { Input } from "../../../shared/ui/atoms/input/input";
@@ -8,34 +8,25 @@ import { INPUT_SIZE_ENUM } from "../../../shared/ui/atoms/input/enums/inputSize"
 import { BUTTON_VARIANT_ENUM } from "../../../shared/ui/atoms/button/enum/buttonVarient";
 import { BUTTON_ENUMS_SIZE } from "../../../shared/ui/atoms/button/enum/buttonSize";
 
-import { handleVerifySubmit } from "../handlers/handleVerifySubmit";
 import type { VerifyModalProps } from "../interfaces/verifyModalProps.interface";
 
-import Countdown from "../../../shared/ui/molcoule/countdown/Countdown";
+// ⛔ کامنت شده: countdown غیرفعال شده
+// import Countdown from "../../../shared/ui/molcoule/countdown/Countdown";
 import Classes from "../style/home.module.css";
 
 export default function VerifyModal({
-  expiresIn,
+  expiresIn: _expiresIn,
   onBack,
   onSubmit,
   isVerifying,
 }: VerifyModalProps) {
-  const codeRef = useRef<HTMLInputElement>(null);
-
-  const [isExpired, setIsExpired] = useState(false);
-
-  const handleExpire = () => {
-    setIsExpired(true);
-  };
+  const [code, setCode] = useState("");
 
   const handleSubmit = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
-    handleVerifySubmit(
-      event,
-      codeRef,
-      onSubmit
-    );
+    event.preventDefault();
+    onSubmit(code);
   };
 
   return (
@@ -53,10 +44,11 @@ export default function VerifyModal({
         pattern="[0-9]{6}"
         size={INPUT_SIZE_ENUM.small}
         placeholder="کد ۶ رقمی"
-        ref={codeRef}
+        value={code}
+        onChange={setCode}
         errorMsg="کد وارد شده نادرست است"
         required
-        disabled={isExpired || isVerifying}
+        disabled={isVerifying}
       />
 
       <div className={Classes.footer}>
@@ -69,7 +61,8 @@ export default function VerifyModal({
           Change phone number
         </button>
 
-        {!isExpired ? (
+        {/* ⛔ کامنت شده: بلوک Countdown و expired */}
+        {/* {!isExpired ? (
           <Countdown
             expiresIn={expiresIn}
             onExpire={handleExpire}
@@ -82,14 +75,14 @@ export default function VerifyModal({
           >
             ارسال مجدد کد
           </Button>
-        )}
+        )} */}
       </div>
 
       <Button
         variant={BUTTON_VARIANT_ENUM.primary}
         size={BUTTON_ENUMS_SIZE.large}
         className="w-23!"
-        disabled={isExpired || isVerifying}
+        disabled={isVerifying}
       >
         {isVerifying ? <Spinner size="small" /> : "confirm"}
       </Button>

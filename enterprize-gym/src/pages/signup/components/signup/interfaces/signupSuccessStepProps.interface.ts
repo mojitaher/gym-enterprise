@@ -1,17 +1,10 @@
+import type { GymInfo } from "../../../types/gymInfo";
+import type { ManagerInfo } from "../../../types/managerInfo";
+
 /**
  * Signup Success Step Props Interface
  */
 export interface SignupSuccessStepProps {
-  gymData: {
-    name: string;
-    phone: string;
-    address: string;
-    type: string;
-  } | null;
-  managerData: {
-    fullName: string;
-    phone: string;
-    pass: string;
-    confirmPass: string;
-  } | null;
+  gymData: GymInfo | null;
+  managerData: ManagerInfo | null;
 }

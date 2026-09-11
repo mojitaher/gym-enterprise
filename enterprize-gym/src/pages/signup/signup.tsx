@@ -1,93 +1,79 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Stepper } from "../../shared/ui/molcoule/stepper/stepper";
 import { SIGNUP_STEP_ENUM } from "./enums/signupStep";
+import { SIGNUP_STEPS, STEPPER_STEPS } from "./constants/signupSteps";
 import type { SIGNUP_STEP } from "./types/signupStep";
+import type { GymInfo } from "./types/gymInfo";
+import type { ManagerInfo } from "./types/managerInfo";
 
 import GymInfoStep from "./components/signup/GymInfoStep";
 import ManagerInfoStep from "./components/signup/ManagerInfoStep";
 import SignupSuccessStep from "./components/signup/SignupSuccessStep";
 
 import Classes from "./style/signup.module.css";
-import { useNavigate } from "react-router-dom";
 
-const SIGNUP_STEPS: SIGNUP_STEP[] = [
-  SIGNUP_STEP_ENUM.managerInfo,
-  SIGNUP_STEP_ENUM.gymInfo,
-  SIGNUP_STEP_ENUM.success,
-];
+import { handleGymInfoSubmit } from "./handlers/handleGymInfoSubmit";
+import { handleManagerInfoSubmit } from "./handlers/handleManagerInfoSubmit";
+import { handleBack } from "./handlers/handleBack";
+import { handleBackToLogin } from "./handlers/handleBackToLogin";
 
-const STEP_CONFIG = {
-  [SIGNUP_STEP_ENUM.managerInfo]: { label: "اطلاعات مدیر", index: 0},
-  [SIGNUP_STEP_ENUM.gymInfo]: { label: "اطلاعات باشگاه", index: 1 },
-  [SIGNUP_STEP_ENUM.success]: { label: "موفقیت", index: 2 },
+const EMPTY_MANAGER_INFO: ManagerInfo = {
+  fullName: "",
+  phone: "",
+  pass: "",
+  confirmPass: "",
+};
+
+const EMPTY_GYM_INFO: GymInfo = {
+  name: "",
+  phone: "",
+  address: "",
+  type: "",
 };
 
 export default function SignupPage() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
-  const [gymData, setGymData] = useState<{
-    name: string;
-    phone: string;
-    address: string;
-    type: string;
-  } | null>(null);
-  const [managerData, setManagerData] = useState<{
-     fullName: string;
-  phone: string;
-  pass: string;
-  confirmPass:string
-  } | null>(null);
-
-  const handleGymInfoSubmit = (data: {
-    name: string;
-    phone: string;
-    address: string;
-    type: string;
-  }) => {
-    console.log("Gym info submitted:", data);
-    // TODO: Backend needed - API call here
-    // await signupGymApi(data);
-    setGymData(data);
-    setCompletedSteps((prev) => new Set([...prev, SIGNUP_STEP_ENUM.gymInfo]));
-    setCurrentStep(2);
-  };
-
-  const handleManagerInfoSubmit = (data: {
-     fullName: string;
-  phone: string;
-  pass: string;
-  confirmPass:string
-  }) => {
-    console.log("Manager info submitted:", data);
-    // TODO: Backend needed - API call here
-    // await signupManagerApi(data);
-    setManagerData(data);
-    setCompletedSteps((prev) => new Set([...prev, SIGNUP_STEP_ENUM.managerInfo]));
-    setCurrentStep(1);
-  };
-  const navigate =useNavigate()
-  
-const handleBacktoLogin=()=>{
-  navigate('/')
-}
-  const handleBack = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const steps = SIGNUP_STEPS.map((step) => ({
-    key: step,
-    label: STEP_CONFIG[step].label,
-  }));
+  const [completedSteps, setCompletedSteps] = useState<Set<SIGNUP_STEP>>(
+    new Set()
+  );
+  const [gymData, setGymData] = useState<GymInfo | null>(null);
+  const [managerData, setManagerData] = useState<ManagerInfo | null>(null);
+  const navigate = useNavigate();
 
   const renderStepContent = () => {
     switch (SIGNUP_STEPS[currentStep]) {
       case SIGNUP_STEP_ENUM.managerInfo:
-        return <ManagerInfoStep onBack={handleBacktoLogin} onSubmit={handleManagerInfoSubmit} />;
-        case SIGNUP_STEP_ENUM.gymInfo:
-        return <GymInfoStep onBack={handleBack} onSubmit={handleGymInfoSubmit} />;
+        return (
+          <ManagerInfoStep
+            initialValues={managerData ?? EMPTY_MANAGER_INFO}
+            onBack={() => handleBackToLogin({ navigate })}
+            onSubmit={(data) =>
+              handleManagerInfoSubmit({
+                data,
+                setManagerData,
+                setCompletedSteps,
+                setCurrentStep,
+              })
+            }
+          />
+        );
+      case SIGNUP_STEP_ENUM.gymInfo:
+        return (
+          <GymInfoStep
+            initialValues={gymData ?? EMPTY_GYM_INFO}
+            onBack={() => handleBack({ currentStep, setCurrentStep })}
+            onSubmit={(data) =>
+              handleGymInfoSubmit({
+                data,
+                setGymData,
+                setCompletedSteps,
+                setCurrentStep,
+              })
+            }
+          />
+        );
       case SIGNUP_STEP_ENUM.success:
         return <SignupSuccessStep gymData={gymData} managerData={managerData} />;
       default:
@@ -99,7 +85,7 @@ const handleBacktoLogin=()=>{
     <div className={Classes.signupPage}>
       <div className={Classes.container}>
         <Stepper
-          steps={steps}
+          steps={STEPPER_STEPS}
           currentStep={currentStep}
           completedSteps={completedSteps}
         />
@@ -107,9 +93,6 @@ const handleBacktoLogin=()=>{
         <div className={Classes.content}>
           {renderStepContent()}
         </div>
-
-       
-          
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 import { Button } from "../../../shared/ui/atoms/button/button";
 import { Input } from "../../../shared/ui/atoms/input/input";
@@ -7,7 +7,6 @@ import { INPUT_SIZE_ENUM } from "../../../shared/ui/atoms/input/enums/inputSize"
 import { BUTTON_VARIANT_ENUM } from "../../../shared/ui/atoms/button/enum/buttonVarient";
 import { BUTTON_ENUMS_SIZE } from "../../../shared/ui/atoms/button/enum/buttonSize";
 
-import { handlePhoneLoginSubmit } from "../handlers/handlePhoneLoginSubmit";
 import type { PhoneLoginModalProps } from "../interfaces/phoneLoginModalProps.interface";
 
 import Classes from "../style/home.module.css";
@@ -15,18 +14,18 @@ import Classes from "../style/home.module.css";
 export default function PhoneLoginModal({
   onSubmit,
 }: PhoneLoginModalProps) {
-  const phoneRef = useRef<HTMLInputElement>(null);
+  const [phone, setPhone] = useState("");
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!phone) return;
+    onSubmit(phone);
+  };
 
   return (
     <form
       className={Classes.phoneContent}
-      onSubmit={(event) =>
-        handlePhoneLoginSubmit(
-          event,
-          phoneRef,
-          onSubmit
-        )
-      }
+      onSubmit={handleSubmit}
     >
       <h3 className={Classes.modalTitle}>
         Enter your phone number
@@ -38,7 +37,8 @@ export default function PhoneLoginModal({
         pattern="09[0-9]{9}"
         size={INPUT_SIZE_ENUM.small}
         placeholder="09xxxxxxxxx"
-        ref={phoneRef}
+        value={phone}
+        onChange={setPhone}
         errorMsg="شماره تلفن وارد شده نادرست است"
         required
       />

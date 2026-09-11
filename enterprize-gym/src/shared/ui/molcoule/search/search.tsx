@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Input } from "../../atoms/input/input";
 import { Spinner } from "../../atoms/spiner/spinner";
 
@@ -11,25 +13,12 @@ import type SEARCH_PROPS_INTERFACE from "./interfaces/searchInterfaces";
  *
  * A reusable molecular search field built on top of the Input atom.
  *
- * Uncontrolled — the DOM owns the value. Pass `defaultValue` for the initial
- * text and read the current query through `ref` (ref.current.value) inside
- * onSearch. No state hooks are used.
+ * Controlled — the query lives in local state here and is pushed to the
+ * parent through `onChange`. `value` seeds the initial text.
  *
  * Behavior:
- * - Enter key or button click calls onSearch.
+ * - Enter key or button click calls onSearch(query).
  * - While loading, a spinner replaces the icon.
- *
- * Example:
- *
- * const searchRef = useRef<HTMLInputElement>(null);
- *
- * <Search
- *   ref={searchRef}
- *   mode="success"
- *   size="medium"
- *   placeholder="Search members..."
- *   onSearch={() => runSearch(searchRef.current?.value ?? "")}
- * />
  */
 
 export const Search = ({
@@ -38,29 +27,34 @@ export const Search = ({
   placeholder,
   disabled,
   loading,
-  defaultValue,
-  ref,
+  value,
+  onChange,
   onSearch,
 }: SEARCH_PROPS_INTERFACE) => {
+  const [query, setQuery] = useState(value ?? "");
+
   return (
     <div
       className={Classes.container}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
-          onSearch?.();
+          onSearch?.(query);
         }
       }}
     >
-      <Input 
-      // className="rounded-[52px]"
-      title="search"
-        ref={ref}
+      <Input
+        title="search"
         type="text"
         mode={mode}
         size={size}
         placeholder={placeholder}
         disabled={disabled}
-        defaultValue={defaultValue}
+        value={query}
+        onChange={(next) => {
+          setQuery(next);
+          onChange?.(next);
+        }}
+        errorMsg=""
       />
 
       <button
@@ -68,17 +62,17 @@ export const Search = ({
         className={Classes.button}
         aria-label="Search"
         disabled={disabled}
-        onClick={onSearch}
+        onClick={() => onSearch?.(query)}
       >
         {loading ? (
           <Spinner size={size} />
         ) : (
           <img
-    src={SearchIcon}
-    alt="search icon"
-    aria-hidden="true"
-    className={Classes.icon}
-/>
+            src={SearchIcon}
+            alt="search icon"
+            aria-hidden="true"
+            className={Classes.icon}
+          />
         )}
       </button>
     </div>

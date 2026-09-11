@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
-import Classes from "./Countdown.module.css";
+// ⛔ کامنت شده: import های اصلی غیرفعال شده
+// import { useEffect, useRef } from "react";
+// import Classes from "./Countdown.module.css";
 
 interface CountdownProps {
   expiresIn: number;
@@ -7,39 +8,45 @@ interface CountdownProps {
   label?: string;
 }
 
-export default function Countdown({ expiresIn, onExpire, label = "کد تا" }: CountdownProps) {
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const remainingRef = useRef(expiresIn);
-  const elementRef = useRef<HTMLDivElement>(null);
+// ⛔ کامنت شده: لاجیک countdown غیرفعال شده تا مشکلی پیش نیاد
+// export default function Countdown({ expiresIn, onExpire, label = "کد تا" }: CountdownProps) {
+//   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+//   const remainingRef = useRef(expiresIn);
+//   const elementRef = useRef<HTMLDivElement>(null);
 
-  const updateDisplay = () => {
-    if (!elementRef.current) return;
-    const minutes = Math.floor(remainingRef.current / 60);
-    const seconds = remainingRef.current % 60;
-    const formatted = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-    elementRef.current.textContent = `${label} ${formatted}`;
-  };
+//   const updateDisplay = () => {
+//     if (!elementRef.current) return;
+//     const minutes = Math.floor(remainingRef.current / 60);
+//     const seconds = remainingRef.current % 60;
+//     const formatted = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+//     elementRef.current.textContent = `${label} ${formatted}`;
+//   };
 
-  useEffect(() => {
-    remainingRef.current = expiresIn;
-    updateDisplay();
+//   useEffect(() => {
+//     remainingRef.current = expiresIn;
+//     updateDisplay();
 
-    if (timerRef.current) clearInterval(timerRef.current);
+//     if (timerRef.current) clearInterval(timerRef.current);
 
-    timerRef.current = setInterval(() => {
-      remainingRef.current -= 1;
-      if (remainingRef.current <= 0) {
-        clearInterval(timerRef.current!);
-        onExpire();
-        return;
-      }
-      updateDisplay();
-    }, 1000);
+//     timerRef.current = setInterval(() => {
+//       remainingRef.current -= 1;
+//       if (remainingRef.current <= 0) {
+//         clearInterval(timerRef.current!);
+//         onExpire();
+//         return;
+//       }
+//       updateDisplay();
+//     }, 1000);
 
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [expiresIn, onExpire, label]);
+//     return () => {
+//       if (timerRef.current) clearInterval(timerRef.current);
+//     };
+//   }, [expiresIn, onExpire, label]);
 
-  return <div className={Classes.countdown} ref={elementRef} />;
+//   return <div className={Classes.countdown} ref={elementRef} />;
+// }
+
+// جایگزین موقت: کامپوننت خالی که ارور نده
+export default function Countdown(_props: CountdownProps) {
+  return null;
 }

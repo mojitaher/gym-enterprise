@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 import { Button } from "../../../shared/ui/atoms/button/button";
 import { Input } from "../../../shared/ui/atoms/input/input";
@@ -23,13 +23,11 @@ export default function ManagerLoginForm({
   isLoading = false,
   error = null,
 }: ManagerLoginFormProps) {
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const username = usernameRef.current?.value ?? "";
-    const password = passwordRef.current?.value ?? "";
     onSubmit(username, password);
   };
 
@@ -52,7 +50,8 @@ export default function ManagerLoginForm({
         type="text"
         size={INPUT_SIZE_ENUM.small}
         placeholder="نام کاربری"
-        ref={usernameRef}
+        value={username}
+        onChange={setUsername}
         errorMsg="نام کاربری را وارد کنید"
         required
       />
@@ -61,7 +60,8 @@ export default function ManagerLoginForm({
         type="password"
         size={INPUT_SIZE_ENUM.small}
         placeholder="رمز عبور"
-        ref={passwordRef}
+        value={password}
+        onChange={setPassword}
         errorMsg="رمز عبور را وارد کنید"
         required
       />

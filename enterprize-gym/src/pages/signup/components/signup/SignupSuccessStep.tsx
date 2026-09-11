@@ -17,6 +17,9 @@ export default function SignupSuccessStep({
       <h3 className={Classes.successTitle}>
         ثبت نام با موفقیت انجام شد
       </h3>
+      <h5 className={Classes.subSuccessTitle}>
+       کارت عالی بود
+      </h5>
 
       {gymData && (
         <div className={Classes.infoCard}>

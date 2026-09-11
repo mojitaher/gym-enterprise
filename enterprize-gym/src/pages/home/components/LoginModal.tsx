@@ -18,13 +18,15 @@ export default function LoginModal() {
   );
 
   const [phone, setPhone] = useState("");
-  const [expiresIn, setExpiresIn] = useState(120);
+  // ⛔ کامنت شده: expiresIn غیرفعال شده
+  // const [expiresIn, setExpiresIn] = useState(120);
 
   const sendPhoneCode = useMutation({
     mutationFn: sendPhoneCodeApi,
 
-    onSuccess: (data) => {
-      setExpiresIn(data.data?.expiresIn ?? 120);
+    onSuccess: (_data) => {
+      // ⛔ کامنت شده: setExpiresIn غیرفعال شده
+      // setExpiresIn(data.data?.expiresIn ?? 120);
       setStep(USER_AUTH_STEP_ENUM.verify);
     },
 
@@ -75,7 +77,7 @@ export default function LoginModal() {
   // Verify code flow
   return (
     <VerifyModal
-      expiresIn={expiresIn}
+      expiresIn={0}
       onBack={handleBack}
       isVerifying={verifyCode.isPending}
       onSubmit={handleVerifySubmit}

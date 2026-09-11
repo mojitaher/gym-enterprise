@@ -4,34 +4,10 @@ import { INPUT_MODE_STYLE } from "./constant/inputModeConstant";
 import type INPUT_PROPS_INTERFACE from "./interfaces/inputInterface";
 
 /**
- * Input Component
+ * Input Component - Controlled
  *
- * A reusable atomic input component used to collect user input.
- *
- * Uncontrolled — the DOM owns the value. Pass `defaultValue` for the initial
- * value and read the current value through `ref` (ref.current.value) when you
- * need it, instead of tracking every keystroke in state.
- *
- * Supports:
- * - mode (success, warn, error)
- * - size (small, medium, large)
- * - disabled state
- * - placeholder
- * - defaultValue (uncontrolled initial value)
- * - ref to the underlying <input>
- *
- * Example:
- *
- * const inputRef = useRef<HTMLInputElement>(null);
- *
- * <Input
- *   ref={inputRef}
- *   type="text"
- *   mode="success"
- *   size="medium"
- *   placeholder="Username"
- *   defaultValue=""
- * />
+ * value و onChange از بیرون کنترل میشه.
+ * اگر state داخل والد باشه، ریرندر فقط همون کامپوننت رو تحت تاثیر قرار میده.
  */
 
 export const Input = ({
@@ -41,48 +17,43 @@ export const Input = ({
   size,
   placeholder,
   disabled,
-  defaultValue,
-  ref,
+  value,
+  onChange,
   className,
   pattern,
   inputMode,
   errorMsg,
-  required
+  required,
 }: INPUT_PROPS_INTERFACE) => {
   return (
     <div className={Classes.wrapper}>
-    <p className={clsx(Classes.title)}>
-      {title}
-      </p>
+      <p className={clsx(Classes.title)}>{title}</p>
 
-    <input
-      aria-label={type}
-      ref={ref}
-   inputMode={inputMode}
-      pattern={pattern}
-      className={clsx(
-        Classes.input,
-        mode && INPUT_MODE_STYLE[mode],
-        Classes[size],
-        className
-      )}
-      required={required}
-      type={type}
-      placeholder={placeholder}
-      disabled={disabled}
-      defaultValue={defaultValue}
-      onInvalid={(event) => {
-  event.currentTarget.classList.add(Classes.warn);
-  console.log('warn')
-
-  event.currentTarget.setCustomValidity(errorMsg);
-}}
-  onInput={(event) => {
-  event.currentTarget.classList.remove(Classes.warn);
-  event.currentTarget.setCustomValidity("");
-}}
-    />
-
+      <input
+        aria-label={type}
+        inputMode={inputMode}
+        pattern={pattern}
+        className={clsx(
+          Classes.input,
+          mode && INPUT_MODE_STYLE[mode],
+          Classes[size],
+          className
+        )}
+        required={required}
+        type={type}
+        placeholder={placeholder}
+        disabled={disabled}
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
+        onInvalid={(event) => {
+          event.currentTarget.classList.add(Classes.warn);
+          event.currentTarget.setCustomValidity(errorMsg);
+        }}
+        onInput={(event) => {
+          event.currentTarget.classList.remove(Classes.warn);
+          event.currentTarget.setCustomValidity("");
+        }}
+      />
     </div>
   );
 };
