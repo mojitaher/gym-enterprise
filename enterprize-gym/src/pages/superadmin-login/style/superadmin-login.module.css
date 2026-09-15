@@ -1,0 +1,83 @@
+/* ================================================
+   SuperAdmin Login Page
+   ================================================ */
+
+.loginPage {
+  @apply min-h-screen flex items-center justify-center p-6;
+  background: url("/images/signupBg.png") right center / auto 100% no-repeat;
+  background-color: #0b141c;
+}
+
+.container {
+  @apply w-full max-w-3xl bg-[#0B141C] rounded-2xl p-8;
+}
+
+@media (max-width: 768px) {
+  .container {
+    @apply bg-transparent p-4;
+  }
+}
+
+.content {
+  @apply mt-8;
+}
+
+.buttonWrapper {
+  @apply mt-[20px] gap-10 flex flex-row mx-auto;
+}
+
+@media (max-width: 480px) {
+  .buttonWrapper {
+    @apply flex-col items-center w-full;
+  }
+
+  .container {
+    @apply p-4;
+  }
+}
+
+.backButton {
+  @apply w-[108px];
+}
+
+/* Form Styles */
+.stepHeader {
+  @apply mb-8;
+}
+
+.stepTitle {
+  @apply text-2xl font-bold text-white mb-2;
+  font-family: Inter, sans-serif;
+}
+
+.stepSubtitle {
+  @apply text-sm text-[#7997B5];
+  font-family: Inter, sans-serif;
+}
+
+.formGrid {
+  @apply grid grid-cols-2 gap-4 w-full;
+}
+
+@media (max-width: 768px) {
+  .formGrid {
+    @apply grid-cols-1;
+  }
+}
+
+.formGroup {
+  @apply flex flex-col gap-1;
+}
+
+.phoneContent {
+  @apply flex flex-col gap-[10px] w-full;
+}
+
+.submitButton {
+  @apply w-[108px];
+}
+
+.errorText {
+  @apply text-sm text-red-500 mt-1;
+  font-family: Inter, sans-serif;
+}

@@ -6,13 +6,16 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import PortalProvider from './shared/ui/organisms/portalManager/portalProvider.tsx'
 import { queryClient } from './lib/queryClient'
+import OfflineGuard from './shared/components/OfflineGuard'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <PortalProvider>
-          <App />
+          <OfflineGuard>
+            <App />
+          </OfflineGuard>
         </PortalProvider>
       </BrowserRouter>
     </QueryClientProvider>

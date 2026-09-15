@@ -68,7 +68,12 @@ export default function HomePage() {
           </Button>
         </div>
 
-        <p className={Classes.adminLink}>Administrator Login</p>
+        <p
+          className={Classes.adminLink}
+          onClick={() => navigate("/superadmin-login")}
+        >
+          Administrator Login
+        </p>
       </div>
     </div>
   );

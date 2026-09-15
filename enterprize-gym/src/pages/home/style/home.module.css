@@ -12,6 +12,13 @@
   background-image: url("/images/homeBg.png");
 }
 
+@media (max-width: 768px) {
+  .bgImage {
+    background-size: auto 120%;
+    background-position: right center;
+  }
+}
+
 .layeredBg {
   @apply absolute top-0 right-0 w-full h-full bg-no-repeat bg-contain z-[2] pointer-events-none;
   background-image: url("/images/layerdbg.svg");
@@ -35,6 +42,35 @@
 
 .actions {
   @apply flex gap-15;
+}
+
+/* ========================= */
+/* Responsive: Mobile        */
+/* ========================= */
+@media (max-width: 768px) {
+  .bgImage {
+    @apply -left-30 bg-cover;
+  }
+
+  .layeredBg {
+    @apply opacity-30;
+  }
+
+  .content {
+    @apply items-end justify-center pl-6 pr-6 text-right;
+  }
+
+  .title {
+    @apply text-[36px] text-right;
+  }
+
+  .description {
+    @apply text-right max-w-[90%] mb-8;
+  }
+
+  .actions {
+    @apply flex-col items-end gap-4 w-full;
+  }
 }
 
 .roleContent {
