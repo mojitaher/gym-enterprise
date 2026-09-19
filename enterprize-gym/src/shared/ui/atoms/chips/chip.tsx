@@ -26,7 +26,6 @@ import type CHIP_PROPS_INTERFACE from "./interfaces/chipPropsInterface";
  */
 
 export const Chip = ({
-  // size,
   icon,
   className,
   children,
@@ -35,7 +34,6 @@ export const Chip = ({
     <span
       className={clsx(
         Classes.chip,
-        // Classes[size],
         className
       )}
     >

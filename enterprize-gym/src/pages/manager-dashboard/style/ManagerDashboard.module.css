@@ -1,0 +1,235 @@
+/* Manager Dashboard Styles */
+
+/* Page Container */
+.pageContainer {
+  @apply w-full;
+}
+
+/* Header */
+.header {
+  @apply flex items-center justify-between w-full mb-6;
+}
+
+.headerTitle {
+  @apply text-lg font-bold text-white;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  @apply flex flex-col gap-3;
+}
+
+.sidebarItem {
+  @apply text-white text-sm cursor-pointer px-3 py-2 rounded-lg transition-all duration-200;
+}
+
+.sidebarItem:hover {
+  @apply bg-[#1E2A38];
+}
+
+.sidebarItemActive {
+  @apply bg-[#2563EB] text-white;
+}
+
+/* Tab Navigation */
+.tabsContainer {
+  @apply flex gap-2 mb-6 flex-wrap;
+}
+
+.tabButton {
+  @apply px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer;
+}
+
+.tabButtonInactive {
+  @apply bg-[#1E2A38] text-[#7997B5] hover:bg-[#2A3A4D];
+}
+
+.tabButtonActive {
+  @apply bg-[#2563EB] text-white;
+}
+
+/* Component Container */
+.componentContainer {
+  @apply p-4 rounded-xl bg-[#0B141C];
+}
+
+/* Analytics Styles */
+.analyticsGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+.analyticsCard {
+  @apply p-4 rounded-xl bg-[#1E2A38] border border-[#2A3A4D];
+}
+
+.analyticsValue {
+  @apply text-2xl font-bold text-white;
+}
+
+.analyticsLabel {
+  @apply text-sm text-[#7997B5] mt-1;
+}
+
+/* Gyms Styles */
+.gymsTable {
+  @apply w-full;
+}
+
+.gymRow {
+  @apply flex items-center justify-between p-4 border-b border-[#2A3A4D];
+}
+
+.gymInfo {
+  @apply flex flex-col gap-1;
+}
+
+.gymName {
+  @apply text-white font-medium;
+}
+
+.gymAddress {
+  @apply text-sm text-[#7997B5];
+}
+
+/* Subscriptions Styles */
+.subscriptionsGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.subscriptionCard {
+  @apply p-4 rounded-xl bg-[#1E2A38] border border-[#2A3A4D];
+}
+
+.subscriptionHeader {
+  @apply flex justify-between items-center mb-3;
+}
+
+.subscriptionTitle {
+  @apply text-white font-semibold;
+}
+
+.subscriptionPrice {
+  @apply text-xl font-bold text-[#10B981];
+}
+
+.subscriptionStatus {
+  @apply text-xs px-2 py-1 rounded-full;
+}
+
+.subscriptionStatusActive {
+  @apply bg-[#10B981]/20 text-[#10B981];
+}
+
+.subscriptionStatusExpired {
+  @apply bg-[#EF4444]/20 text-[#EF4444];
+}
+
+/* Reports Styles */
+.reportsList {
+  @apply flex flex-col gap-3;
+}
+
+.reportItem {
+  @apply p-4 rounded-xl bg-[#1E2A38] border border-[#2A3A4D] flex justify-between items-center;
+}
+
+.reportTitle {
+  @apply text-white font-medium;
+}
+
+.reportDate {
+  @apply text-sm text-[#7997B5];
+}
+
+.reportActions {
+  @apply flex gap-2;
+}
+
+/* Suspends Styles */
+.suspendsList {
+  @apply flex flex-col gap-3;
+}
+
+.suspendItem {
+  @apply p-4 rounded-xl bg-[#1E2A38] border border-[#2A3A4D];
+}
+
+.suspendUser {
+  @apply text-white font-medium mb-2;
+}
+
+.suspendReason {
+  @apply text-sm text-[#7997B5] mb-3;
+}
+
+.suspendActions {
+  @apply flex gap-2;
+}
+
+/* Action Buttons */
+.actionButton {
+  @apply px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-all duration-200;
+}
+
+.actionButtonPrimary {
+  @apply bg-[#2563EB] text-white hover:bg-[#1D4ED8];
+}
+
+.actionButtonDanger {
+  @apply bg-[#EF4444] text-white hover:bg-[#DC2626];
+}
+
+.actionButtonSuccess {
+  @apply bg-[#10B981] text-white hover:bg-[#059669];
+}
+
+/* Empty State */
+.emptyState {
+  @apply flex flex-col items-center justify-center py-12 text-center;
+}
+
+.emptyStateIcon {
+  @apply text-4xl text-[#7997B5] mb-4;
+}
+
+.emptyStateText {
+  @apply text-[#7997B5];
+}
+
+/* Stats Cards */
+.statsGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6;
+}
+
+.statCard {
+  @apply p-5 rounded-xl bg-[#1E2A38] border border-[#2A3A4D];
+}
+
+.statIcon {
+  @apply text-2xl mb-2;
+}
+
+.statValue {
+  @apply text-3xl font-bold text-white;
+}
+
+.statLabel {
+  @apply text-sm text-[#7997B5] mt-1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .analyticsGrid,
+  .subscriptionsGrid,
+  .statsGrid {
+    @apply grid-cols-1;
+  }
+
+  .tabsContainer {
+    @apply overflow-x-auto flex-nowrap pb-2;
+  }
+
+  .tabButton {
+    @apply px-3 py-2 text-xs;
+  }
+}

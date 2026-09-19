@@ -1,7 +1,7 @@
 
 
 import type { DASHBOARD_PROPS_INTERFACE } from "./interfaces/dashbordProps.interface";
-import Classes from "./styles/Dashboard.module.css";
+import Classes from "./style/Dashboard.module.css";
 
 
 export default function Dashboard({

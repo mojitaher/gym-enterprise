@@ -1,0 +1,35 @@
+/* Coach Dashboard Styles */
+
+.header {
+  @apply flex items-center justify-between w-full mb-6;
+}
+
+.headerTitle {
+  @apply text-lg font-bold text-white;
+}
+
+.sidebar {
+  @apply flex flex-col gap-3;
+}
+
+.sidebarItem {
+  @apply text-white text-sm cursor-pointer px-3 py-2 rounded-lg transition-all duration-200 text-right;
+}
+
+.sidebarItem:hover {
+  @apply bg-[#1E2A38];
+}
+
+.sidebarItemActive {
+  @apply bg-[#2563EB] text-white;
+}
+
+.componentContainer {
+  @apply p-4 rounded-xl;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    @apply gap-2;
+  }
+}

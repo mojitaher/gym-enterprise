@@ -1,7 +1,61 @@
-.container {
+/* ================================================
+   Dashboard Layout (Abstract)
+   ================================================ */
 
-    width: 100%;
+.layout {
+  @apply flex min-h-screen;
+  background-color: #0b141c;
+}
 
-    min-height: 100vh;
+/* Sidebar */
+.sidebar {
+  @apply w-64 min-h-screen p-4;
+  background-color: #0e1a27;
+}
 
+/* Main area */
+.main {
+  @apply flex flex-col flex-1 min-h-screen;
+}
+
+/* Header */
+.header {
+  @apply flex items-center justify-between px-6 py-4;
+  background-color: #0e1a27;
+  border-bottom: 1px solid #1a2a3a;
+}
+
+/* Body: content + widgets */
+.body {
+  @apply flex flex-1 p-6 gap-6;
+}
+
+/* Main content */
+.content {
+  @apply flex-1;
+}
+
+/* Widgets (optional side panel) */
+.widgets {
+  @apply w-80;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    @apply w-20 p-2;
+  }
+
+  .widgets {
+    @apply hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    @apply hidden;
+  }
+
+  .body {
+    @apply p-4;
+  }
 }

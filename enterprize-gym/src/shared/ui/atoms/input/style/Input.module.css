@@ -33,7 +33,7 @@
 }
 
 .input:focus {
-    border-color: #8b5cf6;
+    border-color: #7997B5;
     box-shadow: 0 0 0 0.1875rem rgba(138, 92, 246, 0.575);
 }
 
@@ -58,7 +58,7 @@
 }
 
 .success {
-    border-color: #22c55e;
+    border-color: #85E4B8;
 }
 
 .success:focus {
@@ -73,7 +73,7 @@
 }
 
 .error {
-    @apply border-2 border-[#ef4444];
+    @apply border-2 border-[#F2A4B3];
 }
 
 .error:focus {
@@ -81,6 +81,7 @@
 }
 
 .input:disabled {
+    border-color:#49627B ;
     opacity: .6;
     cursor: not-allowed;
 }
