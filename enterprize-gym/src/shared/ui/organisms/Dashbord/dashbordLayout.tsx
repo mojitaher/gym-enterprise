@@ -9,15 +9,29 @@ export default function DashboardLayout({
 }: DASHBOARD_LAYOUT_PROPS_INTERFACE) {
   return (
     <div className={Classes.layout}>
-      {sidebar && <aside className={Classes.sidebar}>{sidebar}</aside>}
-
       <div className={Classes.main}>
-        {header && <header className={Classes.header}>{header}</header>}
+        {header && (
+          <header className={Classes.header}>
+            {header}
+          </header>
+        )}
+
+        {sidebar && (
+          <nav className={Classes.sidebar}>
+            {sidebar}
+          </nav>
+        )}
 
         <div className={Classes.body}>
-          <div className={Classes.content}>{children}</div>
+          <div className={Classes.content}>
+            {children}
+          </div>
 
-          {widgets && <aside className={Classes.widgets}>{widgets}</aside>}
+          {widgets && (
+            <aside className={Classes.widgets}>
+              {widgets}
+            </aside>
+          )}
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Classes from "./styles/Chip.module.css";
 
 import type CHIP_PROPS_INTERFACE from "./interfaces/chipPropsInterface";
+import { CHIPS_ICON_CONSTANT } from "./constant/ChipsIconConstant";
 
 /**
  * Navigation Chip Component
@@ -26,18 +27,23 @@ import type CHIP_PROPS_INTERFACE from "./interfaces/chipPropsInterface";
  */
 
 export const Chip = ({
-  icon,
+  iconName,
   className,
   children,
+  onClick,
 }: CHIP_PROPS_INTERFACE) => {
   return (
     <span
       className={clsx(
         Classes.chip,
-        className
+        className,
+        onClick && Classes.clickable
       )}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
     >
-      {icon && <span className={Classes.iconWrapper}>{icon}</span>}
+      <img className={Classes.iconWrapper} src={CHIPS_ICON_CONSTANT[iconName]} alt={iconName} />
       {children}
     </span>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DashboardLayout from "../../shared/ui/organisms/Dashbord/dashbordLayout";
+import { Chip } from "../../shared/ui/atoms/chips/chip";
 import { MANAGER_DASHBOARD_COMPONENT_ENUM } from "./enums/ManagerDashboardComponentEnum";
 import { MANAGER_DASHBOARD_COMPONENTS } from "./constants/ManagerDashboardConstant";
 import Classes from "./style/ManagerDashboard.module.css";
@@ -19,17 +20,15 @@ export default function ManagerDashboard() {
         </div>
       }
       sidebar={
-        <nav className={Classes.sidebar}>
+        <nav className={Classes.chipContainer}>
           {Object.keys(MANAGER_DASHBOARD_COMPONENTS).map((key) => (
-            <button
+            <Chip
               key={key}
               onClick={() => setActiveTab(key as MANAGER_DASHBOARD_COMPONENT_ENUM)}
-              className={`${Classes.sidebarItem} ${
-                activeTab === key ? Classes.sidebarItemActive : ""
-              }`}
+              className={activeTab === key ? Classes.chipActive : Classes.chipInactive}
             >
               {String(key)}
-            </button>
+            </Chip>
           ))}
         </nav>
       }

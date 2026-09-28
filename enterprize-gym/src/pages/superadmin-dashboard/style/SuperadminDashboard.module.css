@@ -20,8 +20,21 @@
   @apply bg-[#1E2A38];
 }
 
-.sidebarItemActive {
+/* .sidebarItemActive {
   @apply bg-[#2563EB] text-white;
+} */
+
+/* Chips Horizontal */
+.chipContainer {
+  @apply flex flex-wrap gap-2;
+}
+
+.chipInactive {
+  @apply bg-[#1E2A38] text-[#7997B5];
+}
+
+.chipActive {
+  @apply bg-[#49627B80] text-white;
 }
 
 .componentContainer {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DashboardLayout from "../../shared/ui/organisms/Dashbord/dashbordLayout";
+import { Chip } from "../../shared/ui/atoms/chips/chip";
 import { TRAINEE_DASHBOARD_COMPONENT_ENUM } from "./enums/TraineeDashboardComponentEnum";
 import { TRAINEE_DASHBOARD_COMPONENTS } from "./constants/TraineeDashboardConstant";
 import Classes from "./style/TraineeDashboard.module.css";
@@ -19,17 +20,15 @@ export default function TraineeDashboard() {
         </div>
       }
       sidebar={
-        <nav className={Classes.sidebar}>
+        <nav className={Classes.chipContainer}>
           {Object.keys(TRAINEE_DASHBOARD_COMPONENTS).map((key) => (
-            <button
+            <Chip
               key={key}
               onClick={() => setActiveTab(key as TRAINEE_DASHBOARD_COMPONENT_ENUM)}
-              className={`${Classes.sidebarItem} ${
-                activeTab === key ? Classes.sidebarItemActive : ""
-              }`}
+              className={activeTab === key ? Classes.chipActive : Classes.chipInactive}
             >
-              {key}
-            </button>
+              {String(key)}
+            </Chip>
           ))}
         </nav>
       }

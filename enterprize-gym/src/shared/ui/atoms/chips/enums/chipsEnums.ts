@@ -1,8 +1,8 @@
-export enum SUPERADMIN_DASHBOARD_COMPONENT_ENUM {
-   GYM='gym',
+export enum CHIPS_ENUMS{
+    GYM='gym',
     ANALYTICS='Analytics',
     SUBSCRIPTION='Subscriptions',
     REPORTS='reports',
     SUSPENDS='Suspends'
+
 }
-  
