@@ -1,6 +1,7 @@
 .container {
     position: relative;
     display: inline-block;
+    width: 100%;
 
     /*
      * Single source of truth for the input's height.
@@ -9,6 +10,9 @@
      * size never breaks the icon alignment — you only update one number here.
      */
     --input-height: 2.5rem; /* 40px */
+    --input-height: 2.5rem;
+        --button-width: 2rem;
+        --button-end: 0.75rem;
 }
 
 /*
@@ -16,7 +20,8 @@
  * icon, regardless of the input's width/size.
  */
 .container input {
-    padding-inline-end: 2.5rem;
+    text-align: right;
+    padding-inline-end:calc(var(--button-width) + var(--button-end) + 0.5rem);
     border-radius: 52px;
     border:none;
     background-color: #49627B;

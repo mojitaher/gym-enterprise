@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Input } from "../../atoms/input/input";
+import { SearchInput } from "./components/SearchInput";
 import { Spinner } from "../../atoms/spiner/spinner";
 
 import Classes from "./styles/Search.module.css";
@@ -23,7 +23,7 @@ import type SEARCH_PROPS_INTERFACE from "./interfaces/searchInterfaces";
 
 export const Search = ({
   mode,
-  size,
+  // size,
   placeholder,
   disabled,
   loading,
@@ -42,11 +42,9 @@ export const Search = ({
         }
       }}
     >
-      <Input
-        title="search"
+      <SearchInput
         type="text"
         mode={mode}
-        size={size}
         placeholder={placeholder}
         disabled={disabled}
         value={query}
@@ -65,7 +63,7 @@ export const Search = ({
         onClick={() => onSearch?.(query)}
       >
         {loading ? (
-          <Spinner size={size} />
+          <Spinner size="medium"/>
         ) : (
           <img
             src={SearchIcon}

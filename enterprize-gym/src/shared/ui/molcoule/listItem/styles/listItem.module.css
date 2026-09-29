@@ -4,19 +4,19 @@
    ================================================ */
 
 .listItem {
-    @apply w-92.5 h-15 flex items-center gap-2  rounded-[52px] border border-[#7997B5] bg-white px-4 py-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
+    @apply w-full h-15 flex items-center rounded-full gap-2 border border-[#7997B5] bg-white px-4 py-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
 }
 
 .user {
-    @apply flex flex-col min-w-0 flex-1;
+    @apply flex flex-col min-w-0 flex-1 ;
 }
 
 .username {
-    @apply text-slate-900 font-medium;
+    @apply text-[#F4F7F7] font-medium;
 }
 
 .secondaryInfo {
-    @apply text-slate-500 text-sm;
+    @apply text-[#c1c8c8] text-sm;
 }
 
 .accept {
@@ -24,9 +24,14 @@
 }
 
 .info {
-    @apply text-slate-500 text-sm;
+    @apply text-[#c1c8c8] text-sm;
 }
 
 .icon {
     @apply w-5 h-5 shrink-0;
+}
+@media (min-width: 402px) and (max-width: 768px) {
+    .info {
+        display: none;
+    }
 }

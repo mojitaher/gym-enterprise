@@ -8,7 +8,7 @@ export default interface INPUT_PROPS_INTERFACE {
 
   mode?: INPUT_TYPE_MODE;
 
-  size: INPUT_TYPE_SIZE;
+  size?: INPUT_TYPE_SIZE;
 
   placeholder?: string;
 

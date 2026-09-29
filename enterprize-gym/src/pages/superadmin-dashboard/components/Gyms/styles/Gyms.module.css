@@ -1,0 +1,77 @@
+
+.container {
+  @apply flex flex-col gap-8.5 p-6 w-full min-w-0 max-w-full ;
+}
+
+.title {
+  @apply text-2xl font-bold text-white m-0;
+}
+
+.searchContainer {
+  @apply w-full max-w-full;
+}
+
+.listContainer {
+  @apply flex flex-col gap-6 w-full max-w-full;
+}
+
+.listItem {
+  @apply bg-[#607C98] cursor-pointer ;
+}
+
+.listItem:hover {
+  @apply bg-[#49627B];
+}
+
+.emptyMessage {
+  @apply text-[#8b8b9a] text-center py-8 text-sm;
+}
+.Gymcontainer{
+  @apply bg-[#49627B80] rounded-2xl px-[1.438rem] py-4 my-8.5;
+}
+.gymHeader {
+   @apply flex items-center justify-between w-full;
+ }
+.gymTitle {
+  @apply text-base font-semibold text-[#F4F7F7];
+}
+.gymSubTitle{
+  @apply text-[#F4F7F7] text-xs font-normal;
+}
+ .gymInfo {
+   @apply flex items-center gap-2.5 mb-6;
+ }
+
+ .headerActions {
+   @apply flex items-center gap-5;
+ }
+
+ .backButton {
+   @apply flex items-center justify-center p-0 border-0 bg-transparent cursor-pointer;
+ }
+.infoItem {
+  @apply flex items-center gap-3 w-full;
+}
+.value{
+  @apply text-[#F4F7F7] font-normal text-sm;
+}
+ .gymDetails {
+   @apply flex flex-col gap-6 w-full ;
+ }
+
+ .infoGrid {
+   @apply flex flex-col gap-6 w-full;
+ }
+ .actionSection{
+  @apply mt-6 flex gap-4
+ }
+@media (min-width: 402px) and (max-width: 768px) {
+  .actionSection {
+    @apply flex flex-wrap gap-6;
+  }
+
+    .actionSection>* {
+      flex: 0 0 calc(50% - 12px);
+      min-width: 0;
+    }
+}
