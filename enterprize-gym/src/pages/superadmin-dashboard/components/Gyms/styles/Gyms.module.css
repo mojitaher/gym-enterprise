@@ -1,10 +1,10 @@
 
 .container {
-  @apply flex flex-col gap-8.5 p-6 w-full min-w-0 max-w-full ;
+  @apply flex flex-col gap-5 p-4 w-full min-w-0 max-w-full;
 }
 
 .title {
-  @apply text-2xl font-bold text-white m-0;
+  @apply text-xl font-bold text-white m-0;
 }
 
 .searchContainer {
@@ -12,7 +12,7 @@
 }
 
 .listContainer {
-  @apply flex flex-col gap-6 w-full max-w-full;
+  @apply flex flex-col gap-5 w-full max-w-full;
 }
 
 .listItem {
@@ -26,6 +26,27 @@
 .emptyMessage {
   @apply text-[#8b8b9a] text-center py-8 text-sm;
 }
+
+/* Mobile (< 640px) */
+@media (max-width: 639px) {
+  .listContainer {
+    @apply gap-5;
+  }
+
+  
+}
+
+/* Tablet (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .container {
+    @apply gap-6 p-5;
+  }
+
+  .title {
+    @apply text-xl;
+  }
+}
+
 .Gymcontainer{
   @apply bg-[#49627B80] rounded-2xl px-[1.438rem] py-4 my-8.5;
 }

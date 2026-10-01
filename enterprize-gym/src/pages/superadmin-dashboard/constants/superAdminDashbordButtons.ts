@@ -7,11 +7,7 @@ export const SUPERADMIN_DASHBOARD_SIDEBAR  = [
     label: "analytics",
     icon: CHIPS_ENUMS.ANALYTICS,
   },
-  {
-    key: SUPERADMIN_DASHBOARD_COMPONENT_ENUM.REPORTS,
-    label: "reports",
-    icon: CHIPS_ENUMS.REPORTS,
-  },
+  
   {
     key: SUPERADMIN_DASHBOARD_COMPONENT_ENUM.GYM,
     label: "gyms",
@@ -21,6 +17,11 @@ export const SUPERADMIN_DASHBOARD_SIDEBAR  = [
     key: SUPERADMIN_DASHBOARD_COMPONENT_ENUM.SUBSCRIPTION,
     label: "subscription",
     icon: CHIPS_ENUMS.SUBSCRIPTION,
+  },
+  {
+    key: SUPERADMIN_DASHBOARD_COMPONENT_ENUM.REPORTS,
+    label: "reports",
+    icon: CHIPS_ENUMS.REPORTS,
   },
   {
     key: SUPERADMIN_DASHBOARD_COMPONENT_ENUM.SUSPENDS,

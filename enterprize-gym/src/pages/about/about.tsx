@@ -16,7 +16,7 @@ export default function AboutPage() {
   const navigate=useNavigate()
 
   return (
-    <div className={Classes.aboutPage}>
+    <div className={Classes.aboutPage} dir="ltr">
       <div className={Classes.aboutBg} />
 
       <header className={Classes.header}>

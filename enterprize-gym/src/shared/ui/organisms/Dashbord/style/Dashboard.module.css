@@ -1,5 +1,5 @@
 .layout {
-  @apply min-h-screen w-full bg-[#0B141C] p-10;
+  @apply min-h-screen w-full bg-[#0B141C] p-10 overflow-hidden;
 }
 
 .main {

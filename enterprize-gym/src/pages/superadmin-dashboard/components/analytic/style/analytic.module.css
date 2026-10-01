@@ -1,0 +1,1494 @@
+.adminDashboard {
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns:
+        540px 540px;
+
+    column-gap: 40px;
+
+    align-items: start;
+
+    padding: 22px;
+
+    background: #0b141c;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ========================================================================== */
+/*                                COLUMNS                                     */
+/* ========================================================================== */
+
+.dashboardLeft,
+.dashboardRight {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+}
+
+
+/* ========================================================================== */
+/*                              USER GROWTH                                   */
+/* ========================================================================== */
+
+.userGrowth {
+    width: 100%;
+    height: 306px;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    padding: 32px 40px;
+
+    border-radius: 9px;
+
+    background: #00346b;
+
+    overflow: hidden;
+}
+
+.userGrowthTitle {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              BAR CHART                                     */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthChart {
+    position: absolute;
+
+    top: 80px;
+    left: 40px;
+    right: 40px;
+
+    width: auto;
+    height: 170px;
+
+    margin: 0;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Y AXIS                                    */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthYAxis {
+    width: 28px;
+    height: 133px;
+
+    flex: 0 0 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    color: #8eb5d9;
+
+    font-size: 8px;
+
+    line-height: 1;
+}
+
+.userGrowthYAxis span {
+    display: block;
+
+    height: 8px;
+
+    line-height: 8px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              CHART AREA                                    */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthChartArea {
+    width: 290px;
+    height: auto;
+
+    flex: 0 0 290px;
+
+    min-width: 290px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  SVG                                       */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthSvg {
+    width: 290px;
+    height: 133px;
+
+    display: block;
+
+    overflow: visible;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                            USER GROWTH ANIMATION                           */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthSvg rect {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+
+    animation:
+        userGrowthBarEntry 0.7s ease-out both;
+}
+
+.userGrowthSvg rect:nth-of-type(1) {
+    animation-delay: 0.05s;
+}
+
+.userGrowthSvg rect:nth-of-type(2) {
+    animation-delay: 0.12s;
+}
+
+.userGrowthSvg rect:nth-of-type(3) {
+    animation-delay: 0.19s;
+}
+
+.userGrowthSvg rect:nth-of-type(4) {
+    animation-delay: 0.26s;
+}
+
+.userGrowthSvg rect:nth-of-type(5) {
+    animation-delay: 0.33s;
+}
+
+.userGrowthSvg rect:nth-of-type(6) {
+    animation-delay: 0.40s;
+}
+
+@keyframes userGrowthBarEntry {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                MONTHS                                      */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthMonths {
+    width: 290px;
+    height: 8px;
+
+    margin-top: 4px;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    color: #a1c1dc;
+
+    font-size: 8px;
+
+    line-height: 8px;
+
+    text-align: center;
+}
+
+.userGrowthMonths span {
+    display: block;
+
+    width: 100%;
+}
+
+
+.chartGridLine {
+    stroke: #0b4a80;
+
+    stroke-width: 0.65;
+
+    stroke-dasharray: 1.5 1.5;
+
+    vector-effect: non-scaling-stroke;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                LEGEND                                      */
+/* -------------------------------------------------------------------------- */
+
+.userGrowthLegend {
+    position: absolute;
+
+    left: 40px;
+    right: 40px;
+    bottom: 32px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 13px;
+
+    margin: 0;
+}
+
+.userGrowthLegendItem {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #ffffff;
+
+    font-size: 8px;
+
+    line-height: 1;
+}
+
+.legendColor {
+    width: 8px;
+    height: 8px;
+
+    display: block;
+
+    box-sizing: border-box;
+}
+
+.legendGym {
+    background: #706ee7;
+
+    border: 1px solid #aaa8ff;
+}
+
+.legendTrainee {
+    background: #55c4ae;
+
+    border: 1px solid #83dfcf;
+}
+
+.legendCoach {
+    background: #55C4AE;
+
+    border: 1px solid #efaeb1;
+}
+
+
+/* ========================================================================== */
+/*                         GROWTH PERFORMANCE                                 */
+/* ========================================================================== */
+
+.growthPerformance {
+    width: 100%;
+    height: 570px;
+
+    box-sizing: border-box;
+
+    padding: 17px 16px 16px;
+
+    border-radius: 9px;
+
+    background: #00346b;
+
+    overflow: hidden;
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-direction: column;
+}
+
+
+.growthPerformanceTitle {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              GROWTH SECTIONS                               */
+/* -------------------------------------------------------------------------- */
+
+.growthSection {
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.growthSection+.growthSection {
+    margin-top: 16px;
+}
+
+
+.growthSection h3 {
+    margin:
+        0 0 8px 11px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              LINE CHART                                    */
+/* -------------------------------------------------------------------------- */
+
+.growthLineChart {
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: stretch;
+
+    box-sizing: border-box;
+}
+
+
+.growthYAxis {
+    width: 28px;
+
+    flex: 0 0 28px;
+
+    height: calc(100% - 15px);
+
+    margin-top: 4px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    color: #a3c3df;
+
+    font-size: 8px;
+
+    line-height: 8px;
+}
+
+
+.growthChartArea {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.growthSvg {
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: block;
+
+    overflow: visible;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              CHART GRID                                    */
+/* -------------------------------------------------------------------------- */
+
+.chartGridLine {
+    stroke: #3979aa;
+
+    stroke-width: 0.8;
+
+    stroke-dasharray: 2 2;
+
+    vector-effect: non-scaling-stroke;
+
+    opacity: 0.9;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              CHART LINES                                   */
+/* -------------------------------------------------------------------------- */
+
+.purpleLine,
+.greenLine,
+.coralLine {
+    fill: none;
+
+    stroke-width: 1.5;
+
+    vector-effect: non-scaling-stroke;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+
+    animation:
+        drawChartLine 1.2s ease-out forwards;
+}
+
+
+.purpleLine {
+    stroke: #706ee7;
+
+    animation-delay: 0.1s;
+}
+
+
+.greenLine {
+    stroke: #55c4ae;
+
+    animation-delay: 0.25s;
+}
+
+
+.coralLine {
+    stroke: #cc7f84;
+
+    animation-delay: 0.4s;
+}
+
+
+@keyframes drawChartLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              CHART POINTS                                  */
+/* -------------------------------------------------------------------------- */
+
+.purplePoint {
+    fill: #706ee7;
+
+    stroke: #ffffff;
+
+    stroke-width: 0.7;
+}
+
+
+.greenPoint {
+    fill: #55c4ae;
+
+    stroke: #ffffff;
+
+    stroke-width: 0.7;
+}
+
+
+.coralPoint {
+    fill: #cc7f84;
+
+    stroke: #ffffff;
+
+    stroke-width: 0.7;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                MONTHS                                      */
+/* -------------------------------------------------------------------------- */
+
+.growthMonths {
+    width: 100%;
+
+    flex: 0 0 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 0 1px;
+
+    box-sizing: border-box;
+
+    color: #a3c3df;
+
+    font-size: 8px;
+
+    line-height: 10px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                              REVENUE                                       */
+/* -------------------------------------------------------------------------- */
+
+.revenueChart {
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+}
+
+
+.revenueYAxis {
+    width: 28px;
+
+    flex: 0 0 28px;
+
+    height: calc(100% - 15px);
+
+    margin-top: 4px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    color: #a3c3df;
+
+    font-size: 8px;
+
+    line-height: 8px;
+}
+
+
+.revenueChartArea {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.revenueSvg {
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: block;
+
+    overflow: visible;
+}
+
+
+/* ========================================================================== */
+/*                                OVERVIEW                                    */
+/* ========================================================================== */
+
+.overview {
+    width: 100%;
+    height: 306px;
+
+    box-sizing: border-box;
+
+    padding:
+        20px 17px;
+
+    border:
+        1px solid #a9dcff;
+
+    border-radius: 9px;
+
+    background: #0b141c;
+}
+
+
+.overviewTitle,
+.gymPerformanceTitle,
+.subAnalyticsTitle {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+.overviewGrid {
+    width: 100%;
+
+    margin-top: 26px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    column-gap: 20px;
+
+    row-gap: 16px;
+}
+
+
+.overviewItem {
+    display: flex;
+
+    gap: 3px;
+
+    color: #e5edf4;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================================================== */
+/*                           GYM PERFORMANCE                                  */
+/* ========================================================================== */
+
+.gymPerformance {
+    width: 100%;
+    height: 228px;
+
+    box-sizing: border-box;
+
+    padding:
+        16px 17px;
+
+    border:
+        1px solid #a9dcff;
+
+    border-radius: 9px;
+
+    background: #0b141c;
+}
+
+
+.gymPerformanceContent {
+    width: 100%;
+    height: 184px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 40px;
+}
+
+
+.gymPieChart {
+    width: 170px;
+    height: 170px;
+
+    flex: 0 0 170px;
+
+    display: block;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                      GYM PERFORMANCE ANIMATION                             */
+/* -------------------------------------------------------------------------- */
+
+.gymPieInactive,
+.gymPieActive {
+    transform-box: fill-box;
+
+    transform-origin: center;
+
+    animation:
+        pieReveal 1s ease-out both;
+}
+
+
+.gymPieInactive {
+    fill: #55C4AE;
+
+    animation-delay: 0.05s;
+}
+
+
+.gymPieActive {
+    fill: #706EE7;
+
+    animation-delay: 0.15s;
+}
+
+
+
+.gymPerformanceInfo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    color: #e5edf4;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+/* ========================================================================== */
+/*                            SUB ANALYTICS                                   */
+/* ========================================================================== */
+
+.subAnalytics {
+    width: 100%;
+    min-height: 306px;
+
+    box-sizing: border-box;
+
+    padding:
+        16px 17px;
+
+    border:
+        1px solid #a9dcff;
+
+    border-radius: 9px;
+
+    background: #0b141c;
+}
+
+
+.subAnalyticsContent {
+    width: 100%;
+    height: 184px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+}
+
+
+.subscriptionPieChart {
+    width: 170px;
+    height: 170px;
+
+    flex: 0 0 170px;
+
+    display: block;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                       SUB ANALYTICS ANIMATION                              */
+/* -------------------------------------------------------------------------- */
+
+.subscriptionInactive,
+.subscriptionActive {
+    transform-box: fill-box;
+    transform-origin: center;
+
+    animation:
+        pieReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.subscriptionInactive {
+    fill: #55c4ae;
+
+    animation-delay: 0s;
+}
+
+.subscriptionActive {
+    fill: #706ee7;
+
+    animation-delay: 0.08s;
+}
+
+@keyframes pieReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+
+    65% {
+        transform: scale(0.995);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.subAnalyticsInfo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    color: #e5edf4;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+/* ========================================================================== */
+/*                              RESPONSIVE                                    */
+/* ========================================================================== */
+
+/* Large Desktop (> 1400px) - Default styles apply */
+
+/* Desktop (1024px - 1400px) */
+@media (max-width: 1400px) {
+    .adminDashboard {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 24px;
+        padding: 18px;
+    }
+
+    .userGrowthChartArea {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .userGrowthSvg {
+        width: 100%;
+        height: 133px;
+    }
+
+    .userGrowthMonths {
+        width: 100%;
+    }
+}
+
+/* Tablet Landscape (768px - 1024px) */
+@media (max-width: 1024px) {
+    .adminDashboard {
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+        row-gap: 24px;
+        padding: 16px;
+    }
+
+    .dashboardLeft,
+    .dashboardRight {
+        width: 100%;
+    }
+
+    .userGrowth {
+        height: auto;
+        min-height: 280px;
+        padding: 24px 20px;
+    }
+
+    .userGrowthChart {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+        margin-top: 16px;
+    }
+
+    .userGrowthChartArea {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .userGrowthSvg {
+        width: 100%;
+        height: 133px;
+    }
+
+    .userGrowthMonths {
+        width: 100%;
+    }
+
+    .growthPerformance {
+        height: auto;
+        min-height: 500px;
+    }
+
+    .overview {
+        height: auto;
+        min-height: 280px;
+    }
+
+    .overviewGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .gymPerformance {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .gymPerformanceContent {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .gymPieChart {
+        width: 140px;
+        height: 140px;
+        flex: 0 0 140px;
+    }
+
+    .subAnalytics {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .subAnalyticsContent {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .subscriptionPieChart {
+        width: 140px;
+        height: 140px;
+        flex: 0 0 140px;
+    }
+}
+
+/* Tablet Portrait (640px - 768px) */
+@media (max-width: 768px) {
+    .adminDashboard {
+        padding: 14px;
+        row-gap: 20px;
+    }
+
+    .dashboardLeft,
+    .dashboardRight {
+        gap: 20px;
+    }
+
+    .userGrowth {
+        min-height: 260px;
+        padding: 20px 16px;
+    }
+
+    .userGrowthTitle {
+        font-size: 14px;
+    }
+
+    .userGrowthChart {
+        margin-top: 12px;
+    }
+
+    .userGrowthYAxis {
+        width: 24px;
+        flex: 0 0 24px;
+        font-size: 7px;
+    }
+
+    .growthPerformance {
+        min-height: 450px;
+        padding: 14px 12px;
+    }
+
+    .growthPerformanceTitle {
+        font-size: 14px;
+    }
+
+    .growthSection {
+        margin-top: 14px;
+    }
+
+    .growthSection h3 {
+        font-size: 14px;
+        margin-left: 8px;
+    }
+
+    .growthYAxis,
+    .revenueYAxis {
+        width: 24px;
+        flex: 0 0 24px;
+        font-size: 7px;
+    }
+
+    .overview {
+        min-height: 260px;
+        padding: 16px 14px;
+    }
+
+    .overviewTitle {
+        font-size: 14px;
+    }
+
+    .overviewGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .overviewItem {
+        font-size: 13px;
+    }
+
+    .gymPerformance {
+        min-height: 180px;
+        padding: 14px;
+    }
+
+    .gymPerformanceTitle {
+        font-size: 14px;
+    }
+
+    .gymPerformanceContent {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        margin-top: 12px;
+    }
+
+    .gymPieChart {
+        width: 120px;
+        height: 120px;
+        flex: 0 0 120px;
+    }
+
+    .gymPerformanceInfo {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .subAnalytics {
+        min-height: 180px;
+        padding: 14px;
+    }
+
+    .subAnalyticsTitle {
+        font-size: 14px;
+    }
+
+    .subAnalyticsContent {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        margin-top: 12px;
+    }
+
+    .subscriptionPieChart {
+        width: 120px;
+        height: 120px;
+        flex: 0 0 120px;
+    }
+
+    .subAnalyticsInfo {
+        gap: 12px;
+        font-size: 13px;
+    }
+}
+
+/* Mobile Large (480px - 640px) */
+@media (max-width: 640px) {
+    .adminDashboard {
+        padding: 12px;
+        row-gap: 16px;
+    }
+
+    .dashboardLeft,
+    .dashboardRight {
+        gap: 16px;
+    }
+
+    .userGrowth {
+        min-height: 240px;
+        padding: 16px 12px;
+    }
+
+    .userGrowthTitle {
+        font-size: 13px;
+    }
+
+    .userGrowthChart {
+        margin-top: 10px;
+    }
+
+    .userGrowthYAxis {
+        width: 20px;
+        flex: 0 0 20px;
+        height: 110px;
+        font-size: 6px;
+    }
+
+    .userGrowthSvg {
+        height: 110px;
+    }
+
+    .userGrowthMonths {
+        height: 7px;
+        font-size: 7px;
+    }
+
+    .userGrowthLegend {
+        gap: 10px;
+        bottom: 16px;
+        left: 12px;
+        right: 12px;
+    }
+
+    .userGrowthLegendItem {
+        font-size: 7px;
+    }
+
+    .legendColor {
+        width: 6px;
+        height: 6px;
+    }
+
+    .growthPerformance {
+        min-height: 400px;
+        padding: 12px 10px;
+    }
+
+    .growthPerformanceTitle {
+        font-size: 13px;
+    }
+
+    .growthSection {
+        margin-top: 12px;
+    }
+
+    .growthSection h3 {
+        font-size: 13px;
+        margin-left: 6px;
+        margin-bottom: 6px;
+    }
+
+    .growthYAxis,
+    .revenueYAxis {
+        width: 20px;
+        flex: 0 0 20px;
+        font-size: 6px;
+    }
+
+    .growthMonths {
+        font-size: 7px;
+    }
+
+    .overview {
+        min-height: 240px;
+        padding: 14px 12px;
+    }
+
+    .overviewTitle {
+        font-size: 13px;
+    }
+
+    .overviewGrid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .overviewItem {
+        font-size: 12px;
+    }
+
+    .gymPerformance {
+        min-height: 160px;
+        padding: 12px;
+    }
+
+    .gymPerformanceTitle {
+        font-size: 13px;
+    }
+
+    .gymPerformanceContent {
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 10px;
+        height: auto;
+    }
+
+    .gymPieChart {
+        width: 100px;
+        height: 100px;
+        flex: 0 0 100px;
+    }
+
+    .gymPerformanceInfo {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .subAnalytics {
+        min-height: 160px;
+        padding: 12px;
+    }
+
+    .subAnalyticsTitle {
+        font-size: 13px;
+    }
+
+    .subAnalyticsContent {
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 10px;
+        height: auto;
+    }
+
+    .subscriptionPieChart {
+        width: 100px;
+        height: 100px;
+        flex: 0 0 100px;
+    }
+
+    .subAnalyticsInfo {
+        gap: 10px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile Small (< 480px) */
+@media (max-width: 480px) {
+    .adminDashboard {
+        padding: 10px;
+        row-gap: 12px;
+    }
+
+    .dashboardLeft,
+    .dashboardRight {
+        gap: 12px;
+    }
+
+    .userGrowth {
+        min-height: 220px;
+        padding: 12px 10px;
+    }
+
+    .userGrowthTitle {
+        font-size: 12px;
+    }
+
+    .userGrowthChart {
+        margin-top: 8px;
+    }
+
+    .userGrowthYAxis {
+        width: 18px;
+        flex: 0 0 18px;
+        height: 100px;
+        font-size: 6px;
+    }
+
+    .userGrowthSvg {
+        height: 100px;
+    }
+
+    .userGrowthMonths {
+        height: 6px;
+        font-size: 6px;
+    }
+
+    .userGrowthLegend {
+        gap: 8px;
+        bottom: 12px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .userGrowthLegendItem {
+        font-size: 6px;
+    }
+
+    .legendColor {
+        width: 5px;
+        height: 5px;
+    }
+
+    .growthPerformance {
+        min-height: 360px;
+        padding: 10px 8px;
+    }
+
+    .growthPerformanceTitle {
+        font-size: 12px;
+    }
+
+    .growthSection {
+        margin-top: 10px;
+    }
+
+    .growthSection h3 {
+        font-size: 12px;
+        margin-left: 4px;
+        margin-bottom: 4px;
+    }
+
+    .growthYAxis,
+    .revenueYAxis {
+        width: 18px;
+        flex: 0 0 18px;
+        font-size: 6px;
+    }
+
+    .growthMonths {
+        font-size: 6px;
+    }
+
+    .overview {
+        min-height: 220px;
+        padding: 12px 10px;
+    }
+
+    .overviewTitle {
+        font-size: 12px;
+    }
+
+    .overviewGrid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-top: 12px;
+    }
+
+    .overviewItem {
+        font-size: 11px;
+    }
+
+    .gymPerformance {
+        min-height: 140px;
+        padding: 10px;
+    }
+
+    .gymPerformanceTitle {
+        font-size: 12px;
+    }
+
+    .gymPerformanceContent {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+    }
+
+    .gymPieChart {
+        width: 90px;
+        height: 90px;
+        flex: 0 0 90px;
+    }
+
+    .gymPerformanceInfo {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    .subAnalytics {
+        min-height: 140px;
+        padding: 10px;
+    }
+
+    .subAnalyticsTitle {
+        font-size: 12px;
+    }
+
+    .subAnalyticsContent {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+    }
+
+    .subscriptionPieChart {
+        width: 90px;
+        height: 90px;
+        flex: 0 0 90px;
+    }
+
+    .subAnalyticsInfo {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 11px;
+    }
+}
+

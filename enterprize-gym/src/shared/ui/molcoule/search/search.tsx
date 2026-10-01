@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
+import { debounce } from "./utils/debounce";
 import { SearchInput } from "./components/SearchInput";
 import { Spinner } from "../../atoms/spiner/spinner";
 
@@ -33,6 +34,12 @@ export const Search = ({
 }: SEARCH_PROPS_INTERFACE) => {
   const [query, setQuery] = useState(value ?? "");
 
+  const debouncedChange = useRef(
+    debounce((value: string) => {
+      onChange?.(value);
+    }, 300)
+  ).current;
+
   return (
     <div
       className={Classes.container}
@@ -50,7 +57,7 @@ export const Search = ({
         value={query}
         onChange={(next) => {
           setQuery(next);
-          onChange?.(next);
+          debouncedChange(next);
         }}
         errorMsg=""
       />

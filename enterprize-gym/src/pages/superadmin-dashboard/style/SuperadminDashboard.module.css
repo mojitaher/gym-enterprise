@@ -20,11 +20,7 @@
   @apply bg-[#1E2A38];
 }
 
-/* .sidebarItemActive {
-  @apply bg-[#2563EB] text-white;
-} */
 
-/* Chips Horizontal */
 .chipContainer {
   @apply flex flex-wrap gap-2 px-40;
 }
@@ -41,18 +37,32 @@
   @apply p-4 rounded-xl px-40;
 }
 
-@media (min-width: 744px) {
+@media (min-width: 744px) and (max-width:1200px)  {
   .header {
-          padding: 34px 24px;
-        }
-                .chipContainer {
-                  padding: 34px 24px;
-                }
-                                .componentContainer {
-                                  padding: 34px 24px;
-                                }
-      };
-                @media (min-width: 402px) {
+    padding: 24px 16px;
+  }
+
+  .chipContainer {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .chipContainer > * {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 160px;
+  }
+
+  .componentContainer {
+    padding: 24px 16px;
+  }
+};
+                @media (min-width: 402px) and (max-width:744px){
                   .header {
                     padding: 24px 16px;
                   }

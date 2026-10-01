@@ -29,7 +29,7 @@ export default function HomePage() {
   });
 
   return (
-    <div className={Classes.homePage}>
+    <div className={Classes.homePage} dir="ltr">
       <div className={Classes.bgImage} />
 
       <div className={Classes.layeredBg} />
