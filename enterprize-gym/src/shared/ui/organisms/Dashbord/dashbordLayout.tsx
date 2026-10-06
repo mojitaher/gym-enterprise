@@ -38,6 +38,7 @@ export default function DashboardLayout({
             </header>
           )}
         </div>
+        
 
         {sidebar && (
           <nav className={Classes.sidebar}>

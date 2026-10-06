@@ -31,7 +31,7 @@
    ================================================ */
 
 .header {
-  @apply relative z-20 flex items-center justify-between flex-shrink-0 w-full px-10 py-4;
+  @apply relative z-20 flex items-center justify-between shrink-0 w-full px-10 py-4;
 
   min-height: 72px;
 }
@@ -80,7 +80,9 @@
 .sections {
   @apply relative z-[2] flex flex-col flex-1 w-full pl-10 rtl:pr-10 pt-10 gap-20 ;
 }
-
+.firstImage{
+  @apply -mr-10;
+}
 
 /* ================================================
    Body Row

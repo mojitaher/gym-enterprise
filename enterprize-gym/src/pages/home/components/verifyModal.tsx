@@ -31,6 +31,8 @@ export default function VerifyModal({
 
   return (
     <form
+
+    dir="ltr"
       className={Classes.phoneContent}
       onSubmit={handleSubmit}
     >

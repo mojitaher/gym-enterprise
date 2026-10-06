@@ -34,7 +34,7 @@ export default function AuthChoiceModal({
         <Button
           variant={BUTTON_VARIANT_ENUM.primary}
           size={BUTTON_ENUMS_SIZE.large}
-          className="w-23!"
+          className="w-full"
           onClick={onSignupClick}
         >
           ثبت نام باشگاه جدید

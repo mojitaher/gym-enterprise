@@ -8,7 +8,7 @@
 }
 
 .bgImage {
-  @apply absolute top-0 -left-65 w-full h-full bg-no-repeat bg-contain bg-center z-[1] pointer-events-none;
+  @apply absolute top-0 -left-65 w-full h-full bg-no-repeat bg-contain bg-center z-1 pointer-events-none;
   background-image: url("/images/homeBg.png");
 }
 
@@ -20,13 +20,13 @@
 }
 
 .layeredBg {
-  @apply absolute top-0 right-0 w-full h-full bg-no-repeat bg-contain z-[2] pointer-events-none;
+  @apply absolute top-0 right-0 w-full h-full bg-no-repeat bg-contain z-2 pointer-events-none;
   background-image: url("/images/layerdbg.svg");
   background-position: right center;
 }
 
 .content {
-  @apply relative z-[3] flex flex-col items-start justify-center h-full pl-[50%] pr-20;
+  @apply relative z-3 flex flex-col items-start justify-center h-full pl-[50%] pr-20;
 }
 
 .title {
@@ -35,7 +35,7 @@
 }
 
 .description {
-  @apply font-normal text-base text-[#94B3D3] max-w-[480px] m-0 mb-10 text-left;
+  @apply font-normal text-base text-button-secondary max-w-120 m-0 mb-10 text-left;
   font-family: Inter, sans-serif;
   line-height: 1.6;
 }
@@ -83,11 +83,11 @@
 }
 
 .roleRow {
-  @apply flex gap-[10px];
+  @apply flex gap-2.5;
 }
 
 .phoneContent {
-  @apply flex flex-col items-center gap-[10px];
+  @apply flex flex-col items-center gap-2.5;
 }
 
 .modalTitle {
@@ -133,7 +133,7 @@
 }
 
 .choiceButtons {
-  @apply flex flex-row justify-center gap-[20px] w-full;
+  @apply flex flex-row justify-center gap-5 w-full;
 }
 
 .adminLink {

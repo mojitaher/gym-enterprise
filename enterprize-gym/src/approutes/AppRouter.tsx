@@ -14,6 +14,7 @@ import GymDetail from "../pages/superadmin-dashboard/components/Gyms/components/
 import GymTrainees from "../pages/superadmin-dashboard/components/Gyms/components/gymTraniner";
 import GymCoaches from "../pages/superadmin-dashboard/components/Gyms/components/gymCoach";
 import GymManagers from "../pages/superadmin-dashboard/components/Gyms/components/gymManager";
+import GymPlans from "../pages/superadmin-dashboard/components/Gyms/components/gymPlan";
 // import Gyms from "../pages/superadmin-dashboard/components/Gyms/Gyms";
 // import GymDetail from "../pages/superadmin-dashboard/components/Gyms/components/GymDetail";
 // import ProtectedRoute from "../shared/components/ProtectedRoute"
@@ -54,10 +55,10 @@ export function AppRouter() {
     element={<GymCoaches />}
   />
 
-  {/* <Route
+  <Route
     path="gym/:id/plans"
     element={<GymPlans />}
-  /> */}
+  />
 
   <Route
     path="gym/:id/managers"

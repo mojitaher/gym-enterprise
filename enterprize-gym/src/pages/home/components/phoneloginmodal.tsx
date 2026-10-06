@@ -23,7 +23,8 @@ export default function PhoneLoginModal({
   };
 
   return (
-    <form
+    <form 
+    dir="ltr"
       className={Classes.phoneContent}
       onSubmit={handleSubmit}
     >

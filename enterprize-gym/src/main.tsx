@@ -8,6 +8,10 @@ import PortalProvider from './shared/ui/organisms/portalManager/portalProvider.t
 import { queryClient } from './lib/queryClient'
 import OfflineGuard from './shared/components/OfflineGuard'
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
