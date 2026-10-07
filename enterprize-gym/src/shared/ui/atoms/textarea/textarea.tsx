@@ -42,22 +42,25 @@ export const Textarea = ({
   rows,
   defaultValue,
   ref,
+  className
 }: TEXTAREA_PROPS_INTERFACE) => {
+
   return (
-    <>
+    <div className={clsx(Classes.container)}>
     <p className={Classes.title}>{title}</p>
     <textarea
       ref={ref}
       className={clsx(
         Classes.textarea,
-        Classes[mode],
-        Classes[size]
+        mode && Classes[mode],
+        Classes[size],
+        className
       )}
       rows={rows}
       placeholder={placeholder}
       disabled={disabled}
       defaultValue={defaultValue}
     />
-      </>
+      </div>
   );
 };

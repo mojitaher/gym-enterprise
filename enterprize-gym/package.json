@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@smilodon/core": "^1.9.2",
-    "@smilodon/react": "^1.9.2",
+    "@smilodon/core": "^1.9.3",
+    "@smilodon/react": "^1.9.3",
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-query": "^5.101.4",
     "clsx": "^2.1.1",

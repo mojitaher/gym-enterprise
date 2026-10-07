@@ -4,7 +4,7 @@ import type { TEXTAREA_TYPE_MODE } from "../types/textareaModeType";
 
 export default interface TEXTAREA_PROPS_INTERFACE {
   title:string;
-  mode: TEXTAREA_TYPE_MODE;
+  mode?: TEXTAREA_TYPE_MODE;
 
   size: TEXTAREA_TYPE_SIZE;
 
@@ -14,9 +14,8 @@ export default interface TEXTAREA_PROPS_INTERFACE {
 
   rows?: number;
 
-  /** Uncontrolled initial value. The DOM owns the value after mount. */
   defaultValue?: string;
 
-  /** Ref to the underlying textarea; read `.value` from it to get the text. */
+className?:string;
   ref?: Ref<HTMLTextAreaElement>;
 }

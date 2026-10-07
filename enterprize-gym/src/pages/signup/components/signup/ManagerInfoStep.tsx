@@ -21,19 +21,16 @@ export default function ManagerInfoStep({
   onSubmit,
   initialValues,
 }: ManagerInfoStepProps) {
-  // state داخلی همین Step - تایپ کاربر فقط همینو ریرندر میکنه
   const [fullName, setFullName] = useState(initialValues.fullName);
   const [phone, setPhone] = useState(initialValues.phone);
   const [pass, setPass] = useState(initialValues.pass);
   const [confirmPass, setConfirmPass] = useState(initialValues.confirmPass);
 
-  // تطابق از خود state‌های موجود مشتق می‌شود (state جدید لازم نیست)
   const confirmMismatch = confirmPass !== "" && pass !== confirmPass;
   const passTooWeak = pass !== "" && pass.length < 8;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // رمز حداقل ۸ کاراکتر و تکرارش برابر باشد تا ادامه داده شود
     if (pass.length < 8 || confirmMismatch) return;
     onSubmit({ fullName, phone, pass, confirmPass });
   };
@@ -46,7 +43,6 @@ export default function ManagerInfoStep({
           لطفاً اطلاعات مربوط به مدیر باشگاه را تکمیل کنید
         </p>
       </div>
-
       <div className={Classes.formGrid}>
         <Input
           title="نام کامل"
@@ -127,6 +123,7 @@ export default function ManagerInfoStep({
 
       <div className={Classes.buttonWrapper}>
         <Button
+        type="button"
           variant={BUTTON_VARIANT_ENUM.secondary}
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.backButton}

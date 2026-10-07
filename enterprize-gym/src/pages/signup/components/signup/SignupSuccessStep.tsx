@@ -6,6 +6,7 @@ import { BUTTON_ENUMS_SIZE } from '../../../../shared/ui/atoms/button/enum/butto
 import type { SignupSuccessStepProps } from "./interfaces/signupSuccessStepProps.interface";
 
 import Classes from "../../style/signup.module.css";
+import cityItem from '../../../../shared/data/cityData.json'
 
 export default function SignupSuccessStep({
   gymData,
@@ -33,11 +34,12 @@ export default function SignupSuccessStep({
             <span className={Classes.infoLabel}>تلفن:</span> {gymData.phone}
           </p>
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>آدرس:</span> {gymData.address}
+            <span className={Classes.infoLabel}>شهر:</span> {cityItem.find((city) => city.id === gymData.city)?.name}
           </p>
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>نوع:</span> {gymData.type}
+            <span className={Classes.infoLabel}>آدرس:</span> {gymData.address}
           </p>
+          
         </div>
       )}
 

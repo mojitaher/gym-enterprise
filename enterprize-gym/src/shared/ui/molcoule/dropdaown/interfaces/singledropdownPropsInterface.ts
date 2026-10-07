@@ -9,5 +9,6 @@ export interface SINGLEDROPDOWN_SELECT_INTERFACE {
   multiple?: boolean;
   clearable?: boolean;
   disabled?: boolean;
+  required?:boolean;
   onChange?: (value: string | number | Array<string | number>, items: SelectItem[]) => void;
 }

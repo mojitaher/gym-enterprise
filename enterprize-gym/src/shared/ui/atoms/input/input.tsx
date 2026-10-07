@@ -36,7 +36,7 @@ export const Input = ({
         className={clsx(
           Classes.input,
           mode && INPUT_MODE_STYLE[mode],
-          Classes[size],
+          size && Classes[size],
           className
         )}
         required={required}
@@ -47,7 +47,7 @@ export const Input = ({
         onChange={(e) => onChange?.(e.target.value)}
         onInvalid={(event) => {
           event.currentTarget.classList.add(Classes.warn);
-          event.currentTarget.setCustomValidity(errorMsg);
+          event.currentTarget.setCustomValidity(errorMsg?? "");
         }}
         onInput={(event) => {
           event.currentTarget.classList.remove(Classes.warn);

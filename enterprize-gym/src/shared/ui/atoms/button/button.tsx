@@ -42,7 +42,8 @@ export const Button = ({
   disabled,
   onClick,
   children,
-  className
+  className,
+  type
 }: BUTTON_PROPS_INTERFACE) => {
   return (
     <button
@@ -52,6 +53,7 @@ export const Button = ({
         Classes[size],
         className
       )}
+      type={type}
       disabled={disabled}
       onClick={onClick}
     >

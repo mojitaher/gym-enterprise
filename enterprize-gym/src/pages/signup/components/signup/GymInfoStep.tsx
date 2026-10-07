@@ -8,24 +8,31 @@ import { BUTTON_VARIANT_ENUM } from "../../../../shared/ui/atoms/button/enum/but
 import { BUTTON_ENUMS_SIZE } from "../../../../shared/ui/atoms/button/enum/buttonSize";
 
 import type { GymInfoStepProps } from "./interfaces/gymInfoStepProps.interface";
+import SingleDropdown from "../../../../shared/ui/molcoule/dropdaown/singleDropdown";
+import cityItem from '../../../../shared/data/cityData.json'
 
 import Classes from "../../style/signup.module.css";
+import { Textarea } from "../../../../shared/ui/atoms/textarea/textarea";
 
 export default function GymInfoStep({
   onBack,
   onSubmit,
   initialValues,
 }: GymInfoStepProps) {
-  // state داخلی همین Step - تایپ کاربر فقط همینو ریرندر میکنه
   const [name, setName] = useState(initialValues.name);
-  const [type, setType] = useState(initialValues.type);
   const [phone, setPhone] = useState(initialValues.phone);
+  const [city, setCity] = useState(initialValues.city);
   const [address, setAddress] = useState(initialValues.address);
+  const cityItems = cityItem.map((city) => ({
+  label: city.name,
+  value: city.id,
+}));
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({ name, type, phone, address });
+    onSubmit({ name, phone,city, address });
   };
+  
 
   return (
     <form className={Classes.phoneContent} onSubmit={handleSubmit}>
@@ -35,6 +42,7 @@ export default function GymInfoStep({
           لطفاً اطلاعات مربوط به باشگاه خود را تکمیل کنید
         </p>
       </div>
+      
 
       <div className={Classes.formGrid}>
         <Input
@@ -50,18 +58,7 @@ export default function GymInfoStep({
           className={Classes.inputDark}
         />
 
-        <Input
-          title="نوع باشگاه"
-          type="text"
-          inputMode="text"
-          size={INPUT_SIZE_ENUM.medium}
-          placeholder="مثال: بدنسازی، یوگا، کراس‌فیت"
-          value={type}
-          onChange={setType}
-          errorMsg="نوع باشگاه الزامی است"
-          required
-          className={Classes.inputDark}
-        />
+       
 
         <Input
           title="شماره تلفن"
@@ -76,6 +73,7 @@ export default function GymInfoStep({
           required
           className={Classes.inputDark}
         />
+        
 
         <Input
           title="آدرس"
@@ -89,10 +87,24 @@ export default function GymInfoStep({
           required
           className={Classes.inputDark}
         />
+        <div  className={Classes.dropdownWrapper}>
+          <p>شهر باشگاه</p>
+        <SingleDropdown
+  items={cityItems}
+  value={city}
+  placeholder="شهر خود را انتخاب کنید"
+  searchable
+  required
+  onChange={(value) => {setCity(value as number)}}
+/>
       </div>
+        <Textarea title="توضیحات" size="large" placeholder="توضیحات" />
+      </div>
+      
 
       <div className={Classes.buttonWrapper}>
         <Button
+        type="button"
           variant={BUTTON_VARIANT_ENUM.secondary}
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.backButton}
@@ -101,6 +113,7 @@ export default function GymInfoStep({
           بازگشت
         </Button>
         <Button
+        type="submit"
           variant={BUTTON_VARIANT_ENUM.primary}
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.submitButton}

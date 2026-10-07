@@ -1,9 +1,6 @@
-/* ================================================
-   Signup Page
-   ================================================ */
 
 .signupPage {
-  @apply min-h-screen flex items-center justify-center p-6;
+  @apply min-h-screen flex items-center justify-center p-6 overflow-x-hidden;
   background: url("/images/signupBg.png") right center / auto 100% no-repeat;
   background-color: #0b141c;
 }
@@ -11,7 +8,14 @@
 .container {
   @apply w-full max-w-3xl bg-[#0B141C] rounded-2xl p-8;
 }
-
+.dropdownWrapper{
+  
+  width: 320px;
+}
+.dropdownWrapper p{
+  color: #F4F7F7;
+  margin-bottom: 10px;
+}
 @media (max-width: 768px) {
   .container {
     @apply bg-transparent p-4;
@@ -22,7 +26,7 @@
   @apply mt-8;
 }
 .buttonWrapper{
-  @apply mt-[20px] gap-10 flex flex-row mx-auto;
+  @apply mt-5 gap-10 flex flex-row mx-auto;
 }
 
 @media (max-width: 480px) {

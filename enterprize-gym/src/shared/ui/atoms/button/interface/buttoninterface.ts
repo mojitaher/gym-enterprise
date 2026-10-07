@@ -11,4 +11,5 @@ export default interface BUTTON_PROPS_INTERFACE{
   startIcon?:ReactNode ;
   endIcon?: ReactNode;
   className?:string;
+  type?:'button'|'reset'|'submit';
 }

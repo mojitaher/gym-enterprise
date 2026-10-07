@@ -30,7 +30,7 @@ const EMPTY_GYM_INFO: GymInfo = {
   name: "",
   phone: "",
   address: "",
-  type: "",
+  city:'',
 };
 
 export default function SignupPage() {

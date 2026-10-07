@@ -23,5 +23,5 @@ export default interface INPUT_PROPS_INTERFACE {
 
   inputMode?: InputHTMLAttributes<HTMLInputElement>["inputMode"];
   required?: boolean;
-  errorMsg: string;
+  errorMsg?: string;
 }

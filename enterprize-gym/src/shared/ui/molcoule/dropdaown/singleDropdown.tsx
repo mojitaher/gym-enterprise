@@ -11,6 +11,7 @@ export default function SingleDropdown({
     searchable,
     multiple,
     disabled,
+    required,
     onChange
 }: SINGLEDROPDOWN_SELECT_INTERFACE) {
     
@@ -28,13 +29,9 @@ export default function SingleDropdown({
             searchable={searchable}
             multiple={ multiple }
             onChange={onChange}
+            required={required}
 
-
-            // customRenderer={(item)=>(
-            //     <SingleDropdownItem
-            //         item={item}
-            //     />
-            // )}
+           
         />
     );
 }
