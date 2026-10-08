@@ -29,10 +29,20 @@ export default function GymInfoStep({
 }));
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSubmit({ name, phone,city, address });
-  };
-  
+  event.preventDefault();
+
+  if (!name || !phone || !address || !city) {
+    alert("لطفاً همه فیلدها را تکمیل کنید");
+    return;
+  }
+
+  onSubmit({
+    name,
+    phone,
+    city,
+    address,
+  });
+};
 
   return (
     <form className={Classes.phoneContent} onSubmit={handleSubmit}>
@@ -87,7 +97,7 @@ export default function GymInfoStep({
           required
           className={Classes.inputDark}
         />
-        <div  className={Classes.dropdownWrapper}>
+        <div  className={Classes.dropdownWrapper} >
           <p>شهر باشگاه</p>
         <SingleDropdown
   items={cityItems}
