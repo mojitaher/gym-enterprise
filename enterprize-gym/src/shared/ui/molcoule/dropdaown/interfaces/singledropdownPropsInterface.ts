@@ -2,6 +2,7 @@ import type {  SelectItem } from "@smilodon/react";
 
 
 export interface SINGLEDROPDOWN_SELECT_INTERFACE {
+  dir?:'rtl'|'ltr';
   items?: SelectItem[];
   value?: string | number ;
   placeholder?: string;
@@ -11,4 +12,5 @@ export interface SINGLEDROPDOWN_SELECT_INTERFACE {
   disabled?: boolean;
   required?:boolean;
   onChange?: (value: string | number | Array<string | number>, items: SelectItem[]) => void;
+  className?:string
 }

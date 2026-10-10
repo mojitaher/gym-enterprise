@@ -5,22 +5,7 @@ import { Button } from "../../../shared/ui/atoms/button/button";
 import PlanDelete from '../../../assets/icons/planDelete.svg'
 import activityIcon from '../../../assets/icons/activity.svg'
 
-/**
- * Plan Card Component
- *
- * Displays a sport plan with stats, the active month, and delete action.
- *
- * Props:
- *   title   — sport name (required)
- *   coach   — coach name
- *   session — session count
- *   present — present count
- *   absent  — absent count
- *   month   — active month (passed from the parent)
- *   onDelete — delete handler
- *   onSubmit — submit handler
- *   children — custom action icons
- */
+
 
 export const PlanCard = ({
   title,

@@ -1,12 +1,7 @@
 import Classes from "./styles/workoutCard.module.css";
 import type WORKOUT_CARD_PROPS_INTERFACE from "./interfaces/workoutCardPropsInterface";
 
-/**
- * Workout Card Component
- *
- * عکس در بالا، زیرش اسم ورزش، زیر آن time یا set و بعد توضیحات.
- * در پایین: باتن پرویوس سمت چپ و باتن نکست سمت راست.
- */
+
 export const WorkoutCard = ({
   image,
   title,

@@ -3,4 +3,5 @@ export interface GymInfo {
   phone: string;
   city:number|string;
   address: string;
+  description?:string;
 }

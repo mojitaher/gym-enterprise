@@ -11,11 +11,8 @@
     @apply w-full rounded-[0.625rem] border border-[#B2B6B9] bg-input text-[0.95rem] text-slate-900 outline-none;
     font-family: inherit;
 
-    /* Placeholder spacing */
     padding-block: 0.75rem;
-    /* 12px (top & bottom) */
     padding-inline-start: 0.5625rem;
-    /* 9px (left in LTR / right in RTL) */
     padding-inline-end: 0.5625rem;
 
     transition:

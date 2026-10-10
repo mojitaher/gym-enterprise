@@ -116,7 +116,10 @@
 }
 
 
-
+.citySelect {
+  --select-input-bg:#B1D1F0;
+--select-text-placeholder:#5cabff;
+}
 .inputError {
   @apply border-red-500 focus:border-red-500 focus:ring-red-500;
 }
@@ -136,9 +139,7 @@
   @apply flex flex-col gap-[10px] w-full;
 }
 
-/* ========================= */
-/* Password Strength Meter   */
-/* ========================= */
+
 .strengthRow {
   @apply flex items-center gap-3 mt-1;
 }
@@ -180,4 +181,44 @@
   font-size: 20px;
   line-height: 28px;
   letter-spacing: 0;
+}
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 565px);
+  gap: 16px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.planWrapper,
+.selected {
+  width: 100%;
+  min-height: 440px;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.selected {
+  outline: 2px solid #168cff;
+  outline-offset: 3px;
+}
+
+/* تبلت */
+@media (min-width: 577px) and (max-width: 1199px) {
+  .planGrid {
+    grid-template-columns: repeat(2, minmax(0, 360px));
+    gap: 16px;
+  }
+}
+
+/* موبایل */
+@media (max-width: 576px) {
+  .planGrid {
+    grid-template-columns: minmax(0, 370px);
+    gap: 16px;
+    justify-content: center;
+  }
+  
 }

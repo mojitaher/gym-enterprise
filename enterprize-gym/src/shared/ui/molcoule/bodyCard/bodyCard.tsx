@@ -3,16 +3,7 @@ import Classes from "./styles/bodyCard.module.css";
 import ActivityIcon from "../../../../assets/icons/activity.svg";
 import type BODY_CARD_PROPS_INTERFACE from "./interfaces/bodyCardPropsInterface";
 
-/**
- * Body Card Component
- *
- * سمت چپ: کارتی که فقط عکسِ فول داخلش است.
- * سمت راست (بیرون از کارت): تایتل، ساب‌تایتل، دیسکریپشن و باتن‌ها (children).
- *
- * `dir` تعیین می‌کند عکس در کدام سمت باشد:
- * - "right" → عکس سمت راست، محتوا سمت چپ
- * - "left"  → عکس سمت چپ، محتوا سمت راست
- */
+
 export const BodyCard = ({
   dir,
   image,

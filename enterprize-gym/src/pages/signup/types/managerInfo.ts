@@ -1,5 +1,8 @@
 export interface ManagerInfo {
-  fullName: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+
   phone: string;
   pass: string;
   confirmPass: string;

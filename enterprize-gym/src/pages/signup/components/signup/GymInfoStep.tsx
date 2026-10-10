@@ -23,6 +23,7 @@ export default function GymInfoStep({
   const [phone, setPhone] = useState(initialValues.phone);
   const [city, setCity] = useState(initialValues.city);
   const [address, setAddress] = useState(initialValues.address);
+  const [description, setDescription] = useState(initialValues.description);
   const cityItems = cityItem.map((city) => ({
   label: city.name,
   value: city.id,
@@ -41,6 +42,7 @@ export default function GymInfoStep({
     phone,
     city,
     address,
+    description
   });
 };
 
@@ -54,7 +56,7 @@ export default function GymInfoStep({
       </div>
       
 
-      <div className={Classes.formGrid}>
+      <div className={Classes.formGrid} >
         <Input
           title="نام باشگاه"
           type="text"
@@ -100,15 +102,19 @@ export default function GymInfoStep({
         <div  className={Classes.dropdownWrapper} >
           <p>شهر باشگاه</p>
         <SingleDropdown
+        dir="rtl"
+        
   items={cityItems}
   value={city}
   placeholder="شهر خود را انتخاب کنید"
   searchable
   required
   onChange={(value) => {setCity(value as number)}}
+ className={Classes.citySelect}
+  
 />
       </div>
-        <Textarea title="توضیحات" size="large" placeholder="توضیحات" />
+        <Textarea title="توضیحات" size="large" placeholder="توضیحات" value={description} onChange={setDescription}/>
       </div>
       
 

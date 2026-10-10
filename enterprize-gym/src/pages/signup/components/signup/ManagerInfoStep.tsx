@@ -21,38 +21,96 @@ export default function ManagerInfoStep({
   onSubmit,
   initialValues,
 }: ManagerInfoStepProps) {
-  const [fullName, setFullName] = useState(initialValues.fullName);
+  const [firstName, setFirstName] = useState(initialValues.firstName);
+  const [lastName, setLastName] = useState(initialValues.lastName);
+  const [username, setUsername] = useState(initialValues.username);
   const [phone, setPhone] = useState(initialValues.phone);
   const [pass, setPass] = useState(initialValues.pass);
   const [confirmPass, setConfirmPass] = useState(initialValues.confirmPass);
 
-  const confirmMismatch = confirmPass !== "" && pass !== confirmPass;
-  const passTooWeak = pass !== "" && pass.length < 8;
+  const confirmMismatch =
+    confirmPass !== "" && pass !== confirmPass;
+
+  const passTooWeak =
+    pass !== "" && pass.length < 8;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (pass.length < 8 || confirmMismatch) return;
-    onSubmit({ fullName, phone, pass, confirmPass });
+
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !username.trim() ||
+      !phone.trim() ||
+      !pass ||
+      !confirmPass ||
+      pass.length < 8 ||
+      confirmMismatch
+    ) {
+      return;
+    }
+
+    onSubmit({
+      firstName,
+      lastName,
+      username,
+      phone,
+      pass,
+      confirmPass,
+    });
   };
 
   return (
-    <form className={Classes.phoneContent} onSubmit={handleSubmit}>
+    <form
+      className={Classes.phoneContent}
+      onSubmit={handleSubmit}
+    >
       <div className={Classes.stepHeader}>
-        <h3 className={Classes.stepTitle}>اطلاعات مدیر</h3>
+        <h3 className={Classes.stepTitle}>
+          اطلاعات مدیر
+        </h3>
+
         <p className={Classes.stepSubtitle}>
           لطفاً اطلاعات مربوط به مدیر باشگاه را تکمیل کنید
         </p>
       </div>
+
       <div className={Classes.formGrid}>
         <Input
-          title="نام کامل"
+          title="نام"
           type="text"
           inputMode="text"
           size={INPUT_SIZE_ENUM.medium}
-          placeholder="مثال: علی محمدی"
-          value={fullName}
-          onChange={setFullName}
+          placeholder="مثال: علی"
+          value={firstName}
+          onChange={setFirstName}
           errorMsg="نام الزامی است"
+          required
+          className={Classes.inputDark}
+        />
+
+        <Input
+          title="نام خانوادگی"
+          type="text"
+          inputMode="text"
+          size={INPUT_SIZE_ENUM.medium}
+          placeholder="مثال: محمدی"
+          value={lastName}
+          onChange={setLastName}
+          errorMsg="نام خانوادگی الزامی است"
+          required
+          className={Classes.inputDark}
+        />
+
+        <Input
+          title="نام کاربری"
+          type="text"
+          inputMode="text"
+          placeholder="مثال: ali_mohammadi"
+          size={INPUT_SIZE_ENUM.medium}
+          value={username}
+          onChange={setUsername}
+          errorMsg="نام کاربری الزامی است"
           required
           className={Classes.inputDark}
         />
@@ -89,7 +147,9 @@ export default function ManagerInfoStep({
             required
             errorMsg="رمز عبور باید حداقل ۸ کاراکتر باشد"
           />
+
           <PasswordStrengthMeter password={pass} />
+
           {passTooWeak && (
             <p className={Classes.errorText}>
               رمز عبور باید حداقل ۸ کاراکتر باشد
@@ -113,6 +173,7 @@ export default function ManagerInfoStep({
             onChange={setConfirmPass}
             required
           />
+
           {confirmMismatch && (
             <p className={Classes.errorText}>
               رمز عبور و تکرار آن یکسان نیستند
@@ -123,7 +184,7 @@ export default function ManagerInfoStep({
 
       <div className={Classes.buttonWrapper}>
         <Button
-        type="button"
+          type="button"
           variant={BUTTON_VARIANT_ENUM.secondary}
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.backButton}
@@ -131,7 +192,9 @@ export default function ManagerInfoStep({
         >
           اکانت دارم
         </Button>
+
         <Button
+          type="submit"
           variant={BUTTON_VARIANT_ENUM.primary}
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.submitButton}

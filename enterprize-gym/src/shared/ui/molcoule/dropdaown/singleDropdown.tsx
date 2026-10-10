@@ -5,6 +5,7 @@ import clsx from 'clsx';
 // import SingleDropdownItem from './components/singledropdownItemComponent';
 import Classes from './style/singledropdown.module.css'
 export default function SingleDropdown({
+    dir,
     items,
     value,
     placeholder,
@@ -12,12 +13,14 @@ export default function SingleDropdown({
     multiple,
     disabled,
     required,
-    onChange
+    onChange,
+    className
 }: SINGLEDROPDOWN_SELECT_INTERFACE) {
     
     return (
         <Select 
-        className={clsx(Classes.mySelect,'h-9')}
+        direction={dir}
+        className={clsx(Classes.mySelect,'h-9',className)}
         multiSelectDisplay={
             {mode:"horizontal"}
         }

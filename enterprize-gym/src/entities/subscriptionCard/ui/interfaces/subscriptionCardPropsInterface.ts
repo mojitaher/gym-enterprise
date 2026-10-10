@@ -11,5 +11,5 @@ export default interface SUBSCRIPTION_CARD_PROPS_INTERFACE {
   coach: string;
   trainee: string;
   duration: string;
-  price: number;
+  price: number|string;
 }

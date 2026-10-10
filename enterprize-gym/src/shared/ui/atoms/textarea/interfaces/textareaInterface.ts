@@ -1,4 +1,3 @@
-import type { Ref } from "react";
 import type { TEXTAREA_TYPE_SIZE } from "../types/textareaSizeType";
 import type { TEXTAREA_TYPE_MODE } from "../types/textareaModeType";
 
@@ -14,8 +13,7 @@ export default interface TEXTAREA_PROPS_INTERFACE {
 
   rows?: number;
 
-  defaultValue?: string;
-
+value?: string;
+  onChange?:(value: string) => void;
 className?:string;
-  ref?: Ref<HTMLTextAreaElement>;
 }

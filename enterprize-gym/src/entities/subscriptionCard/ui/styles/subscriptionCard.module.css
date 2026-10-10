@@ -4,7 +4,7 @@
    ================================================ */
 
 .subscriptionCard {
-    @apply w-[23.125rem] rounded-2xl border border-[#7997B5] bg-[#49627B80] px-[25px] py-[87px] flex flex-col gap-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
+    @apply w-full rounded-2xl border border-[#7997B5] bg-[#49627B80] px-[25px] py-[87px] flex flex-col gap-3 font-[Inter,sans-serif] font-normal text-base leading-5.5 transition duration-200;
 }
 
 /* ============ هدر ============ */
