@@ -167,7 +167,7 @@ export default function ManagerInfoStep({
                 ? INPUTـPASSWORD_MODE_ENUM.success
                 : INPUTـPASSWORD_MODE_ENUM.warn
             }
-            size={INPUTـPASSWORD_SIZE_ENUM.small}
+            size={INPUTـPASSWORD_SIZE_ENUM.medium}
             placeholder="رمز عبور را مجدداً وارد کنید"
             value={confirmPass}
             onChange={setConfirmPass}

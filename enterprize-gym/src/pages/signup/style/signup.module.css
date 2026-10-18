@@ -1,12 +1,15 @@
 
 .signupPage {
   @apply min-h-screen flex items-center justify-center p-6 overflow-x-hidden;
-  background: url("/images/signupBg.png") right center / auto 100% no-repeat;
-  background-color: #0b141c;
+  background-image: url("/images/signupBg.png");
+    background-position: right center;
+    background-size:70% 100%;
+    background-repeat: no-repeat;
+    background-color: #0b141c;
 }
 
 .container {
-  @apply w-full max-w-3xl bg-[#0B141C] rounded-2xl p-8;
+  @apply w-full max-w-3xl bg-transparent rounded-2xl p-8;
 }
 .dropdownWrapper{
   
@@ -210,6 +213,7 @@
   .planGrid {
     grid-template-columns: repeat(2, minmax(0, 360px));
     gap: 16px;
+    justify-content: space-between;
   }
 }
 
