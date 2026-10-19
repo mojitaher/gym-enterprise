@@ -15,6 +15,10 @@ import GymTrainees from "../pages/superadmin-dashboard/components/Gyms/component
 import GymCoaches from "../pages/superadmin-dashboard/components/Gyms/components/gymCoach";
 import GymManagers from "../pages/superadmin-dashboard/components/Gyms/components/gymManager";
 import GymPlans from "../pages/superadmin-dashboard/components/Gyms/components/gymPlan";
+import GymCoachDetail from "../pages/superadmin-dashboard/components/Gyms/components/gymCoachDetail";
+import GymTraineeDetail from "../pages/superadmin-dashboard/components/Gyms/components/gymtraineeDetail";
+import GymManagerDetail from "../pages/superadmin-dashboard/components/Gyms/components/gymManagerDetail";
+import GymPlanDetail from "../pages/superadmin-dashboard/components/Gyms/components/gymPlanDetail";
 // import Gyms from "../pages/superadmin-dashboard/components/Gyms/Gyms";
 // import GymDetail from "../pages/superadmin-dashboard/components/Gyms/components/GymDetail";
 // import ProtectedRoute from "../shared/components/ProtectedRoute"
@@ -45,25 +49,42 @@ export function AppRouter() {
           path="gym/:id"
           element={<GymDetail />}
         />
+        
         <Route
     path="gym/:id/trainees"
     element={<GymTrainees />}
+  />
+  <Route
+    path="gym/:id/trainees/:traineeId"
+    element={<GymTraineeDetail />}
   />
 
   <Route
     path="gym/:id/coaches"
     element={<GymCoaches />}
   />
+  <Route
+    path="gym/:id/coaches/:coachId"
+    element={<GymCoachDetail />}
+  />
 
   <Route
     path="gym/:id/plans"
     element={<GymPlans />}
   />
-
+<Route
+    path="gym/:id/plans/:planId"
+    element={<GymPlanDetail />}
+  />
   <Route
     path="gym/:id/managers"
     element={<GymManagers />}
   />
+  <Route
+    path="gym/:id/managers/:managerId"
+    element={<GymManagerDetail />}
+  />
+   
         
       </Route>
 

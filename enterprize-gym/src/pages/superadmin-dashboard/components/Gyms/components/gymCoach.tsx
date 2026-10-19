@@ -1,28 +1,18 @@
 import GymMemberList from "./gymListMember";
+import MOCK_COACHES from "../mockData/coachData";
+import { useGymProfileNavigation } from "../hook/useGymProfileNavigation";
 
-const MOCK_COACHES = [
-  {
-    id: "1",
-    name: "علی رضایی",
-    avatar:
-      "https://api.dicebear.com/7.x/initials/svg?seed=علی",
-    icon: "/icons/active.svg",
-  },
-  {
-    id: "2",
-    name: "محمد کریمی",
-    avatar:
-      "https://api.dicebear.com/7.x/initials/svg?seed=محمد",
-    icon: "/icons/active.svg",
-  },
-];
 
 export default function GymCoaches() {
+  const navigateToProfile = useGymProfileNavigation("coaches");
+  
+ 
   return (
     <GymMemberList
       title="مربی‌های باشگاه"
       placeholder="...جستجوی مربی"
       items={MOCK_COACHES}
+      onItemClick={(coach)=>navigateToProfile(coach.id)}
     />
   );
 }

@@ -1,28 +1,22 @@
-import GymMemberList from "./gymListMember";
 
-const MOCK_TRAINEES = [
-  {
-    id: "1",
-    name: "رضا احمدی",
-    avatar:
-      "https://api.dicebear.com/7.x/initials/svg?seed=رضا",
-    icon: "/icons/active.svg",
-  },
-  {
-    id: "2",
-    name: "مهدی محمدی",
-    avatar:
-      "https://api.dicebear.com/7.x/initials/svg?seed=مهدی",
-    icon: "/icons/active.svg",
-  },
-];
+
+import GymMemberList from "./gymListMember";
+import MOCK_PLANS from "../mockData/planData";
+import { useGymProfileNavigation } from "../hook/useGymProfileNavigation";
 
 export default function GymPlans() {
+  const navigateToProfile = useGymProfileNavigation("plans");
+
   return (
-    <GymMemberList
-      title="ورزشکاران باشگاه"
-      placeholder="...جستجوی ورزشکار"
-      items={MOCK_TRAINEES}
-    />
+    <>
+      <GymMemberList
+        title="پلن‌های باشگاه"
+        placeholder="جستجوی پلن..."
+        items={MOCK_PLANS}
+        onItemClick={(plan)=>navigateToProfile(plan.id)}
+      />
+
+     
+    </>
   );
 }

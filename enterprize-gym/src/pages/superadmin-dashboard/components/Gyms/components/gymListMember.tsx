@@ -12,6 +12,7 @@ export default function GymMemberList({
   title,
   placeholder,
   items,
+  onItemClick,
 }: GymMemberListProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -52,6 +53,7 @@ export default function GymMemberList({
               username={item.name}
               icon={item.icon}
               className={Classes.listItem}
+              onClick={() => onItemClick?.(item)}
             />
           ))
         ) : (
