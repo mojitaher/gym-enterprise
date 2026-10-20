@@ -62,23 +62,22 @@
     padding: 24px 16px;
   }
 };
-                @media (min-width: 402px) and (max-width:744px){
-                  .header {
-                    padding: 24px 16px;
-                  }
+@media (min-width: 402px) and (max-width:744px){
+  .header {
+   padding: 24px 16px;
+  }
         
-                  .chipContainer {
-                    padding: 24px 16px;
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: nowrap;
-                    overflow-x: auto;
-                    overflow-y: hidden;
-                    scrollbar-width: none;
-                    gap: 12px;
-                  }
-        
-                  .componentContainer {
-                    padding: 24px 16px;
-                  }
-                }
+ .chipContainer {
+padding: 24px 16px;
+  display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+      overflow-x: auto;
+     overflow-y: hidden;
+ scrollbar-width: none;
+gap: 12px;
+ }
+  .componentContainer {
+ padding: 24px 16px;
+}
+}                                                            

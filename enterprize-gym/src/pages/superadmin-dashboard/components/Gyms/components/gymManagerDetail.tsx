@@ -16,7 +16,6 @@ export default function GymManagerDetail() {
   return (
     <GymMemberProfile
       member={manager}
-      title="پروفایل مربی"
     />
   );
 }

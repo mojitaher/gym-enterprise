@@ -3,22 +3,14 @@
     display: inline-block;
     width: 100%;
 
-    /*
-     * Single source of truth for the input's height.
-     * Keep this in sync with the Input atom's size height (currently 40px).
-     * The trailing icon is centered against THIS value, so changing the input
-     * size never breaks the icon alignment — you only update one number here.
-     */
+   
     --input-height: 2.5rem; /* 40px */
     --input-height: 2.5rem;
         --button-width: 2rem;
         --button-end: 0.75rem;
 }
 
-/*
- * Reserve room at the trailing edge so the input text never slides under the
- * icon, regardless of the input's width/size.
- */
+
 .container input {
     text-align: right;
     padding-inline-end:calc(var(--button-width) + var(--button-end) + 0.5rem);
@@ -33,11 +25,8 @@ color: #B1D1F0;
 .container button {
     position: absolute;
 
-    /* Anchor to the input box, not the whole container (title sits above). */
-    inset-inline-end: 0.75rem; /* trailing gap — independent of input width  */
-    bottom: 0;                 /* pin to the input's bottom edge (last child) */
-
-    /* Span the full input height so the icon lands on the input's midline.   */
+    inset-inline-end: 0.75rem;
+    bottom: 2px;                 
     height: var(--input-height);
 
     display: flex;

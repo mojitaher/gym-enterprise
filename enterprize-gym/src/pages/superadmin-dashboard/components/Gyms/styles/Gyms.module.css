@@ -16,7 +16,7 @@
 }
 
 .listItem {
-  @apply bg-[#607C98] cursor-pointer ;
+  @apply bg-button-primary cursor-pointer ;
 }
 
 .listItem:hover {
@@ -95,4 +95,121 @@
       flex: 0 0 calc(50% - 12px);
       min-width: 0;
     }
+}
+/* Gym Member Profile Card */
+
+.profileCard {
+  @apply relative w-full min-w-0 flex flex-col;
+  box-sizing: border-box;
+  padding: 16px 23px ;
+  background-color: #293d4e;
+  border-radius: 16px;
+}
+
+.profileHeader {
+  @apply flex items-start justify-between w-full;
+  margin-bottom: 24px;
+}
+
+.profileIdentity {
+  @apply flex items-center min-w-0;
+  gap: 8px;
+}
+
+.profileAvatar {
+  @apply rounded-full object-cover shrink-0;
+  width: 44px;
+  height: 44px;
+  background-color: #d9d9d9;
+}
+
+.profileHeading {
+  @apply flex flex-col min-w-0;
+  gap: 3px;
+}
+
+.profileName {
+  @apply m-0 font-medium text-white;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.profileAge {
+  @apply text-white;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.profileUserIcon {
+  @apply shrink-0 object-contain cursor-pointer;
+  width: 24px;
+  height: 24px;
+  
+}
+
+.profileDetails {
+  @apply flex flex-col w-full;
+  gap: 24px;
+}
+
+.profileDetail {
+  @apply flex items-center min-w-0 text-white;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.profileDetail img {
+  @apply shrink-0 object-contain;
+  width: 20px;
+  height: 20px;
+}
+
+.profileDetail span {
+  @apply min-w-0;
+  overflow-wrap: anywhere;
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 1024px) {
+  .profileCard {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .profileCard {
+    min-height: 250px;
+    padding: 28px 16px 20px;
+  }
+
+  .profileHeader {
+    margin-bottom: 36px;
+  }
+
+  .profileAvatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profileName {
+    font-size: 13px;
+  }
+
+  .profileDetails {
+    gap: 20px;
+  }
+
+  .profileDetail {
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .profileDetail img {
+    width: 18px;
+    height: 18px;
+  }
 }

@@ -8,7 +8,6 @@ const navigateToProfile = useGymProfileNavigation("managers");
 
   return (
     <GymMemberList
-      title="مدیران باشگاه"
       placeholder="...جستجوی مدیر"
       items={MOCK_MANAGERS}
       onItemClick={(manager)=>navigateToProfile(manager.id)}

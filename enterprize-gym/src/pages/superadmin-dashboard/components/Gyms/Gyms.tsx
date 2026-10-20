@@ -117,7 +117,7 @@ export default function Gyms() {
               onClick={() => handleDetail(gym.id)}
               avatar={gym.avatar}
               username={gym.name}
-              icon={gym.icon}
+              icon
               className={Classes.listItem}
             />
           ))

@@ -1,0 +1,68 @@
+.subscriptionContainer {
+    @apply w-full min-w-0 bg-[#0b141b] text-white;
+}
+
+.subscriptionToolbar {
+    @apply mb-5 flex w-full items-end gap-2.5;
+}
+
+.subscriptionSearchContainer {
+    @apply min-w-0 flex-1;
+}
+.subscriptionListContainer {
+    @apply flex w-full flex-col gap-5 overflow-visible border-0;
+}
+
+.subscriptionItem {
+    @apply flex min-h-[52px] w-full cursor-pointer items-center justify-between gap-3 rounded-full bg-[#607f9d] px-3 text-left text-white transition-colors duration-150;
+    border: 0;
+}
+
+.subscriptionItem:hover {
+    @apply bg-[#718da8];
+}
+
+.subscriptionIdentity {
+    @apply flex min-w-0 items-center gap-2;
+}
+
+.subscriptionAvatar {
+    @apply h-[40px] w-[40px] shrink-0 rounded-full border border-[#8da6bc] object-cover;
+}
+
+.subscriptionName {
+    @apply truncate text-[14px] font-semibold;
+}
+
+.subscriptionDaysLeft {
+    @apply shrink-0 text-[10px] font-normal text-[#edf3f8];
+}
+
+.subscriptionExpiredText {
+    @apply font-semibold text-[#ffd1d1];
+}
+
+.subscriptionEmptyMessage {
+    @apply px-4 py-8 text-center text-sm text-[#a9bdcf];
+}
+
+@media (max-width: 640px) {
+    .subscriptionToolbar {
+        @apply gap-2;
+    }
+
+    .subscriptionItem {
+        @apply min-h-[48px] px-2;
+    }
+
+    .subscriptionAvatar {
+        @apply h-[36px] w-[36px];
+    }
+
+    .subscriptionName {
+        @apply text-xs;
+    }
+}
+.listItems{
+    @apply bg-button-primary
+}

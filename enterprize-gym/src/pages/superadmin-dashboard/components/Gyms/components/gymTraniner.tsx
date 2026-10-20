@@ -27,7 +27,6 @@ export default function GymTrainees() {
   
   return (
     <GymMemberList
-      title="ورزشکاران باشگاه"
       placeholder="...جستجوی ورزشکار"
       items={MOCK_TRAINEES}
       onItemClick={(trainee)=>navigateToProfile(trainee.id)}

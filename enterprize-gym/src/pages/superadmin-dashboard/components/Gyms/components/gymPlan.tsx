@@ -10,7 +10,6 @@ export default function GymPlans() {
   return (
     <>
       <GymMemberList
-        title="پلن‌های باشگاه"
         placeholder="جستجوی پلن..."
         items={MOCK_PLANS}
         onItemClick={(plan)=>navigateToProfile(plan.id)}

@@ -9,7 +9,6 @@ import { removeSpaces } from "../../../../../shared/utils/string.utils";
 
 
 export default function GymMemberList({
-  title,
   placeholder,
   items,
   onItemClick,
@@ -28,10 +27,7 @@ export default function GymMemberList({
 
   return (
     <div className={Classes.container}>
-      <h2 className={Classes.title}>
-        {title}
-      </h2>
-
+      
       <div
         className={Classes.searchContainer}
         dir="ltr"
@@ -51,7 +47,7 @@ export default function GymMemberList({
               key={item.id}
               avatar={item.avatar}
               username={item.name}
-              icon={item.icon}
+              icon
               className={Classes.listItem}
               onClick={() => onItemClick?.(item)}
             />

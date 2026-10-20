@@ -11,6 +11,7 @@ export const ListItem = ({
   secondaryInfo,
   info,
   onClick,
+  icon,
   className,
 }: LIST_ITEM_PROPS_INTERFACE) => {
   return (
@@ -22,7 +23,7 @@ export const ListItem = ({
       </div>
       <div className={Classes.accept}>
         <span className={Classes.info}>{info}</span>
-        <img src={Profile} alt="status icon" className={Classes.icon} />
+        {icon && <img src={Profile} alt="status icon" className={Classes.icon} />}
       </div>
     </div>
   );

@@ -1,88 +1,80 @@
 import Classes from "../styles/Gyms.module.css";
-import type { GymMember } from "../interfaces/gymMember.interface";
+import type { GymMemberProfileProps } from "../interfaces/gymMember.interface";
 
 import phoneIcon from "../../../../../assets/icons/phone.svg";
 import subscriptionIcon from "../../../../../assets/icons/subscription.svg";
 import trophyIcon from "../../../../../assets/icons/trophy.svg";
 import timeIcon from "../../../../../assets/icons/time.svg";
-
-interface GymMemberProfileProps {
-  member: GymMember;
-  title: string;
-}
+import userIcon from "../../../../../assets/icons/deleteUser.svg";
 
 export default function GymMemberProfile({
   member,
-  title,
 }: GymMemberProfileProps) {
   return (
-    <section className={Classes.Gymcontainer}>
-      <div className={Classes.detailSection}>
-        <div className={Classes.gymHeader}>
-          <div className={Classes.gymInfo}>
-            <img
-              className={Classes.profileAvatar}
-              src={member.avatar}
-              alt={member.name}
-            />
+    <section className={Classes.profileCard}>
+      <header className={Classes.profileHeader}>
+        <div className={Classes.profileIdentity}>
+          <img
+            className={Classes.profileAvatar}
+            src={member.avatar}
+            alt={member.name}
+          />
 
-            <div className={Classes.headerInfo}>
-              <h2 className={Classes.gymTitle}>
-                {member.name}
-              </h2>
+          <div className={Classes.profileHeading}>
+            <h2 className={Classes.profileName}>
+              {member.name}
+            </h2>
 
-              <span className={Classes.gymSubTitle}>
-                {title}
+            {member.age !== undefined && (
+              <span className={Classes.profileAge}>
+                Age: {member.age}
               </span>
-            </div>
+            )}
           </div>
         </div>
 
-        <div className={Classes.gymDetails}>
-          <div className={Classes.infoGrid}>
-            {member.phone && (
-              <div className={Classes.infoItem}>
-                <img src={phoneIcon} alt="" />
-                <span className={Classes.value}>
-                  {member.phone}
-                </span>
-              </div>
-            )}
+        <button
+  type="button"
+  className={Classes.profileUserIcon}
+  aria-label="حذف کاربر"
+  title="حذف کاربر"
+>
+  <img src={userIcon} alt="" />
+</button>
+      </header>
 
-            {member.fitnessLevel && (
-              <div className={Classes.infoItem}>
-                <img src={subscriptionIcon} alt="" />
-                <span className={Classes.value}>
-                  Fitness Level: {member.fitnessLevel}
-                </span>
-              </div>
-            )}
-
-            {member.membershipDate && (
-              <div className={Classes.infoItem}>
-                <img src={trophyIcon} alt="" />
-                <span className={Classes.value}>
-                  Membership Date: {member.membershipDate}
-                </span>
-              </div>
-            )}
-
-            {member.workingHours && (
-              <div className={Classes.infoItem}>
-                <img src={timeIcon} alt="" />
-                <span className={Classes.value}>
-                  {member.workingHours}
-                </span>
-              </div>
-            )}
+      <div className={Classes.profileDetails}>
+        {member.phone && (
+          <div className={Classes.profileDetail}>
+            <img src={phoneIcon} alt="" />
+            <span>{member.phone}</span>
           </div>
+        )}
 
-          {member.description && (
-            <p className={Classes.profileDescription}>
-              {member.description}
-            </p>
-          )}
-        </div>
+        {member.fitnessLevel && (
+          <div className={Classes.profileDetail}>
+            <img src={subscriptionIcon} alt="" />
+            <span>
+              Fitness Level: {member.fitnessLevel}
+            </span>
+          </div>
+        )}
+
+        {member.membershipDate && (
+          <div className={Classes.profileDetail}>
+            <img src={trophyIcon} alt="" />
+            <span>
+              Membership Date: {member.membershipDate}
+            </span>
+          </div>
+        )}
+
+        {member.workingHours && (
+          <div className={Classes.profileDetail}>
+            <img src={timeIcon} alt="" />
+            <span>{member.workingHours}</span>
+          </div>
+        )}
       </div>
     </section>
   );

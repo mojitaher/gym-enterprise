@@ -3,6 +3,7 @@ import type { GymMember } from "../interfaces/gymMember.interface";
 const MOCK_COACHES: GymMember[] = [
   {
   id: "1",
+  age:24,
   name: "علی محمدی",
   avatar: "/images/coach.png",
   phone: "09120000001",
@@ -12,6 +13,7 @@ const MOCK_COACHES: GymMember[] = [
 },
  {
   id: "2",
+  age:24,
   name: "vs محمدی",
   avatar: "/images/coach.png",
   phone: "09120000001",

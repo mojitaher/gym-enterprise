@@ -3,6 +3,7 @@ import type { GymMember } from "../interfaces/gymMember.interface";
 const MOCK_MANAGERS: GymMember[] = [
  {
   id: "1",
+  age:24,
   name: "محمد کریمی",
   avatar: "/images/manager.png",
   phone: "09120000003",
@@ -12,6 +13,7 @@ const MOCK_MANAGERS: GymMember[] = [
   description: "مدیر اجرایی باشگاه",
 },{
   id: "2",
+  age:24,
   name: "dsadsad کریمی",
   avatar: "/images/manager.png",
   phone: "09120000003",

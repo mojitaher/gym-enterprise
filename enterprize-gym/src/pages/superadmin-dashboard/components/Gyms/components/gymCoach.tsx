@@ -9,7 +9,6 @@ export default function GymCoaches() {
  
   return (
     <GymMemberList
-      title="مربی‌های باشگاه"
       placeholder="...جستجوی مربی"
       items={MOCK_COACHES}
       onItemClick={(coach)=>navigateToProfile(coach.id)}
