@@ -1,48 +1,45 @@
-import { useState } from "react";
-import {
-  Outlet,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import DashboardLayout from "../../shared/ui/organisms/Dashbord/dashbordLayout";
 import { Chip } from "../../shared/ui/atoms/chips/chip";
 
 import { SUPERADMIN_DASHBOARD_COMPONENT_ENUM } from "./enums/SuperadminDashboardComponentEnum";
-import { SUPERADMIN_DASHBOARD_COMPONENTS } from "./constants/SuperadminDashboardConstant";
 import { SUPERADMIN_DASHBOARD_SIDEBAR } from "./constants/superAdminDashbordButtons";
 
 import Classes from "./style/SuperadminDashboard.module.css";
 
-export default function SuperadminDashboard() {
-  const [activeTab, setActiveTab] =
-    useState<SUPERADMIN_DASHBOARD_COMPONENT_ENUM>(
-      SUPERADMIN_DASHBOARD_COMPONENT_ENUM.ANALYTICS
-    );
+const SIDEBAR_PATHS = {
+  [SUPERADMIN_DASHBOARD_COMPONENT_ENUM.ANALYTICS]:
+    "/dashboard/superadmin",
+  [SUPERADMIN_DASHBOARD_COMPONENT_ENUM.GYM]:
+    "/dashboard/superadmin/gyms",
+  [SUPERADMIN_DASHBOARD_COMPONENT_ENUM.SUBSCRIPTION]:
+    "/dashboard/superadmin/subscriptions",
+  [SUPERADMIN_DASHBOARD_COMPONENT_ENUM.REPORTS]:
+    "/dashboard/superadmin/reports",
+  [SUPERADMIN_DASHBOARD_COMPONENT_ENUM.SUSPENDS]:
+    "/dashboard/superadmin/suspends",
+};
 
+export default function SuperadminDashboard() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isGymDetail = location.pathname.startsWith(
-    "/dashboard/superadmin/gym/"
-  );
+  const isGymPage =
+    location.pathname.startsWith("/dashboard/superadmin/gym/");
 
-  const currentTab = isGymDetail
+  const isExpiredSubscriptions =
+    location.pathname ===
+    "/dashboard/superadmin/subscriptions/expired";
+
+  const currentTab = isGymPage
     ? SUPERADMIN_DASHBOARD_COMPONENT_ENUM.GYM
-    : activeTab;
-
-  const ActiveComponent =
-    SUPERADMIN_DASHBOARD_COMPONENTS[activeTab];
-
-  const handleTabChange = (
-    tab: SUPERADMIN_DASHBOARD_COMPONENT_ENUM
-  ) => {
-    setActiveTab(tab);
-
-    if (isGymDetail) {
-      navigate("/dashboard/superadmin");
-    }
-  };
+    : isExpiredSubscriptions
+      ? SUPERADMIN_DASHBOARD_COMPONENT_ENUM.SUBSCRIPTION
+      : Object.entries(SIDEBAR_PATHS).find(
+          ([, path]) => path === location.pathname
+        )?.[0];
 
   return (
     <DashboardLayout
@@ -59,9 +56,7 @@ export default function SuperadminDashboard() {
             <Chip
               key={item.key}
               iconName={item.icon}
-              onClick={() =>
-                handleTabChange(item.key)
-              }
+              onClick={() => navigate(SIDEBAR_PATHS[item.key])}
               className={
                 currentTab === item.key
                   ? Classes.chipActive
@@ -75,11 +70,7 @@ export default function SuperadminDashboard() {
       }
     >
       <div className={Classes.componentContainer}>
-        {isGymDetail ? (
-          <Outlet />
-        ) : (
-          <ActiveComponent />
-        )}
+        <Outlet />
       </div>
     </DashboardLayout>
   );

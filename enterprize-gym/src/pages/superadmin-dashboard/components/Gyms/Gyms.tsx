@@ -118,7 +118,7 @@ export default function Gyms() {
               avatar={gym.avatar}
               username={gym.name}
               icon
-              className={Classes.listItem}
+              className={Classes.listItems}
             />
           ))
         ) : (

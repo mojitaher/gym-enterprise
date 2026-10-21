@@ -66,3 +66,6 @@
 .listItems{
     @apply bg-button-primary
 }
+.listItems:hover {
+    @apply bg-[#49627B]
+}

@@ -48,7 +48,7 @@ export default function GymMemberList({
               avatar={item.avatar}
               username={item.name}
               icon
-              className={Classes.listItem}
+              className={Classes.listItems}
               onClick={() => onItemClick?.(item)}
             />
           ))

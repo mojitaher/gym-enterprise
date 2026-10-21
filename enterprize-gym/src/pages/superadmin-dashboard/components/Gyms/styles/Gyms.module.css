@@ -15,13 +15,15 @@
   @apply flex flex-col gap-5 w-full max-w-full;
 }
 
-.listItem {
-  @apply bg-button-primary cursor-pointer ;
+.listItems {
+  @apply bg-button-primary! cursor-pointer ;
+  
 }
 
-.listItem:hover {
-  @apply bg-[#49627B];
+.listItems:hover {
+  @apply bg-[#49627B]!;
 }
+
 
 .emptyMessage {
   @apply text-[#8b8b9a] text-center py-8 text-sm;
