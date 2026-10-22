@@ -1,5 +1,5 @@
 .layout {
-  @apply min-h-screen w-full overflow-hidden bg-[#0B141C] p-10;
+  @apply min-h-screen w-full overflow-hidden bg-[#0B141C]  p-10 ;
 }
 
 .main {
@@ -14,7 +14,18 @@
 }
 
 .backButton {
-  @apply cursor-pointer;
+  @apply cursor-pointer px-40;
+}
+
+@media (min-width: 402px) and (max-width: 744px) {
+  .backButton {
+    @apply px-5;
+  }
+}
+@media (min-width: 745px) and (max-width: 1199px) {
+  .backButton {
+    @apply px-8;
+  }
 }
 
 .backButton img {
