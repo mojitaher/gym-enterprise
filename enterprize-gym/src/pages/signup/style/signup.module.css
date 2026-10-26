@@ -29,7 +29,7 @@
   @apply mt-8;
 }
 .buttonWrapper{
-  @apply mt-5 gap-10 flex flex-row mx-auto;
+  @apply mt-5 flex w-full flex-row items-center justify-center gap-10;
 }
 
 @media (max-width: 480px) {
@@ -197,7 +197,7 @@
 .selected {
   width: 100%;
   min-height: 440px;
-  min-width: 0;
+  
   box-sizing: border-box;
   border-radius: 16px;
   cursor: pointer;

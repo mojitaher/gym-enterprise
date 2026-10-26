@@ -146,7 +146,6 @@ export function AppRouter() {
         element={<TraineeDashboard />}
       />
 
-      {/* صفحات خطا */}
       <Route path="/500" element={<Error500 />} />
       <Route path="/no-internet" element={<NoInternet />} />
       <Route path="*" element={<Error404 />} />

@@ -58,7 +58,7 @@ export default function SubscriptionPlans({
         ))}
       </div>
 
-      <div className={Classes.buttonWrapper}>
+      <div className={Classes.buttonWrapper} >
         <Button
           type="button"
           variant={BUTTON_VARIANT_ENUM.secondary}
