@@ -6,6 +6,7 @@ import subscriptionIcon from "../../../../../assets/icons/subscription.svg";
 import trophyIcon from "../../../../../assets/icons/trophy.svg";
 import timeIcon from "../../../../../assets/icons/time.svg";
 import userIcon from "../../../../../assets/icons/deleteUser.svg";
+import { Avatar } from "../../../../../shared/ui/atoms/avatar/avatar";
 
 export default function GymMemberProfile({
   member,
@@ -14,12 +15,7 @@ export default function GymMemberProfile({
     <section className={Classes.profileCard}>
       <header className={Classes.profileHeader}>
         <div className={Classes.profileIdentity}>
-          <img
-            className={Classes.profileAvatar}
-            src={member.avatar}
-            alt={member.name}
-          />
-
+          <Avatar size="small" src={member.avatar}alt={member.name}/>
           <div className={Classes.profileHeading}>
             <h2 className={Classes.profileName}>
               {member.name}

@@ -12,4 +12,5 @@ export default interface SUBSCRIPTION_CARD_PROPS_INTERFACE {
   trainee: string;
   duration: string;
   price: number|string;
+  onClick?:()=>void;
 }

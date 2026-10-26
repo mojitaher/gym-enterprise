@@ -27,9 +27,11 @@ import GymManagerDetail from "../pages/superadmin-dashboard/components/Gyms/comp
 import GymPlanDetail from "../pages/superadmin-dashboard/components/Gyms/components/gymPlanDetail";
 
 import ExpiredSubscriptions from "../pages/superadmin-dashboard/components/Subscriptions/components/subscriptionExpired";
+import SubscriptionDetail from "../pages/superadmin-dashboard/components/Subscriptions/components/SubscriptionDetail";
 
 import { SUPERADMIN_DASHBOARD_COMPONENTS } from "../pages/superadmin-dashboard/constants/SuperadminDashboardConstant";
 import { SUPERADMIN_DASHBOARD_COMPONENT_ENUM } from "../pages/superadmin-dashboard/enums/SuperadminDashboardComponentEnum";
+import ChangeSubscription from "../pages/superadmin-dashboard/components/Subscriptions/components/subscriptionChange";
 
 const AnalyticsPage =
   SUPERADMIN_DASHBOARD_COMPONENTS[
@@ -59,7 +61,6 @@ const SuspendsPage =
 export function AppRouter() {
   return (
     <Routes>
-      {/* صفحات عمومی */}
       <Route path="/" element={<HomePage />} />
       <Route path="/aboutus" element={<AboutPage />} />
       <Route path="/signup" element={<SignupPage />} />
@@ -68,12 +69,10 @@ export function AppRouter() {
         element={<SuperadminLoginPage />}
       />
 
-      {/* داشبورد سوپرادمین */}
       <Route
         path="/dashboard/superadmin"
         element={<SuperadminDashboard />}
       >
-        {/* صفحات اصلی */}
         <Route index element={<AnalyticsPage />} />
         <Route path="gyms" element={<GymsPage />} />
         <Route
@@ -83,7 +82,6 @@ export function AppRouter() {
         <Route path="reports" element={<ReportsPage />} />
         <Route path="suspends" element={<SuspendsPage />} />
 
-        {/* جزئیات باشگاه */}
         <Route path="gym/:id" element={<GymDetail />} />
 
         <Route
@@ -122,14 +120,19 @@ export function AppRouter() {
           element={<GymManagerDetail />}
         />
 
-        {/* اشتراک‌های منقضی */}
         <Route
           path="subscriptions/expired"
           element={<ExpiredSubscriptions />}
         />
+        <Route
+          path="subscriptions/:subscriptionId"
+          element={<SubscriptionDetail />}
+        />
+        <Route
+  path="subscriptions/:subscriptionId/change"
+  element={<ChangeSubscription />}
+/>
       </Route>
-
-      {/* داشبوردهای سایر نقش‌ها */}
       <Route
         path="/dashboard/manager"
         element={<ManagerDashboard />}

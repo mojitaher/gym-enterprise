@@ -25,16 +25,13 @@ const svgIcon = (<svg width="20" height="20" viewBox="0 0 20 20" fill="currentCo
 )
   return (
     <div className={clsx(Classes.planCard, className)}>
-      {/* ============ Top section (header + actions) ============ */}
       <div className={Classes.topSection}>
-        {/* Header */}
+        
         <div className={Classes.header}>
           <h3 className={Classes.title}>{title}</h3>
         </div>
 
-        {/* Actions */}
         <div className={Classes.actions}>
-          {/* Active month — passed from the parent */}
           <span className={Classes.month}>{month}</span>
 
           <img
@@ -61,12 +58,9 @@ const svgIcon = (<svg width="20" height="20" viewBox="0 0 20 20" fill="currentCo
         </div>
       </div>
 
-      {/* Horizontal separator */}
       <div className={Classes.separator} />
-
-      {/* ============ Bottom section (below the separator) ============ */}
+\
       <div className={Classes.bottomSection}>
-        {/* Stats */}
         <div className={Classes.stats}>
           <div className={Classes.statItem}>
             <span className={Classes.statLabel}>Coach:{coach}</span>
@@ -82,7 +76,7 @@ const svgIcon = (<svg width="20" height="20" viewBox="0 0 20 20" fill="currentCo
           </div>
         </div>
 
-        {/* Submit */}
+        
         <div className={Classes.submitButton}>
           <Button variant="secondary" size="large" startIcon={svgIcon} endIcon={svgIcon} onClick={onSubmit}>text</Button>
         </div>

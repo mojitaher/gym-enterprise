@@ -83,6 +83,9 @@ export default function Subscriptions({
               avatar={subscription.avatar}
               username={subscription.buyerName}
               info={`${subscription.daysLeft} روز مونده`}
+              onClick={() =>
+  navigate(`/dashboard/superadmin/subscriptions/${subscription.id}`)
+}
             />
           ))
         ) : (
