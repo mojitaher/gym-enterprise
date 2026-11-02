@@ -1,6 +1,6 @@
 import { SUPERADMIN_DASHBOARD_COMPONENT_ENUM } from "../enums/SuperadminDashboardComponentEnum";
 import Analytic from "../components/analytic/analytic";
-import reports from "../components/report/reports";
+import reports from "../components/report/report";
 import Gyms from "../components/Gyms/Gyms";
 import Suspend from "../components/suspend/suspend";
 import Subscriptions from "../components/Subscriptions/Subscriptions";

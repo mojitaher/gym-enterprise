@@ -79,7 +79,7 @@ export function AppRouter() {
           path="subscriptions"
           element={<SubscriptionsPage />}
         />
-        <Route path="reports" element={<ReportsPage />} />
+        <Route path="reports" element={<ReportsPage/>} />
         <Route path="suspends" element={<SuspendsPage />} />
 
         <Route path="gym/:id" element={<GymDetail />} />

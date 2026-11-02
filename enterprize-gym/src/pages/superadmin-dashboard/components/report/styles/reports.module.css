@@ -1,0 +1,7 @@
+.reportsListContainer {
+  @apply flex flex-col gap-5;
+}
+
+.groupItems {
+  @apply bg-button-primary! hover:bg-[#49627B]!;
+}
