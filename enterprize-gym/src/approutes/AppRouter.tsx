@@ -32,6 +32,7 @@ import SubscriptionDetail from "../pages/superadmin-dashboard/components/Subscri
 import { SUPERADMIN_DASHBOARD_COMPONENTS } from "../pages/superadmin-dashboard/constants/SuperadminDashboardConstant";
 import { SUPERADMIN_DASHBOARD_COMPONENT_ENUM } from "../pages/superadmin-dashboard/enums/SuperadminDashboardComponentEnum";
 import ChangeSubscription from "../pages/superadmin-dashboard/components/Subscriptions/components/subscriptionChange";
+import ReportDetails from "../pages/superadmin-dashboard/components/report/components/ReportDetails";
 
 const AnalyticsPage =
   SUPERADMIN_DASHBOARD_COMPONENTS[
@@ -80,6 +81,10 @@ export function AppRouter() {
           element={<SubscriptionsPage />}
         />
         <Route path="reports" element={<ReportsPage/>} />
+        <Route
+  path="reports/:reportType"
+  element={<ReportDetails />}
+/>
         <Route path="suspends" element={<SuspendsPage />} />
 
         <Route path="gym/:id" element={<GymDetail />} />

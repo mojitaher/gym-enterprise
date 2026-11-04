@@ -1,4 +1,4 @@
-import { REPORT_ENUM } from "./enums/reportsEnums";
+import { REPORT_ENUM } from "../enums/reportsEnums";
 
 export const MOCK_REPORT_COUNTS = {
   [REPORT_ENUM.TECHNICAL]: 4,

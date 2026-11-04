@@ -1,0 +1,4 @@
+export enum BADGE_ENUMS{
+    ACTIVE='ACTIVE',
+    DEACTIVE='DEACTIVE'
+}

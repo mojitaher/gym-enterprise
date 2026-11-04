@@ -1,0 +1,21 @@
+.badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: #004894;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  @apply py-2 px-5
+}
+
+.badgeClickable:hover {
+  opacity: 0.9;
+}
+
+.badgeActive {
+  background-color: #1f7fe6;
+  color: #ffffff;
+}

@@ -1,0 +1,6 @@
+export  enum REPORT_DETAIL_ENUMS{
+    ALL='ALL',
+    MANAGER='MANAGER',
+    TRAINER='TRAINER',
+    COACH='COACH'
+}
