@@ -24,9 +24,10 @@ export default function DashboardLayout({
           <button
             type="button"
             onClick={handleBack}
-            className={Classes.backButton}
+            
           >
             <img
+            className={Classes.backButton}
               src={BackIcon}
               alt="بازگشت"
             />

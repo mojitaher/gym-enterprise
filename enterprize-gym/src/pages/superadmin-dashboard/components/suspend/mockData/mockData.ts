@@ -1,0 +1,8 @@
+import { SUSPENDS_ENUMS } from "../enums/suspendEnums";
+
+export const MOCK_SUSPENDS_COUNTS: Record<SUSPENDS_ENUMS, number> = {
+  [SUSPENDS_ENUMS.GYMS]: 2,
+  [SUSPENDS_ENUMS.TRAINERS]: 2,
+  [SUSPENDS_ENUMS.COACHES]: 2,
+  [SUSPENDS_ENUMS.MANAGERS]: 2,
+};

@@ -16,7 +16,7 @@ export const ListItem = ({
 }: LIST_ITEM_PROPS_INTERFACE) => {
   return (
     <div className={clsx(Classes.listItem, className)} onClick={onClick}>
-      <Avatar src={avatar} size="small" />
+      {avatar&&<Avatar src={avatar} size="small" />}
       <div className={Classes.user}>
         <span className={Classes.username}>{username}</span>
         <span className={Classes.secondaryInfo}>{secondaryInfo}</span>

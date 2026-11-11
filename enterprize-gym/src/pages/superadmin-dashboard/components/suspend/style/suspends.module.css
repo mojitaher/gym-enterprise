@@ -1,0 +1,19 @@
+.suspendsContainer {
+    @apply flex flex-col gap-6 w-full min-w-0 max-w-full;
+}
+
+.suspendsHeader {
+    @apply flex items-center justify-between w-full;
+}
+
+.suspendsTitle {
+    @apply text-xl font-bold text-white m-0;
+}
+
+.suspendsListContainer {
+    @apply flex flex-col gap-5 w-full min-w-0;
+}
+
+.groupItems {
+    @apply bg-button-primary hover:bg-[#49627B] transition-colors;
+}
