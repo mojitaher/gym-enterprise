@@ -14,17 +14,16 @@
 }
 
 .backButton {
-  @apply cursor-pointer px-40;
+  @apply h-6 w-6 cursor-pointer mx-40;
 }
-
 @media (min-width: 402px) and (max-width: 744px) {
   .backButton {
-    @apply px-5;
+    @apply mx-5;
   }
 }
 @media (min-width: 745px) and (max-width: 1199px) {
   .backButton {
-    @apply px-8;
+    @apply mx-8;
   }
 }
 
