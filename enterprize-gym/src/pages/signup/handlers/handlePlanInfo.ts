@@ -1,35 +1,50 @@
+import type { Dispatch, SetStateAction } from "react";
 
 import { SIGNUP_STEP_ENUM } from "../enums/signupStep";
+
 import type { SIGNUP_STEP } from "../types/signupStep";
+import type { PlanBody } from "../api/interfaces/apiInterfaces";
+
 import type SUBSCRIPTION_CARD_PROPS_INTERFACE from "../../../entities/subscriptionCard/ui/interfaces/subscriptionCardPropsInterface";
 
-interface HandleSubscriptionPlanSubmitProps {
+interface Params {
   data: SUBSCRIPTION_CARD_PROPS_INTERFACE;
-  setSelectedPlan: (
-    data: SUBSCRIPTION_CARD_PROPS_INTERFACE
-  ) => void;
-  setCompletedSteps: React.Dispatch<
-    React.SetStateAction<Set<SIGNUP_STEP>>
+  planId: string;
+  registrationId: string | null;
+
+  submitPlan: (
+    registrationId: string,
+    body: PlanBody
+  ) => Promise<unknown>;
+
+  setSelectedPlan: Dispatch<
+    SetStateAction<SUBSCRIPTION_CARD_PROPS_INTERFACE | null>
   >;
-  setCurrentStep: (step: number) => void;
+
+  setCompletedSteps: Dispatch<SetStateAction<Set<SIGNUP_STEP>>>;
+  setCurrentStep: Dispatch<SetStateAction<number>>;
 }
 
-export const handleSubscriptionPlanSubmit = ({
+export async function handleSubscriptionPlanSubmit({
   data,
+  planId,
+  registrationId,
+  submitPlan,
   setSelectedPlan,
   setCompletedSteps,
   setCurrentStep,
-}: HandleSubscriptionPlanSubmitProps): void => {
-  console.log("Subscription plan selected:", data);
+}: Params): Promise<void> {
+  if (!registrationId) {
+    throw new Error("ابتدا اطلاعات مدیر را ثبت کنید");
+  }
 
-  // TODO: Backend needed - API call here
-  // await signupSubscriptionPlanApi(data);
+  await submitPlan(registrationId, { planId });
 
   setSelectedPlan(data);
 
   setCompletedSteps((prev) =>
-    new Set([...prev, SIGNUP_STEP_ENUM.plan])
+    new Set(prev).add(SIGNUP_STEP_ENUM.plan)
   );
 
-  setCurrentStep(3);
-};
+  setCurrentStep((prev) => prev + 1);
+}

@@ -1,26 +1,37 @@
+
 import { useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Stepper } from "../../shared/ui/molcoule/stepper/stepper";
+
 import { SIGNUP_STEP_ENUM } from "./enums/signupStep";
 import { SIGNUP_STEPS, STEPPER_STEPS } from "./constants/signupSteps";
+
 import type { SIGNUP_STEP } from "./types/signupStep";
 import type { GymInfo } from "./types/gymInfo";
 import type { ManagerInfo } from "./types/managerInfo";
 
+import type SUBSCRIPTION_CARD_PROPS_INTERFACE from "../../entities/subscriptionCard/ui/interfaces/subscriptionCardPropsInterface";
+
 import GymInfoStep from "./components/signup/GymInfoStep";
 import ManagerInfoStep from "./components/signup/ManagerInfoStep";
 import SignupSuccessStep from "./components/signup/SignupSuccessStep";
-
-import Classes from "./style/signup.module.css";
+import SubscriptionPlans from "./components/signup/subscriptionPlan";
 
 import { handleGymInfoSubmit } from "./handlers/handleGymInfoSubmit";
 import { handleManagerInfoSubmit } from "./handlers/handleManagerInfoSubmit";
 import { handleBack } from "./handlers/handleBack";
 import { handleBackToLogin } from "./handlers/handleBackToLogin";
-import SubscriptionPlans from "./components/signup/subscriptionPlan";
 import { handleSubscriptionPlanSubmit } from "./handlers/handlePlanInfo";
-import type SUBSCRIPTION_CARD_PROPS_INTERFACE from "../../entities/subscriptionCard/ui/interfaces/subscriptionCardPropsInterface";
+
+import { useRegistrationId } from "./hooks/useRegistrationId";
+import { useUpdateOwner } from "./hooks/useUpdateOwner";
+import { useSubmitPlan } from "./hooks/useSubmitPlan";
+import { useGetPlans } from "./hooks/useGetPlans";
+import { useRegisterGym } from "./hooks/useRegesterGyms";
+import { useRegisterOwner } from "./hooks/useRegesterOwner";
+
+import Classes from "./style/signup.module.css";
 
 const EMPTY_MANAGER_INFO: ManagerInfo = {
   firstName: "",
@@ -35,59 +46,125 @@ const EMPTY_GYM_INFO: GymInfo = {
   name: "",
   phone: "",
   address: "",
-  city:'',
-  description:''
+  city: "",
+  description: "",
 };
-const plans = [
-  {
-    planNumber: 1,
-    planName: "Unlimited",
-    bestFor: "Best for Multi-Branch Gyms",
-    coach: "Unlimited Coaches",
-    trainee: "Unlimited Trainees",
-    duration: "1-Year Subscription",
-    price: "$2,999",
-  },
-  {
-    planNumber: 2,
-    planName: "Starter",
-    bestFor: "Best for Small Gym",
-    coach: "Up to 5 Coaches",
-    trainee: "Up to 100 Trainees",
-    duration: "1-Year Subscription",
-    price: "$499",
-  },
-  {
-    planNumber: 3,
-    planName: "Professional",
-    bestFor: "Best for Medium Gym",
-    coach: "Up to 15 Coaches",
-    trainee: "Up to 400 Trainees",
-    duration: "1-Year Subscription",
-    price: "$999",
-  },
-  {
-    planNumber: 4,
-    planName: "Enterprise",
-    bestFor: "Best for Large Gym",
-    coach: "Up to 30 Coaches",
-    trainee: "Up to 1,000 Trainees",
-    duration: "1-Year Subscription",
-    price: "$1,700",
-  },
-];
-
 
 export default function SignupPage() {
   const [currentStep, setCurrentStep] = useState(0);
+
   const [completedSteps, setCompletedSteps] = useState<Set<SIGNUP_STEP>>(
     new Set()
   );
+
   const [gymData, setGymData] = useState<GymInfo | null>(null);
   const [managerData, setManagerData] = useState<ManagerInfo | null>(null);
+
   const [selectedPlan, setSelectedPlan] =
-  useState<SUBSCRIPTION_CARD_PROPS_INTERFACE | null>(null);
+    useState<SUBSCRIPTION_CARD_PROPS_INTERFACE | null>(null);
+
+  const {
+    registrationId,
+    saveRegistrationId,
+    
+  } = useRegistrationId();
+
   const navigate = useNavigate();
+
+  // React Query Hooks
+
+  const registerOwnerMutation = useRegisterOwner();
+  const updateOwnerMutation = useUpdateOwner();
+  const registerGymMutation = useRegisterGym();
+  const submitPlanMutation = useSubmitPlan();
+
+  const plansQuery = useGetPlans();
+
+  // دریافت آرایه پلن‌ها از پاسخ بک‌اند
+
+  const apiPlans = plansQuery.data?.data ?? [];
+
+  // تبدیل پلن‌های بک‌اند به فرمت کارت‌های فرانت‌اند
+
+  const plans: SUBSCRIPTION_CARD_PROPS_INTERFACE[] = apiPlans.map(
+    (plan, index) => ({
+      planNumber: index + 1,
+      planName: plan.name,
+      bestFor: plan.description,
+      coach: `Up to ${plan.maxCoaches} Coaches`,
+      trainee: `Up to ${plan.maxAthletes ?? "Unlimited"} Athletes`,
+      duration: `${plan.durationInDays} Days`,
+      price: `${Number(plan.priceToman).toLocaleString("fa-IR")} تومان`,
+    })
+  );
+
+  // ثبت یا ویرایش اطلاعات مدیر
+
+  const handleManagerSubmit = (data: ManagerInfo) =>
+  handleManagerInfoSubmit({
+    data,
+    registrationId,
+   isEditing:
+  completedSteps.has(SIGNUP_STEP_ENUM.managerInfo) ||
+  Boolean(registrationId),
+    
+
+    registerOwner: (body) =>
+      registerOwnerMutation.mutateAsync(body),
+
+    updateOwner: (id, body) =>
+      updateOwnerMutation.mutateAsync({
+        registrationId: id,
+        body,
+      }),
+
+    setRegistrationId: saveRegistrationId,
+    setManagerData,
+    setCompletedSteps,
+    setCurrentStep,
+    
+  }).catch(console.error);
+  // ثبت اطلاعات باشگاه
+
+  const handleGymSubmit = (data: GymInfo) =>
+    handleGymInfoSubmit({
+      data,
+      registrationId,
+      registerGym: (id, body) =>
+        registerGymMutation.mutateAsync({
+          registrationId: id,
+          body,
+        }),
+      setGymData,
+      setCompletedSteps,
+      setCurrentStep,
+    }).catch(console.error);
+
+  // ثبت پلن انتخاب‌شده
+
+  const handlePlanSubmit = (
+    plan: SUBSCRIPTION_CARD_PROPS_INTERFACE
+  ) => {
+    const apiPlan = apiPlans[plan.planNumber - 1];
+
+    if (!apiPlan || !registrationId) return;
+
+    return handleSubscriptionPlanSubmit({
+      data: plan,
+      planId: apiPlan.id,
+      registrationId,
+      submitPlan: (id, body) =>
+        submitPlanMutation.mutateAsync({
+          registrationId: id,
+          body,
+        }),
+      setSelectedPlan,
+      setCompletedSteps,
+      setCurrentStep,
+    }).catch(console.error)
+  };
+
+  // نمایش محتوای مراحل ثبت‌نام
 
   const renderStepContent = () => {
     switch (SIGNUP_STEPS[currentStep]) {
@@ -96,48 +173,53 @@ export default function SignupPage() {
           <ManagerInfoStep
             initialValues={managerData ?? EMPTY_MANAGER_INFO}
             onBack={() => handleBackToLogin({ navigate })}
-            onSubmit={(data) =>
-              handleManagerInfoSubmit({
-                data,
-                setManagerData,
-                setCompletedSteps,
-                setCurrentStep,
-              })
+            onSubmit={handleManagerSubmit}
+            isSubmitting={
+              registerOwnerMutation.isPending ||
+              updateOwnerMutation.isPending
+            }
+            error={
+              registerOwnerMutation.error?.message ||
+              updateOwnerMutation.error?.message
             }
           />
         );
+
       case SIGNUP_STEP_ENUM.gymInfo:
         return (
           <GymInfoStep
             initialValues={gymData ?? EMPTY_GYM_INFO}
             onBack={() => handleBack({ currentStep, setCurrentStep })}
-            onSubmit={(data) =>
-              handleGymInfoSubmit({
-                data,
-                setGymData,
-                setCompletedSteps,
-                setCurrentStep,
-              })
+            onSubmit={handleGymSubmit}
+            isSubmitting={registerGymMutation.isPending}
+            error={registerGymMutation.error?.message}
+          />
+        );
+
+      case SIGNUP_STEP_ENUM.plan:
+        return (
+          <SubscriptionPlans
+            plans={plans}
+            onBack={() => handleBack({ currentStep, setCurrentStep })}
+            onSubmit={handlePlanSubmit}
+            isLoading={plansQuery.isLoading}
+            isSubmitting={submitPlanMutation.isPending}
+            error={
+              plansQuery.error?.message ||
+              submitPlanMutation.error?.message
             }
           />
         );
-        case SIGNUP_STEP_ENUM.plan:
-        return (
-    <SubscriptionPlans
-      plans={plans}
-      onBack={() => handleBack({ currentStep, setCurrentStep })}
-      onSubmit={(plan) =>
-        handleSubscriptionPlanSubmit({
-          data: plan,
-          setSelectedPlan,
-          setCompletedSteps,
-          setCurrentStep,
-        })
-      }
-    />
-        );
+
       case SIGNUP_STEP_ENUM.success:
-        return <SignupSuccessStep gymData={gymData} managerData={managerData} planData={selectedPlan}/>;
+        return (
+          <SignupSuccessStep
+            gymData={gymData}
+            managerData={managerData}
+            planData={selectedPlan}
+          />
+        );
+
       default:
         return null;
     }

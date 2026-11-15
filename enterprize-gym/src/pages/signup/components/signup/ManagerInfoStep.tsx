@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 import { Button } from "../../../../shared/ui/atoms/button/button";
@@ -12,7 +13,7 @@ import { INPUTـPASSWORD_MODE_ENUM } from "../../../../shared/ui/molcoule/passwo
 
 import PasswordStrengthMeter from "./PasswordStrengthMeter";
 
-import type { ManagerInfoStepProps } from "./interfaces/managerInfoStepProps.interface";
+import type { ManagerInfoStepProps } from "../interfaces/managerInfoStepProps.interface";
 
 import Classes from "../../style/signup.module.css";
 
@@ -20,6 +21,8 @@ export default function ManagerInfoStep({
   onBack,
   onSubmit,
   initialValues,
+  isSubmitting,
+  error,
 }: ManagerInfoStepProps) {
   const [firstName, setFirstName] = useState(initialValues.firstName);
   const [lastName, setLastName] = useState(initialValues.lastName);
@@ -36,6 +39,8 @@ export default function ManagerInfoStep({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isSubmitting) return;
 
     if (
       !firstName.trim() ||
@@ -136,8 +141,8 @@ export default function ManagerInfoStep({
               passTooWeak
                 ? INPUTـPASSWORD_MODE_ENUM.error
                 : pass
-                ? INPUTـPASSWORD_MODE_ENUM.success
-                : INPUTـPASSWORD_MODE_ENUM.warn
+                  ? INPUTـPASSWORD_MODE_ENUM.success
+                  : INPUTـPASSWORD_MODE_ENUM.warn
             }
             size={INPUTـPASSWORD_SIZE_ENUM.medium}
             placeholder="حداقل ۸ کاراکتر"
@@ -164,8 +169,8 @@ export default function ManagerInfoStep({
               confirmMismatch
                 ? INPUTـPASSWORD_MODE_ENUM.error
                 : confirmPass
-                ? INPUTـPASSWORD_MODE_ENUM.success
-                : INPUTـPASSWORD_MODE_ENUM.warn
+                  ? INPUTـPASSWORD_MODE_ENUM.success
+                  : INPUTـPASSWORD_MODE_ENUM.warn
             }
             size={INPUTـPASSWORD_SIZE_ENUM.medium}
             placeholder="رمز عبور را مجدداً وارد کنید"
@@ -182,6 +187,12 @@ export default function ManagerInfoStep({
         </div>
       </div>
 
+      {error && (
+        <p className={Classes.errorText}>
+          {error}
+        </p>
+      )}
+
       <div className={Classes.buttonWrapper}>
         <Button
           type="button"
@@ -189,6 +200,7 @@ export default function ManagerInfoStep({
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.backButton}
           onClick={onBack}
+          disabled={isSubmitting}
         >
           اکانت دارم
         </Button>
@@ -198,8 +210,9 @@ export default function ManagerInfoStep({
           variant={BUTTON_VARIANT_ENUM.primary}
           size={BUTTON_ENUMS_SIZE.large}
           className={Classes.submitButton}
+          disabled={isSubmitting}
         >
-          ادامه
+          {isSubmitting ? "در حال ارسال..." : "ادامه"}
         </Button>
       </div>
     </form>

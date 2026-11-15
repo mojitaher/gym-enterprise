@@ -1,26 +1,30 @@
+
 import { Button } from "../../../../shared/ui/atoms/button/button";
 
 import { BUTTON_VARIANT_ENUM } from "../../../../shared/ui/atoms/button/enum/buttonVarient";
-import { BUTTON_ENUMS_SIZE } from '../../../../shared/ui/atoms/button/enum/buttonSize';
+import { BUTTON_ENUMS_SIZE } from "../../../../shared/ui/atoms/button/enum/buttonSize";
 
-import type { SignupSuccessStepProps } from "./interfaces/signupSuccessStepProps.interface";
+import type { SignupSuccessStepProps } from "../interfaces/signupSuccessStepProps.interface";
+
+import cityItem from "../../../../shared/data/cityData.json";
 
 import Classes from "../../style/signup.module.css";
-import cityItem from '../../../../shared/data/cityData.json'
 
 export default function SignupSuccessStep({
   gymData,
   managerData,
-  planData
+  planData,
 }: SignupSuccessStepProps) {
   return (
     <div className={Classes.successContent}>
       <div className={Classes.successIcon} />
+
       <h3 className={Classes.successTitle}>
         ثبت نام با موفقیت انجام شد
       </h3>
+
       <h5 className={Classes.subSuccessTitle}>
-       کارت عالی بود
+        کارت عالی بود
       </h5>
 
       {gymData && (
@@ -28,21 +32,34 @@ export default function SignupSuccessStep({
           <h4 className={Classes.infoCardTitle}>
             اطلاعات باشگاه
           </h4>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>نام:</span> {gymData.name}
+            <span className={Classes.infoLabel}>نام:</span>
+            {" "}{gymData.name}
           </p>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>تلفن:</span> {gymData.phone}
+            <span className={Classes.infoLabel}>تلفن:</span>
+            {" "}{gymData.phone}
           </p>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>شهر:</span> {cityItem.find((city) => city.id === gymData.city)?.name}
+            <span className={Classes.infoLabel}>شهر:</span>
+            {" "}
+            {cityItem.find((city) => city.id === gymData.city)?.name}
           </p>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>آدرس:</span> {gymData.address}
+            <span className={Classes.infoLabel}>آدرس:</span>
+            {" "}{gymData.address}
           </p>
-          {gymData.description && <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>توضیحات:</span> {gymData.description}
-          </p> }
+
+          {gymData.description && (
+            <p className={Classes.infoCardItem}>
+              <span className={Classes.infoLabel}>توضیحات:</span>
+              {" "}{gymData.description}
+            </p>
+          )}
         </div>
       )}
 
@@ -51,68 +68,81 @@ export default function SignupSuccessStep({
           <h4 className={Classes.infoCardTitle}>
             اطلاعات مدیر
           </h4>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>نام :</span> {managerData.firstName}
+            <span className={Classes.infoLabel}>نام:</span>
+            {" "}{managerData.firstName}
           </p>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>نام خانوادگی :</span> {managerData.lastName}
+            <span className={Classes.infoLabel}>نام خانوادگی:</span>
+            {" "}{managerData.lastName}
           </p>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>نام کاربری :</span> {managerData.username}
+            <span className={Classes.infoLabel}>نام کاربری:</span>
+            {" "}{managerData.username}
           </p>
+
           <p className={Classes.infoCardItem}>
-            <span className={Classes.infoLabel}>تلفن:</span> {managerData.phone}
+            <span className={Classes.infoLabel}>تلفن:</span>
+            {" "}{managerData.phone}
           </p>
         </div>
       )}
 
-      {planData && (<div className={Classes.infoCard}>
-    <h4 className={Classes.infoCardTitle}>
-      اطلاعات پلن اشتراک
-    </h4>
+      {planData && (
+        <div className={Classes.infoCard}>
+          <h4 className={Classes.infoCardTitle}>
+            اطلاعات پلن اشتراک
+          </h4>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>نام پلن:</span>{" "}
-      {planData.planName}
-    </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>نام پلن:</span>
+            {" "}{planData.planName}
+          </p>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>شماره پلن:</span>{" "}
-      {planData.planNumber}
-    </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>شماره پلن:</span>
+            {" "}{planData.planNumber}
+          </p>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>مناسب برای:</span>{" "}
-      {planData.bestFor}
-    </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>مناسب برای:</span>
+            {" "}{planData.bestFor}
+          </p>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>مربیان:</span>{" "}
-      {planData.coach}
-    </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>مربیان:</span>
+            {" "}{planData.coach}
+          </p>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>ورزشکاران:</span>{" "}
-      {planData.trainee}
-    </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>ورزشکاران:</span>
+            {" "}{planData.trainee}
+          </p>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>مدت اشتراک:</span>{" "}
-      {planData.duration}
-    </p>
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>مدت اشتراک:</span>
+            {" "}{planData.duration}
+          </p>
 
-    <p className={Classes.infoCardItem}>
-      <span className={Classes.infoLabel}>قیمت:</span>{" "}
-      {planData.price}
-    </p>
-  </div>)}
+          <p className={Classes.infoCardItem}>
+            <span className={Classes.infoLabel}>قیمت:</span>
+            {" "}{planData.price}
+          </p>
+        </div>
+      )}
+
       <Button
         variant={BUTTON_VARIANT_ENUM.primary}
         size={BUTTON_ENUMS_SIZE.large}
         className="w-23! mt-6"
-        onClick={() => window.location.href = "/"}
+        onClick={() => {
+          window.location.href = "/dashboard/manager";
+        }}
       >
-        ورود به سامانه
+        ورود به داشبورد
       </Button>
     </div>
   );
