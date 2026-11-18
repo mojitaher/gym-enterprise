@@ -14,7 +14,7 @@ export default function Toast({
 }: TOAST_PROPS_INTERFACE) {
 
     return (
-        <div
+        <div dir="ltr"
             className={`
                 ${Classes.container}
                 ${TOAST_MESSAGE_ICON_AND_MODE[message].className}

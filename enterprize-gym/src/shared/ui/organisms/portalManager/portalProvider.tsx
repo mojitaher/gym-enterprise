@@ -44,7 +44,6 @@ export default function PortalProvider({
     const addPortalComponent = (
         portal: PORTAL_MANAGER_ITEMS_PROPS_INTERFACE
     ) => {
-        console.log("Portal Called", portal);
 
         if (!containerRef.current) {
             return;

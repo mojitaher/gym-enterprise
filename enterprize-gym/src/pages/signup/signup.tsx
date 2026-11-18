@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -30,6 +29,14 @@ import { useSubmitPlan } from "./hooks/useSubmitPlan";
 import { useGetPlans } from "./hooks/useGetPlans";
 import { useRegisterGym } from "./hooks/useRegesterGyms";
 import { useRegisterOwner } from "./hooks/useRegesterOwner";
+
+// ---- Toast (مسیرها را با ساختار پروژه‌ات چک کن) ----
+// 
+// 
+import usePortal from "../../shared/ui/organisms/portalManager/hooks/usePortal";
+import { PORTAL_TYPE_ENUM } from "../../shared/ui/organisms/portalManager/enums/portalManagerEnum";
+import { TOAST_MESSAGE_ENUM } from "../../shared/ui/atoms/toast/enums/toastMessageEnum";
+import type { TOAST_MESSAGE_TYPE } from "../../shared/ui/atoms/toast/types/toastMessageType";
 
 import Classes from "./style/signup.module.css";
 
@@ -63,13 +70,20 @@ export default function SignupPage() {
   const [selectedPlan, setSelectedPlan] =
     useState<SUBSCRIPTION_CARD_PROPS_INTERFACE | null>(null);
 
-  const {
-    registrationId,
-    saveRegistrationId,
-    
-  } = useRegistrationId();
+  const { registrationId, saveRegistrationId } = useRegistrationId();
 
   const navigate = useNavigate();
+
+  // Toast
+
+  const { addPortalComponent } = usePortal();
+
+  const showToast = (message: TOAST_MESSAGE_TYPE) => {
+    addPortalComponent({
+      type: PORTAL_TYPE_ENUM.TOAST,
+      props: { message },
+    });
+  };
 
   // React Query Hooks
 
@@ -100,68 +114,92 @@ export default function SignupPage() {
 
   // ثبت یا ویرایش اطلاعات مدیر
 
-  const handleManagerSubmit = (data: ManagerInfo) =>
-  handleManagerInfoSubmit({
-    data,
-    registrationId,
-   isEditing:
-  completedSteps.has(SIGNUP_STEP_ENUM.managerInfo) ||
-  Boolean(registrationId),
-    
+  const handleManagerSubmit = async (data: ManagerInfo) => {
+    try {
+      await handleManagerInfoSubmit({
+        data,
+        registrationId,
+        isEditing:
+          completedSteps.has(SIGNUP_STEP_ENUM.managerInfo) ||
+          Boolean(registrationId),
 
-    registerOwner: (body) =>
-      registerOwnerMutation.mutateAsync(body),
+        registerOwner: (body) => registerOwnerMutation.mutateAsync(body),
 
-    updateOwner: (id, body) =>
-      updateOwnerMutation.mutateAsync({
-        registrationId: id,
-        body,
-      }),
+        updateOwner: (id, body) =>
+          updateOwnerMutation.mutateAsync({
+            registrationId: id,
+            body,
+          }),
 
-    setRegistrationId: saveRegistrationId,
-    setManagerData,
-    setCompletedSteps,
-    setCurrentStep,
-    
-  }).catch(console.error);
+        setRegistrationId: saveRegistrationId,
+        setManagerData,
+        setCompletedSteps,
+        setCurrentStep,
+      });
+
+      showToast(TOAST_MESSAGE_ENUM.OwnerRegisterSuccess);
+    } catch (error) {
+      console.error(error);
+      showToast(TOAST_MESSAGE_ENUM.OwnerRegisterError);
+    }
+  };
+
   // ثبت اطلاعات باشگاه
 
-  const handleGymSubmit = (data: GymInfo) =>
-    handleGymInfoSubmit({
-      data,
-      registrationId,
-      registerGym: (id, body) =>
-        registerGymMutation.mutateAsync({
-          registrationId: id,
-          body,
-        }),
-      setGymData,
-      setCompletedSteps,
-      setCurrentStep,
-    }).catch(console.error);
+  const handleGymSubmit = async (data: GymInfo) => {
+    try {
+      await handleGymInfoSubmit({
+        data,
+        registrationId,
+        registerGym: (id, body) =>
+          registerGymMutation.mutateAsync({
+            registrationId: id,
+            body,
+          }),
+        setGymData,
+        setCompletedSteps,
+        setCurrentStep,
+      });
+
+      showToast(TOAST_MESSAGE_ENUM.GymRegisterSuccess);
+    } catch (error) {
+      console.error(error);
+      showToast(TOAST_MESSAGE_ENUM.GymRegisterError);
+    }
+  };
 
   // ثبت پلن انتخاب‌شده
 
-  const handlePlanSubmit = (
+  const handlePlanSubmit = async (
     plan: SUBSCRIPTION_CARD_PROPS_INTERFACE
   ) => {
     const apiPlan = apiPlans[plan.planNumber - 1];
 
-    if (!apiPlan || !registrationId) return;
+    if (!apiPlan || !registrationId) {
+      showToast(TOAST_MESSAGE_ENUM.IncompleteInformation);
+      return;
+    }
 
-    return handleSubscriptionPlanSubmit({
-      data: plan,
-      planId: apiPlan.id,
-      registrationId,
-      submitPlan: (id, body) =>
-        submitPlanMutation.mutateAsync({
-          registrationId: id,
-          body,
-        }),
-      setSelectedPlan,
-      setCompletedSteps,
-      setCurrentStep,
-    }).catch(console.error)
+    try {
+      await handleSubscriptionPlanSubmit({
+        data: plan,
+        planId: apiPlan.id,
+        registrationId,
+        submitPlan: (id, body) =>
+          submitPlanMutation.mutateAsync({
+            registrationId: id,
+            body,
+          }),
+        setSelectedPlan,
+        setCompletedSteps,
+        setCurrentStep,
+      });
+
+      showToast(TOAST_MESSAGE_ENUM.PlanSubmitSuccess);
+    } catch (error) {
+      console.error(error);
+      showToast(TOAST_MESSAGE_ENUM.PlanSubmitError);
+    }
   };
 
   // نمایش محتوای مراحل ثبت‌نام
@@ -234,9 +272,7 @@ export default function SignupPage() {
           completedSteps={completedSteps}
         />
 
-        <div className={Classes.content}>
-          {renderStepContent()}
-        </div>
+        <div className={Classes.content}>{renderStepContent()}</div>
       </div>
     </div>
   );

@@ -46,4 +46,33 @@ export const TOAST_MESSAGE_ICON_AND_MODE: Record<
     icon: invalidUsernameOrPassword,
     className: Classes.container_error,
   },
+   [TOAST_MESSAGE_ENUM.OwnerRegisterSuccess]: {
+    icon: loginSuccess,
+    className: Classes.container_success,
+  },
+  [TOAST_MESSAGE_ENUM.GymRegisterSuccess]: {
+    icon: loginSuccess,
+    className: Classes.container_success,
+  },
+  [TOAST_MESSAGE_ENUM.PlanSubmitSuccess]: {
+    icon: loginSuccess,
+    className: Classes.container_success,
+  },
+
+  [TOAST_MESSAGE_ENUM.OwnerRegisterError]: {
+    icon: invalidUsernameOrPassword,
+    className: Classes.container_error,
+  },
+  [TOAST_MESSAGE_ENUM.GymRegisterError]: {
+    icon: invalidUsernameOrPassword,
+    className: Classes.container_error,
+  },
+  [TOAST_MESSAGE_ENUM.PlanSubmitError]: {
+    icon: invalidUsernameOrPassword,
+    className: Classes.container_error,
+  },
+  [TOAST_MESSAGE_ENUM.PlansLoadError]: {
+    icon: invalidUsernameOrPassword,
+    className: Classes.container_error,
+  },
 };
